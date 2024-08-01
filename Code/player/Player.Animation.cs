@@ -16,43 +16,37 @@ public partial class Player : Component
 	protected void UpdateAnimation()
 	{
         Rotation bodyRotation = PlayerBody.Transform.Rotation;
-		
 		var cc = GameObject.Components.Get<CharacterController>();
-		// Eye input
-		if ( !IsProxy )
-		{
-			IsRunning = Input.Down( "Run" );
-		}
+		// // Eye input
+		// if ( !IsProxy )
+		// {
+		// 	IsRunning = Input.Down( "Run" );
+		// }
 
+		// // rotate body to look angles
+		// if ( PlayerBody is not null )
+		// {
+		// 	// var cursorPos = Components.Get<WorldCursor>( FindMode.Enabled );
+		// 	var targetAngle = new Angles( 0, EyeAngles.yaw, 0 ).ToRotation();
 
-        var aimButtonPressed = Input.Down( "attack2" );
+		// 	var v = cc.Velocity.WithZ( 0 );
 
-        float rotateDifference = 0;
+		// 	targetAngle = Rotation.LookAt( v, Vector3.Up );
 
-		// rotate body to look angles
-		if ( PlayerBody is not null )
-		{
-			// var cursorPos = Components.Get<WorldCursor>( FindMode.Enabled );
-			var targetAngle = new Angles( 0, EyeAngles.yaw, 0 ).ToRotation();
+		// 	rotateDifference = PlayerBody.Transform.Rotation.Distance( targetAngle );
 
-			var v = cc.Velocity.WithZ( 0 );
+		// 	// Rotation playerRotation = Rotation.LookAt( cc.Transform.Position, cursorPos.CursorInstance.Transform.Position );
 
-			targetAngle = Rotation.LookAt( v, Vector3.Up );
+		// 	if ( rotateDifference > 50.0f || cc.Velocity.Length > 1.0f )
+		// 	{
+		// 		PlayerBody.Transform.Rotation = Rotation.Lerp( PlayerBody.Transform.Rotation, targetAngle, Time.Delta * 2.0f );
+		// 	}
 
-			rotateDifference = PlayerBody.Transform.Rotation.Distance( targetAngle );
-
-			// Rotation playerRotation = Rotation.LookAt( cc.Transform.Position, cursorPos.CursorInstance.Transform.Position );
-
-			if ( rotateDifference > 50.0f || cc.Velocity.Length > 1.0f )
-			{
-				PlayerBody.Transform.Rotation = Rotation.Lerp( PlayerBody.Transform.Rotation, targetAngle, Time.Delta * 2.0f );
-			}
-
-            if ( aimButtonPressed )
-            {
-				// Body.Transform.Rotation = Rotation.Lerp( Body.Transform.Rotation, playerRotation, Time.Delta * 2.0f );
-            }
-		}
+        //     if ( aimButtonPressed )
+        //     {
+		// 		// Body.Transform.Rotation = Rotation.Lerp( Body.Transform.Rotation, playerRotation, Time.Delta * 2.0f );
+        //     }
+		// }
 	
 		// // Eye input
 		// if ( cc.IsValid() )
@@ -68,11 +62,12 @@ public partial class Player : Component
 
         if ( AnimationHelper is not null )
         {
+			AnimationHelper.Target.SetBodyGroup("head", 1);
             AnimationHelper.WithVelocity( cc.Velocity );
             AnimationHelper.WithWishVelocity( WishVelocity );
             AnimationHelper.IsGrounded = cc.IsOnGround;
             // AnimationHelper.FootShuffle = rotateDifference;
-            AnimationHelper.AimAngle = bodyRotation;
+            AnimationHelper.AimAngle = bodyRotation;;
             AnimationHelper.WithLook( EyeAngles.Forward, 1, 1, 1.0f );
             AnimationHelper.MoveStyle = IsRunning ? CitizenAnimationHelper.MoveStyles.Run : CitizenAnimationHelper.MoveStyles.Walk;
         }
