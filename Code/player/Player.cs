@@ -20,7 +20,7 @@ public partial class Player : Component
 
 	protected override void OnStart()
 	{
-		Camera = Components.Get<CameraComponent>( FindMode.EverythingInSelfAndDescendants );
+		Camera = Scene.GetAllComponents<CameraComponent>().Where( x => x.IsMainCamera ).FirstOrDefault();
 		PlayerBody = Components.Get<SkinnedModelRenderer>( FindMode.EverythingInSelfAndDescendants );
 		Collider = Components.Get<BoxCollider>( FindMode.EverythingInSelfAndDescendants );
 	}
