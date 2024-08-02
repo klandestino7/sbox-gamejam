@@ -260,8 +260,7 @@
       "__guid": "9b357809-4e19-4259-b6d1-6a6da51bc824",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "202.6928,72.66976,55.42391",
-      "Rotation": "0.00000001490116,0.00000001490116,-0.9659259,0.2588192",
+      "Position": "-75.33291,-159.9149,52.02325",
       "Tags": "maincamera",
       "Enabled": true,
       "Components": [
@@ -270,7 +269,7 @@
           "__guid": "bcf5a47b-eb3e-4805-8447-8abc66cd47e1",
           "BackgroundColor": "0.33333,0.46275,0.52157,1",
           "ClearFlags": "All",
-          "FieldOfView": 60,
+          "FieldOfView": 78,
           "IsMainCamera": true,
           "Orthographic": false,
           "OrthographicHeight": 1204,
@@ -318,7 +317,7 @@
           "UseCollisionRules": false
         },
         {
-          "__type": "Player",
+          "__type": "Gamejam.Player",
           "__guid": "7849d4cc-dd8b-461a-a828-55885f5e616d",
           "EyePos": {
             "_type": "gameobject",
@@ -343,10 +342,21 @@
             "component_type": "CharacterController"
           },
           "CrouchMoveSpeed": 64,
+          "HealthSystem": {
+            "_type": "component",
+            "component_id": "837a2f44-a787-4117-bdf9-1ff00cde01ed",
+            "go": "daeb0423-cacf-4a2c-a367-15b6eb0cb7e3",
+            "component_type": "HealthSystem"
+          },
           "Radius": 100,
           "RunMoveSpeed": 190,
           "SprintMoveSpeed": 320,
           "WalkMoveSpeed": 190
+        },
+        {
+          "__type": "Gamejam.HealthSystem",
+          "__guid": "837a2f44-a787-4117-bdf9-1ff00cde01ed",
+          "Invincible": false
         }
       ],
       "Children": [
@@ -365,7 +375,7 @@
               "CreateBoneObjects": true,
               "MaterialGroup": "default",
               "Model": "models/citizen/citizen.vmdl",
-              "RenderType": "On",
+              "RenderType": "ShadowsOnly",
               "Tint": "1,1,1,1",
               "UseAnimGraph": true
             }
@@ -1232,7 +1242,7 @@
               },
               "CreateBoneObjects": false,
               "Model": "models/citizen_clothes/shorts/boxing_shorts/models/boxing_shorts.vmdl",
-              "RenderType": "On",
+              "RenderType": "ShadowsOnly",
               "Tint": "1,1,1,1",
               "UseAnimGraph": true
             }
@@ -1259,7 +1269,7 @@
               },
               "CreateBoneObjects": false,
               "Model": "models/citizen_clothes/shirt/tshirt/models/tshirt.vmdl",
-              "RenderType": "On",
+              "RenderType": "ShadowsOnly",
               "Tint": "1,1,1,1",
               "UseAnimGraph": true
             }
@@ -1285,7 +1295,7 @@
               },
               "CreateBoneObjects": false,
               "Model": "models/citizen_clothes/shoes/boots/models/black_boots.vmdl",
-              "RenderType": "On",
+              "RenderType": "ShadowsOnly",
               "Tint": "1,1,1,1",
               "UseAnimGraph": true
             }
@@ -1311,7 +1321,7 @@
               },
               "CreateBoneObjects": false,
               "Model": "models/citizen_clothes/hair/hair_fade/models/hair_fade.vmdl",
-              "RenderType": "On",
+              "RenderType": "ShadowsOnly",
               "Tint": "1,1,1,1",
               "UseAnimGraph": true
             }
