@@ -17,6 +17,11 @@ public record PlayerJoinedEvent( PlayerState Player ) : IGameEvent;
 public record PlayerSpawnedEvent( Player Player ) : IGameEvent;
 
 /// <summary>
+/// Called on the host when a player is assigned to a team.
+/// </summary>
+public record TeamAssignedEvent( PlayerState Player ) : IGameEvent;
+
+/// <summary>
 /// Called on the host when all scores should be reset.
 /// </summary>
 public record ResetScoresEvent : IGameEvent;

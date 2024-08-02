@@ -2,20 +2,9 @@
   "RootObject": {
     "__guid": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
     "Flags": 0,
-    "Name": "Player ",
-    "Position": "-27.28112,-51.02454,5.657212",
+    "Name": "player",
     "Enabled": true,
     "Components": [
-      {
-        "__type": "Sandbox.SkinnedModelRenderer",
-        "__guid": "e8a93a6c-2272-40e4-b62d-ff98d96c77f6",
-        "BodyGroups": 341,
-        "CreateBoneObjects": false,
-        "Model": "models/citizen/citizen.vmdl",
-        "RenderType": "On",
-        "Tint": "1,1,1,1",
-        "UseAnimGraph": true
-      },
       {
         "__type": "Sandbox.Citizen.CitizenAnimationHelper",
         "__guid": "e1a54638-d9d4-46c3-aea5-56a853fea635",
@@ -26,8 +15,8 @@
         "LookAtEnabled": false,
         "Target": {
           "_type": "component",
-          "component_id": "e8a93a6c-2272-40e4-b62d-ff98d96c77f6",
-          "go": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
+          "component_id": "9e47f821-cb5a-4abf-a5dc-00a542765474",
+          "go": "b5ef135d-b42a-4599-bc83-8fd4bd38e947",
           "component_type": "SkinnedModelRenderer"
         }
       },
@@ -38,13 +27,24 @@
         "Bounciness": 0.3,
         "GroundAngle": 45,
         "Height": 64,
+        "IgnoreLayers": "",
         "Radius": 16,
         "StepHeight": 18,
         "UseCollisionRules": false
       },
       {
-        "__type": "PlayerController",
-        "__guid": "2b862bed-b2ba-47ca-ad08-31eb9ba6629b",
+        "__type": "Gamejam.Player",
+        "__guid": "15795f97-dfa6-44ca-8fdf-f5683a824281",
+        "EyePos": {
+          "_type": "gameobject",
+          "go": "46aec606-23bb-4356-9fb2-1bfbf99a4831"
+        },
+        "PlayerBody": {
+          "_type": "component",
+          "component_id": "9e47f821-cb5a-4abf-a5dc-00a542765474",
+          "go": "b5ef135d-b42a-4599-bc83-8fd4bd38e947",
+          "component_type": "SkinnedModelRenderer"
+        },
         "AnimationHelper": {
           "_type": "component",
           "component_id": "e1a54638-d9d4-46c3-aea5-56a853fea635",
@@ -58,36 +58,21 @@
           "component_type": "CharacterController"
         },
         "CrouchMoveSpeed": 64,
+        "HealthSystem": {
+          "_type": "component",
+          "component_id": "88dcab04-eb27-4900-b1b5-dbe68a1fc095",
+          "go": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
+          "component_type": "HealthSystem"
+        },
+        "Radius": 100,
         "RunMoveSpeed": 190,
         "SprintMoveSpeed": 320,
         "WalkMoveSpeed": 190
       },
       {
-        "__type": "Player",
-        "__guid": "15795f97-dfa6-44ca-8fdf-f5683a824281",
-        "EyePos": {
-          "_type": "gameobject",
-          "go": "46aec606-23bb-4356-9fb2-1bfbf99a4831"
-        },
-        "AnimationHelper": {
-          "_type": "component",
-          "component_id": "e1a54638-d9d4-46c3-aea5-56a853fea635",
-          "go": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
-          "component_type": "CitizenAnimationHelper"
-        },
-        "Body": {
-          "_type": "gameobject",
-          "go": "b5ef135d-b42a-4599-bc83-8fd4bd38e947"
-        },
-        "CameraDistance": "500,1300",
-        "DuckSpeed": 60,
-        "FirstPerson": false,
-        "Gravity": "0,0,800",
-        "JumpStrength": 200,
-        "PitchClamp": "45,45",
-        "SprintSpeed": 280,
-        "WalkSpeed": 60,
-        "WheelSpeed": 30
+        "__type": "Gamejam.HealthSystem",
+        "__guid": "88dcab04-eb27-4900-b1b5-dbe68a1fc095",
+        "Invincible": false
       }
     ],
     "Children": [
@@ -95,7 +80,6 @@
         "__guid": "b5ef135d-b42a-4599-bc83-8fd4bd38e947",
         "Flags": 0,
         "Name": "Body",
-        "Position": "0,0,0",
         "Enabled": true,
         "Components": [
           {
@@ -106,7 +90,7 @@
             "CreateBoneObjects": true,
             "MaterialGroup": "default",
             "Model": "models/citizen/citizen.vmdl",
-            "RenderType": "On",
+            "RenderType": "ShadowsOnly",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
           }
@@ -954,37 +938,11 @@
         "Enabled": true
       },
       {
-        "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
-        "Flags": 0,
-        "Name": "Camera",
-        "Position": "-65.51514,0.000003814697,62.11662",
-        "Tags": "maincamera",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "Sandbox.CameraComponent",
-            "__guid": "c2c87ad0-f2d1-4990-84a0-7fe77d43be54",
-            "BackgroundColor": "0.33333,0.46275,0.52157,1",
-            "ClearFlags": "All",
-            "FieldOfView": 60,
-            "IsMainCamera": true,
-            "Orthographic": false,
-            "OrthographicHeight": 250,
-            "Priority": 1,
-            "RenderExcludeTags": "",
-            "RenderTags": "",
-            "TargetEye": "None",
-            "Viewport": "0,0,1,1",
-            "ZFar": 10000,
-            "ZNear": 10
-          }
-        ]
-      },
-      {
         "__guid": "e3a9ceec-24b6-46ac-8c8f-2eea5d68de75",
         "Flags": 0,
         "Name": "Pants",
         "Position": "-25.081,0,0",
+        "Tags": "clothing",
         "Enabled": true,
         "Components": [
           {
@@ -999,7 +957,7 @@
             },
             "CreateBoneObjects": false,
             "Model": "models/citizen_clothes/shorts/boxing_shorts/models/boxing_shorts.vmdl",
-            "RenderType": "On",
+            "RenderType": "ShadowsOnly",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
           }
@@ -1011,6 +969,7 @@
         "Name": "Tshirt",
         "Position": "1.5,0,0",
         "Scale": "1.1,1,1",
+        "Tags": "clothing",
         "Enabled": true,
         "Components": [
           {
@@ -1025,7 +984,7 @@
             },
             "CreateBoneObjects": false,
             "Model": "models/citizen_clothes/shirt/tshirt/models/tshirt.vmdl",
-            "RenderType": "On",
+            "RenderType": "ShadowsOnly",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
           }
@@ -1035,7 +994,7 @@
         "__guid": "ef0a10b1-4d4c-4b42-87dc-1321d22e289d",
         "Flags": 0,
         "Name": "Boots",
-        "Position": "0,0,0",
+        "Tags": "clothing",
         "Enabled": true,
         "Components": [
           {
@@ -1050,7 +1009,7 @@
             },
             "CreateBoneObjects": false,
             "Model": "models/citizen_clothes/shoes/boots/models/black_boots.vmdl",
-            "RenderType": "On",
+            "RenderType": "ShadowsOnly",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
           }
@@ -1060,7 +1019,7 @@
         "__guid": "9ef8bbb3-1ba7-40fa-b385-784f336d56a5",
         "Flags": 0,
         "Name": "Hair",
-        "Position": "0,0,0",
+        "Tags": "clothing",
         "Enabled": true,
         "Components": [
           {
@@ -1075,13 +1034,14 @@
             },
             "CreateBoneObjects": false,
             "Model": "models/citizen_clothes/hair/hair_fade/models/hair_fade.vmdl",
-            "RenderType": "On",
+            "RenderType": "ShadowsOnly",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
           }
         ]
       }
-    ]
+    ],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

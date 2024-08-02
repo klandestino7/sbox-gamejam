@@ -1,0 +1,55 @@
+{
+  "RootObject": {
+    "__guid": "5a675606-d89d-401c-9fbb-e999568e5691",
+    "Flags": 0,
+    "Name": "game_setup",
+    "Enabled": true,
+    "Children": [
+      {
+        "__guid": "680d2632-af73-48d6-9feb-a838a1d8184b",
+        "Flags": 0,
+        "Name": "Networking",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Gamejam.GameNetworkManager",
+            "__guid": "553e35ec-113e-43ac-a43c-70f39e7aec7b",
+            "IsMultiplayer": true,
+            "PlayerStatePrefab": {
+              "_type": "gameobject",
+              "prefab": "prefabs/playerstate.prefab"
+            }
+          }
+        ]
+      },
+      {
+        "__guid": "c5815643-a2b7-48a0-832b-0c6699d0cb64",
+        "Flags": 0,
+        "Name": "HUD",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "Gamejam.UI.MainHUD",
+            "__guid": "8c472612-1ef0-4220-beeb-66ecd61ad5d9"
+          },
+          {
+            "__type": "Sandbox.ScreenPanel",
+            "__guid": "5f48ed43-aa09-450a-9fe5-ba1371842191",
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ZIndex": 100
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

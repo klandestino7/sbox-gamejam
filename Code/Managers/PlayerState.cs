@@ -1,4 +1,5 @@
 using Sandbox.Diagnostics;
+using Sandbox.Events;
 
 namespace Gamejam;
 
@@ -53,20 +54,15 @@ public partial class PlayerState : Component
 	/// Is this the local player for this client
 	/// </summary>
 	public bool IsLocalPlayer => !IsProxy && Connection == Connection.Local;
-	
+
 	/// <summary>
 	/// The main PlayerPawn of this player if one exists, will not change when the player possesses gadgets etc. (synced)
 	/// </summary>
-	[HostSync, ValidOrNull] public Player Player { get; set; }
-
-	// /// <summary>
-	// /// The pawn this player is currently in possession of (synced - unless the pawn is not networked)
-	// /// </summary>
-	// [Sync] public Pawn Pawn { get; set; }
+	[HostSync] public Player Player { get; set; }
 
 	public void HostInit()
 	{
-		// on join, spawn right now if we can
+		// // on join, spawn right now if we can
 		// RespawnState = RespawnState.Immediate;
 		
 		SteamId = Connection.SteamId;
@@ -89,63 +85,4 @@ public partial class PlayerState : Component
 		GameObject.Destroy();
 		// todo: actually kick em
 	}
-
-	// public static void OnPossess( Pawn pawn )
-	// {
-	// 	// called from Pawn when one is newly possessed, update Local and Viewer, invoke RPCs for observers
-
-	// 	Local.Pawn = pawn;
-
-	// 	if ( pawn.Network.Active )
-	// 	{
-	// 		Local.OnNetPossessed();
-	// 	}
-
-	// 	if ( !pawn.PlayerState.IsValid() )
-	// 	{
-	// 		Log.Warning( $"Attempted to possess pawn, but pawn '{pawn.DisplayName}' has no attached PlayerState!" );
-	// 	}
-
-	// 	Viewer = pawn.PlayerState;
-	// }
-
-	// sync to other clients what this player is currently possessing
-	// Sol: when we track observers we could drop this with an Rpc.FilterInclude?
-	[Broadcast]
-	private void OnNetPossessed()
-	{
-		if ( IsViewer && IsProxy )
-		{
-			Possess();
-		}
-	}
-
-	public void Possess()
-	{
-		// if ( Pawn is null || IsLocalPlayer )
-		// {
-		// 	// Local player - always assume the controller
-		// 	PlayerPawn.Possess();
-		// }
-		// else
-		// {
-		// 	// A remote player is possessing this player (spectating)
-		// 	// So enter the latest known pawn this player has possessed
-		// 	Pawn.Possess();
-		// }
-	}
-
-	// /// <summary>
-	// /// Called when <see cref="Team"/> changes across the network.
-	// /// </summary>
-	// private void OnTeamPropertyChanged( Team before, Team after )
-	// {
-	// 	GameObject.Root.Dispatch( new TeamChangedEvent( before, after ) );
-
-	// 	// Send this to the pawn too if we have ne
-	// 	if ( PlayerPawn.IsValid() )
-	// 	{
-	// 		PlayerPawn.GameObject.Root.Dispatch( new TeamChangedEvent( before, after ) );
-	// 	}
-	// }
 }

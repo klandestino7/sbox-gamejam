@@ -4,23 +4,41 @@ using Sandbox.Diagnostics;
 
 namespace Gamejam;
 
-public partial class Player  : Component, Component.ExecuteInEditor
+public partial class Player : Component, Component.ExecuteInEditor
 {
 	public CameraComponent Camera;
+
+	/// <summary>
+	/// The position this player last spawned at.
+	/// </summary>
+	[HostSync]
+	public Vector3 SpawnPosition { get; set; }
+
+	/// <summary>
+	/// The rotation this player last spawned at.
+	/// </summary>
+	[HostSync]
+	public Rotation SpawnRotation { get; set; }
+
+	/// <summary>
+	/// The player state ID
+	/// </summary>
+	[HostSync] public PlayerState PlayerState { get; private set; }
 
 	[Property] public GameObject EyePos;
 	[Property] public SkinnedModelRenderer PlayerBody;
 	[Property] public CharacterController CharacterController { get; set; }
 	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
-	
 	[Property] public virtual HealthSystem HealthSystem { get; set; }
 	protected BoxCollider Collider;
 
 	protected override void OnStart()
 	{
+		Log.Info(" OLAAA ");
 		Camera = Scene.GetAllComponents<CameraComponent>().Where( x => x.IsMainCamera ).FirstOrDefault();
 		PlayerBody = Components.Get<SkinnedModelRenderer>( FindMode.EverythingInSelfAndDescendants );
 		Collider = Components.Get<BoxCollider>( FindMode.EverythingInSelfAndDescendants );
+
 	}
 
 	protected override void OnUpdate()

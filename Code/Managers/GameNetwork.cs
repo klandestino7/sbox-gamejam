@@ -102,6 +102,8 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 		playerState.HostInit();
 		playerState.ClientInit();
 
+		playerState.Respawn( true ); 
+
 		Scene.Dispatch( new PlayerJoinedEvent( playerState ) );
 	}
 }
