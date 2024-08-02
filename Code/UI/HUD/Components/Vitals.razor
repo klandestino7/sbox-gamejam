@@ -32,12 +32,10 @@
     public HealthSystem HealthSystem => Player.HealthSystem;
     public int Health => HealthSystem?.Health ?? 0;
     public int Oxigen => HealthSystem?.Oxigen ?? 0;
-
     protected override int BuildHash()
     {
-        return !Player.IsValid() ? 0 : System.HashCode.Combine( Player, HealthSystem, Health, Oxigen );
+        return !Player.IsValid() ? 0 : HashCode.Combine( Health, Oxigen, Player.HealthSystem?.IsDead );
     }
-
     private string BuildClass()
     {
         var sb = new StringBuilder();
