@@ -1,4 +1,6 @@
 using Sandbox.Citizen;
+using Sandbox.Diagnostics;
+using static System.Console;
 
 [Group( "Walker" )]
 [Title( "Walker - Player Controller" )]
@@ -225,7 +227,7 @@ public sealed class PlayerController : Component
 
 	protected override void OnPreRender()
 	{
-		UpdateBodyVisibility();
+		// UpdateBodyVisibility();
 
 		if ( IsProxy )
 			return;
@@ -249,24 +251,4 @@ public sealed class PlayerController : Component
 		var lookDir = EyeAngles.ToRotation().Forward * 1024;
 		AnimationHelper.WithLook( lookDir, 1, 0.5f, 0.25f );
 	}
-
-	private void UpdateBodyVisibility()
-	{
-		if ( AnimationHelper is null )
-			return;
-
-		var renderMode = ModelRenderer.ShadowRenderType.On;
-		if ( !IsProxy ) renderMode = ModelRenderer.ShadowRenderType.ShadowsOnly;
-
-		AnimationHelper.Target.RenderType = renderMode;
-
-		foreach ( var clothing in AnimationHelper.Target.Components.GetAll<ModelRenderer>( FindMode.InChildren ) )
-		{
-			if ( !clothing.Tags.Has( "clothing" ) )
-				continue;
-
-			clothing.RenderType = renderMode;
-		}
-	}
-
 }
