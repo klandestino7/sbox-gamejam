@@ -1,11 +1,4 @@
-
-using Sandbox;
-using Sandbox.Citizen;
-using Sandbox.Diagnostics;
-using System;
-using System.Linq;
-using System.Numerics;
-
+namespace Gamejam;
 public partial class Player : Component
 {
 	[Property] public float Radius { get; set; } = 100;

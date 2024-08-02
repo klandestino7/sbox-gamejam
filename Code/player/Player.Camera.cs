@@ -1,17 +1,7 @@
-using Sandbox;
-using Sandbox.Citizen;
-using Sandbox.Diagnostics;
-using System;
-using System.Linq;
-using System.Numerics;
-
-
+namespace Gamejam;
 public partial class Player : Component
 {
 	float Zoom = 100f;
-
-	Angles oldCamRotation;
-	Vector3 oldCamPosition;
 
 	protected void UpdateCamera()
 	{
@@ -36,9 +26,6 @@ public partial class Player : Component
 
 		Camera.Transform.Rotation = Rotation.Lerp( oldCamRot, newCamRot, Time.Delta * 5f );
 		Camera.Transform.Position =  Vector3.Lerp( oldCamPos, newCamPos, Time.Delta * 10f );
-
-		oldCamPosition = targetCameraPos;
-		oldCamRotation = EyeAngles;
 
 		Camera.FieldOfView = Preferences.FieldOfView;
 	}

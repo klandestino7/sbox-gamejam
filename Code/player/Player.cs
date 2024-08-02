@@ -1,10 +1,7 @@
-
 using Sandbox;
 using Sandbox.Citizen;
-using Sandbox.Diagnostics;
-using System;
-using System.Linq;
-using System.Numerics;
+
+namespace Gamejam;
 
 public partial class Player : Component
 {
@@ -14,9 +11,9 @@ public partial class Player : Component
 	[Property] public SkinnedModelRenderer PlayerBody;
 	[Property] public CharacterController CharacterController { get; set; }
 	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
+	
+	[Property] public virtual HealthSystem HealthSystem { get; set; }
 	protected BoxCollider Collider;
-
-
 
 	protected override void OnStart()
 	{
@@ -24,7 +21,6 @@ public partial class Player : Component
 		PlayerBody = Components.Get<SkinnedModelRenderer>( FindMode.EverythingInSelfAndDescendants );
 		Collider = Components.Get<BoxCollider>( FindMode.EverythingInSelfAndDescendants );
 	}
-
 
 	protected override void OnUpdate()
 	{

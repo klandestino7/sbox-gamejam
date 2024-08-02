@@ -1,10 +1,4 @@
-using Sandbox;
-using Sandbox.Citizen;
-using Sandbox.Diagnostics;
-using System;
-using System.Linq;
-using System.Numerics;
-
+namespace Gamejam;
 public partial class Player : Component
 {
 	[Property] public float CrouchMoveSpeed { get; set; } = 64.0f;
@@ -28,7 +22,6 @@ public partial class Player : Component
 		e.roll = 0.0f;
 		EyeAngles = e;
 	}
-
     
 	float CurrentMoveSpeed
 	{
@@ -54,7 +47,6 @@ public partial class Player : Component
 		return 0.2f;
 	}
 
-    
 	private void MovementInput()
 	{
 		if ( CharacterController is null )
@@ -85,7 +77,6 @@ public partial class Player : Component
 			}
 		}
 
-
 		cc.ApplyFriction( GetFriction() );
 
 		if ( cc.IsOnGround )
@@ -97,7 +88,6 @@ public partial class Player : Component
 		{
 			cc.Velocity += halfGravity;
 			cc.Accelerate( WishVelocity );
-
 		}
 
 		//
@@ -181,8 +171,6 @@ public partial class Player : Component
 			Crouching = WishCrouch;
 			return;
 		}
-
-
 	}
 
 }
