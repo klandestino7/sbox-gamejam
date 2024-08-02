@@ -318,8 +318,18 @@
           "UseCollisionRules": false
         },
         {
-          "__type": "PlayerController",
-          "__guid": "b303b3ce-af70-4766-b1b8-eefa7c1d135d",
+          "__type": "Player",
+          "__guid": "7849d4cc-dd8b-461a-a828-55885f5e616d",
+          "EyePos": {
+            "_type": "gameobject",
+            "go": "46aec606-23bb-4356-9fb2-1bfbf99a4831"
+          },
+          "PlayerBody": {
+            "_type": "component",
+            "component_id": "9e47f821-cb5a-4abf-a5dc-00a542765474",
+            "go": "b5ef135d-b42a-4599-bc83-8fd4bd38e947",
+            "component_type": "SkinnedModelRenderer"
+          },
           "AnimationHelper": {
             "_type": "component",
             "component_id": "4c4ec4c2-e43f-42b6-b64e-9a562abbe026",
@@ -333,19 +343,10 @@
             "component_type": "CharacterController"
           },
           "CrouchMoveSpeed": 64,
+          "Radius": 100,
           "RunMoveSpeed": 190,
           "SprintMoveSpeed": 320,
           "WalkMoveSpeed": 190
-        },
-        {
-          "__type": "Player",
-          "__guid": "7849d4cc-dd8b-461a-a828-55885f5e616d",
-          "AnimationHelper": {
-            "_type": "component",
-            "component_id": "4c4ec4c2-e43f-42b6-b64e-9a562abbe026",
-            "go": "daeb0423-cacf-4a2c-a367-15b6eb0cb7e3",
-            "component_type": "CitizenAnimationHelper"
-          }
         }
       ],
       "Children": [

@@ -10,10 +10,9 @@ public partial class Player : Component
 {
 	public CameraComponent Camera;
 
-	[Property]
-	public GameObject EyePos;
-	public SkinnedModelRenderer PlayerBody;
-
+	[Property] public GameObject EyePos;
+	[Property] public SkinnedModelRenderer PlayerBody;
+	[Property] public CharacterController CharacterController { get; set; }
 	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
 	protected BoxCollider Collider;
 
@@ -29,15 +28,31 @@ public partial class Player : Component
 
 	protected override void OnUpdate()
 	{
-		
+		if ( !IsProxy )
+		{
+			MouseInput();
+			Transform.Rotation = new Angles( 0, EyeAngles.yaw, 0 );
+		}
+
+		UpdateAnimation();
 	}
 
 	protected override void OnFixedUpdate()
 	{
+		if ( IsProxy )
+			return;
+
+		CrouchingInput();
+		MovementInput();
 	}
 	protected override void OnPreRender()
 	{
 		UpdateBodyVisibility();
+		
+		if ( IsProxy )
+			return;
+
+		UpdateCamera();
 	}
 
 	private void UpdateBodyVisibility()
