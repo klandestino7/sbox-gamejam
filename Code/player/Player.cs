@@ -49,7 +49,7 @@ public partial class Player : Component
 	{
 		UpdateAnimation();
 		UpdateCamera();
-		ControllerOnUpdate();
+		// ControllerOnUpdate();
 
 		if ( !IsProxy )
 		{
@@ -60,6 +60,6 @@ public partial class Player : Component
 	protected override void OnFixedUpdate()
 	{
 		// UpdateMovement();
-		UpdateController();
+		// UpdateController();
 	}
 }
