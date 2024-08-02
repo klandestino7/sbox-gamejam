@@ -1,9 +1,10 @@
 using Sandbox;
 using Sandbox.Citizen;
+using Sandbox.Diagnostics;
 
 namespace Gamejam;
 
-public partial class Player : Component
+public partial class Player  : Component, Component.ExecuteInEditor
 {
 	public CameraComponent Camera;
 
