@@ -6,7 +6,9 @@
   "Schema": 1,
   "IncludeSourceFiles": false,
   "Resources": null,
-  "PackageReferences": [],
+  "PackageReferences": [
+    "https://sbox.game/facepunch/playercontroller"
+  ],
   "EditorReferences": null,
   "Metadata": {
     "MaxPlayers": 64,
