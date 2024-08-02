@@ -1,0 +1,24 @@
+@using Sandbox
+@using Sandbox.UI
+@using Sandbox.Events
+
+@namespace Gamejam.UI
+@inherits PanelComponent
+
+@if (!IsHudEnabled)
+    return;
+
+<root>
+    <canvas>
+        <PlayerInfo />
+    </canvas>
+</root>
+
+@code 
+{
+    public static bool IsHudEnabled { get; set; } = true;
+    protected override int BuildHash()
+    {
+        return System.HashCode.Combine( IsHudEnabled );
+    }
+}

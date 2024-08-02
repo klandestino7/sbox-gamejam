@@ -1328,6 +1328,27 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "acb2ee72-ac18-4168-b9ea-433ffeaabea5",
+      "Flags": 0,
+      "Name": "Screen",
+      "Position": "27.09537,29.72737,-26.75124",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "d22c4d05-d23d-40bc-9a9a-51a88effb700",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "Gamejam.UI.MainHUD",
+          "__guid": "b37c41c8-10bd-4292-9f9e-964e86cec8fb"
+        }
+      ]
     }
   ],
   "SceneProperties": {

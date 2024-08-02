@@ -1,22 +1,21 @@
 namespace Gamejam;
 public partial class Player : Component
 {
-	[Property] SkinnedModelRenderer Source { get; set; }
 
 	protected override void OnEnabled()
 	{
-		if ( Source is null )
+		if ( PlayerBody is null )
 			return;
 
-		Source.OnFootstepEvent += OnEvent;
+		PlayerBody.OnFootstepEvent += OnEvent;
 	}
 
 	protected override void OnDisabled()
 	{
-		if ( Source is null )
+		if ( PlayerBody is null )
 			return;
 
-		Source.OnFootstepEvent -= OnEvent;
+		PlayerBody.OnFootstepEvent -= OnEvent;
 	}
 
 	TimeSince timeSinceStep;
