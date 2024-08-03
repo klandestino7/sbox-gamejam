@@ -1,0 +1,15 @@
+.button {
+    color: white;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    font-size: 30px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    // justify-content: ;
+}
+
+.current {
+    background: $main-color;
+    color: $main-color-dark;
+}

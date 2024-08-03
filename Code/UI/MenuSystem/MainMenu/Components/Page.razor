@@ -1,0 +1,103 @@
+@using Sandbox.UI
+@using Sandbox.Razor
+@using Sandbox.Utility
+@namespace Gamejam.UI
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+    <div class="inset-top" />
+
+    <div class="header">
+        <div class="row">
+            <div class="row inset grow">
+                <div class="logo">
+                    <img src="/ui/game_logo.png" />
+                </div>
+
+                <div class="align-center" style="margin-left: 16px;">
+                    @if (Header != null)
+                    {
+                        @Header
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    @if (SubHeader != null)
+    {
+        <div class="subheader">
+            <div class="row inset grow with-padding">
+                @SubHeader
+            </div>
+            <div class="line fade" />
+        </div>
+    }
+
+    <div class="body">
+        @if ( Body != null )
+        {
+            @Body
+        }
+    </div>
+
+
+    @if (SubFooter != null)
+    {
+        <div class="subfooter">
+            <div class="line fade" />
+            <div class="row inset grow with-padding">
+                @SubFooter
+            </div>
+        </div>
+    }
+</root>
+
+@code
+{
+    public RenderFragment Header { get; set; }
+    public RenderFragment SubHeader { get; set; }
+    public RenderFragment Body { get; set; }
+    public RenderFragment Footer { get; set; }
+    public RenderFragment SubFooter { get; set; }
+
+    public bool NoHomeButton { get; set; }
+    public bool NoSocial { get; set; }
+
+    public PartyRoom Party => PartyRoom.Current;
+
+    public void LeaveParty()
+    {
+        Party?.Leave();
+    }
+
+    public void CreateParty()
+    {
+        PartyRoom.Create( 4, "My Party", true );
+    }
+
+    public void InviteOverlay()
+    {
+        if ( Game.IsEditor )
+        {
+            
+        }
+
+        Game.Overlay.ShowFriendsList( new Sandbox.Modals.FriendsListModalOptions()
+		{
+			 ShowOfflineMembers = false,
+		} );
+    }
+
+    protected override int BuildHash()
+    {
+        return System.HashCode.Combine( Party, Party?.Members.Count() );
+    }
+
+    public void Quit()
+    {
+        Game.Close();
+    }
+}

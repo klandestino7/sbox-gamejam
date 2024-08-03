@@ -1,0 +1,171 @@
+{
+  "__guid": "74c5a131-6bbe-4240-a1e5-2fab4d7ff864",
+  "GameObjects": [
+    {
+      "__guid": "89711e28-bcef-4785-8b24-6e83e3f1ec42",
+      "Flags": 0,
+      "Name": "Camera",
+      "Position": "-298.4223,-842.0291,114.9844",
+      "Rotation": "0,0,-0.9238797,0.3826836",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "25128e9d-2c5d-48d3-a538-c1e956bec33f",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 82.99,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        },
+        {
+          "__type": "Sandbox.ChromaticAberration",
+          "__guid": "f220585b-bc8d-4d84-a48a-5e69e7d70f85",
+          "Offset": "4,6,0",
+          "Scale": 0.33
+        },
+        {
+          "__type": "Sandbox.AmbientOcclusion",
+          "__guid": "26849ddf-138d-46fd-94a1-057cffdcc90f",
+          "FalloffDistance": 1,
+          "Intensity": 16,
+          "Quality": "High",
+          "Radius": 32
+        },
+        {
+          "__type": "Sandbox.DepthOfField",
+          "__guid": "ec20bb47-5d40-4829-a360-1d68cee2c951",
+          "BackBlur": true,
+          "BlurSize": 100,
+          "FocalDistance": 270,
+          "FrontBlur": false
+        },
+        {
+          "__type": "Sandbox.Pixelate",
+          "__guid": "abca4acf-921c-4d8c-82d3-f9f42f3e735d",
+          "Scale": 0.001
+        },
+        {
+          "__type": "Sandbox.FilmGrain",
+          "__guid": "0534ce65-e4cc-4d53-b2ec-3fb55388a7a0",
+          "Intensity": 0.05,
+          "Response": 0.5
+        },
+        {
+          "__type": "Sandbox.Tonemapping",
+          "__guid": "897ba224-35af-44e5-91f4-a92f608bb613",
+          "__version": 1,
+          "ExposureBias": 2,
+          "ExposureCompensation": 0,
+          "ExposureMethod": "RGB",
+          "MaximumExposure": 2,
+          "MinimumExposure": 1,
+          "Mode": "HableFilmic",
+          "Rate": 1
+        },
+        {
+          "__type": "Sandbox.ColorAdjustments",
+          "__guid": "c21614ff-0359-4b3d-8055-ac3c6a9aa3f1",
+          "Brightness": 1,
+          "Contrast": 1,
+          "HueRotate": 0,
+          "Saturation": 0.9
+        }
+      ]
+    },
+    {
+      "__guid": "7ff54fb8-58ed-4bd4-b4b6-8b4b80f51435",
+      "Flags": 0,
+      "Name": "Directional Light",
+      "Position": "0,0,200",
+      "Rotation": "-0.2459842,0.5938582,0.2931525,0.7077327",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "13c0e262-a6c7-4c80-b92c-04946122a1fb",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0,0,0,0"
+        }
+      ]
+    },
+    {
+      "__guid": "a6a987eb-f07d-46b8-b687-27084adb1ee9",
+      "Flags": 0,
+      "Name": "MainMenu",
+      "Position": "-30.69025,68.688,80.85461",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "81745b1d-5c3a-452d-87ac-9510f5eb9f6d",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "Gamejam.UI.MainMenuPanel",
+          "__guid": "c93625ef-8407-43a1-8c92-ad50fc35a80c"
+        }
+      ]
+    },
+    {
+      "__guid": "fe925cfc-d193-4ada-8035-8ca455e39067",
+      "Flags": 0,
+      "Name": "MapInstance",
+      "Position": "-33.1729,116.4443,43.66545",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "b09285ea-6d53-4a89-aaae-f0e042522918",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "maps/maptester.vmap",
+          "NoOrigin": false,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "mainmenu",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
