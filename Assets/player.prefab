@@ -11,7 +11,7 @@
         "BodyWeight": 1,
         "EyesWeight": 1,
         "HeadWeight": 1,
-        "Height": 0,
+        "Height": 1,
         "LookAtEnabled": false,
         "Target": {
           "_type": "component",
@@ -64,10 +64,10 @@
           "go": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
           "component_type": "HealthSystem"
         },
-        "Radius": 100,
-        "RunMoveSpeed": 190,
+        "Radius": 50,
+        "RunMoveSpeed": 100,
         "SprintMoveSpeed": 320,
-        "WalkMoveSpeed": 190
+        "WalkMoveSpeed": 100
       },
       {
         "__type": "Gamejam.HealthSystem",
@@ -86,7 +86,7 @@
             "__type": "Sandbox.SkinnedModelRenderer",
             "__guid": "9e47f821-cb5a-4abf-a5dc-00a542765474",
             "AnimationGraph": "models/citizen/citizen.vanmgrph",
-            "BodyGroups": 337,
+            "BodyGroups": 341,
             "CreateBoneObjects": true,
             "MaterialGroup": "default",
             "Model": "models/citizen/citizen.vmdl",

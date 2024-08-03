@@ -57,7 +57,7 @@ public partial class Player
 	private void OnClientRespawn()
 	{
 
-		// Possess();
+		Possess();
 	}
 
 	public void Teleport( Transform transform )

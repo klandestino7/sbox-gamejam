@@ -59,7 +59,7 @@ public partial class PlayerState
 		// 	Player?.GameObject?.Destroy();
 		// 	Player = null;
 
-			Spawn( spawnPoint );
+		Spawn( spawnPoint );
 		// 	return;
 		// }
 

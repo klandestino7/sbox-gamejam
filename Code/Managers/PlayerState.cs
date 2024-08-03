@@ -85,4 +85,42 @@ public partial class PlayerState : Component
 		GameObject.Destroy();
 		// todo: actually kick em
 	}
+
+	public static void OnPossess( Player player )
+	{
+		// called from Pawn when one is newly possessed, update Local and Viewer, invoke RPCs for observers
+
+		Local.Player = player;
+
+		if ( player.Network.Active )
+		{
+			Local.OnNetPossessed();
+		}
+
+		if ( !player.PlayerState.IsValid() )
+		{
+			Log.Warning( $"Attempted to possess pawn, but pawn '{player.Name}' has no attached PlayerState!" );
+		}
+
+		Viewer = player.PlayerState;
+	}
+
+	// sync to other clients what this player is currently possessing
+	// Sol: when we track observers we could drop this with an Rpc.FilterInclude?
+	[Broadcast]
+	private void OnNetPossessed()
+	{
+		if ( IsViewer && IsProxy )
+		{
+			Possess();
+		}
+	}
+
+	public void Possess()
+	{
+		// A remote player is possessing this player (spectating)
+		// So enter the latest known pawn this player has possessed
+		Player.Possess();
+	}
+
 }

@@ -42,6 +42,18 @@
             "ZIndex": 100
           }
         ]
+      },
+      {
+        "__guid": "914d3446-1fb7-4bec-9a15-4e71ab6bdf46",
+        "Flags": 0,
+        "Name": "GameMode",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Gamejam.GameModeManager",
+            "__guid": "d541bf7b-be65-44a9-946f-737638785c29"
+          }
+        ]
       }
     ],
     "__variables": []

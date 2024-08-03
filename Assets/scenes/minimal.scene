@@ -287,7 +287,7 @@
       "__guid": "5a675606-d89d-401c-9fbb-e999568e5691",
       "Flags": 0,
       "Name": "Game_Setup",
-      "Position": "27.09537,29.72737,-26.75124",
+      "Position": "0,0,14.86627",
       "Enabled": true,
       "__Prefab": "prefabs/game_setup.prefab",
       "__PrefabVariables": {}
