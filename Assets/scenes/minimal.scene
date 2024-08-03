@@ -291,6 +291,15 @@
       "Enabled": true,
       "__Prefab": "prefabs/game_setup.prefab",
       "__PrefabVariables": {}
+    },
+    {
+      "__guid": "ce11a0ca-f9fa-44e0-aee8-641bfb902b52",
+      "Flags": 0,
+      "Name": "ItemTest",
+      "Position": "239.6961,149.8925,-37.52291",
+      "Enabled": true,
+      "__Prefab": "prefabs/items/item_test.prefab",
+      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {

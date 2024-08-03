@@ -72,7 +72,18 @@
       {
         "__type": "Gamejam.HealthSystem",
         "__guid": "88dcab04-eb27-4900-b1b5-dbe68a1fc095",
+        "staminaDrainTimeout": 1,
         "Invincible": false
+      },
+      {
+        "__type": "Sandbox.inventory.Inventory",
+        "__guid": "e4a80bee-0d33-4d0e-9a82-067efb8c2601",
+        "Player": {
+          "_type": "component",
+          "component_id": "15795f97-dfa6-44ca-8fdf-f5683a824281",
+          "go": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
+          "component_type": "Player"
+        }
       }
     ],
     "Children": [

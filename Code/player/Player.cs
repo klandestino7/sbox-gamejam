@@ -1,6 +1,7 @@
 using Sandbox;
 using Sandbox.Citizen;
 using Sandbox.Diagnostics;
+using Sandbox.inventory;
 
 namespace Gamejam;
 
@@ -32,11 +33,15 @@ public partial class Player : Component, Component.ExecuteInEditor
 	[Property] public virtual HealthSystem HealthSystem { get; set; }
 	protected BoxCollider Collider;
 
+	public Inventory Inventory { get; private set; }
+
 	protected override void OnStart()
 	{
 		Camera = Scene.GetAllComponents<CameraComponent>().Where( x => x.IsMainCamera ).FirstOrDefault();
 		PlayerBody = Components.Get<SkinnedModelRenderer>( FindMode.EverythingInSelfAndDescendants );
 		// Collider = Components.Get<BoxCollider>( FindMode.EverythingInSelfAndDescendants );
+
+		Inventory = Components.Get<Inventory>( FindMode.EverythingInSelfAndDescendants );;
 	}
 
 	protected override void OnUpdate()
@@ -57,7 +62,7 @@ public partial class Player : Component, Component.ExecuteInEditor
 
 		CrouchingInput();
 		MovementInput();
-		UpdateAttack();
+		// UpdateAttack();
 
 		UpdateStamina();
 		RestoreStamina();

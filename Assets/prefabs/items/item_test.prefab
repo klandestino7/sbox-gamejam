@@ -1,0 +1,24 @@
+{
+  "RootObject": {
+    "__guid": "ce11a0ca-f9fa-44e0-aee8-641bfb902b52",
+    "Flags": 0,
+    "Name": "ItemTest",
+    "Position": "239.6961,149.8925,-37.52291",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.inventory.ItemComponent",
+        "__guid": "b8d9e5da-86d9-4c4d-8421-1633e7611005",
+        "Description": "Teste",
+        "Name": "test",
+        "Weight": "2.8"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
