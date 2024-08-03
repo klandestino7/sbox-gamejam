@@ -24,8 +24,8 @@ public partial class Player : Component
 			targetCameraPos.z = Camera.Transform.Position.z.LerpTo( targetCameraPos.z, RealTime.Delta * 25.0f );
 		}
 
-		Camera.Transform.Rotation = Rotation.Lerp( oldCamRot, newCamRot, Time.Delta * 5f );
-		Camera.Transform.Position =  Vector3.Lerp( oldCamPos, newCamPos, Time.Delta * 10f );
+		Camera.Transform.Rotation = Rotation.Lerp( oldCamRot, newCamRot, Time.Delta * 10f );
+		Camera.Transform.Position =  Vector3.Lerp( oldCamPos, newCamPos, Time.Delta * 15f );
 
 		Camera.FieldOfView = Preferences.FieldOfView;
 	}
