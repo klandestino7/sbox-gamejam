@@ -40,6 +40,11 @@
             "Opacity": 1,
             "Scale": 1,
             "ZIndex": 100
+          },
+          {
+            "__type": "Gamejam.UI.BlackScreen",
+            "__guid": "749c894f-9cc1-4296-8c94-8281316769dd",
+            "IsEnabled": false
           }
         ]
       },

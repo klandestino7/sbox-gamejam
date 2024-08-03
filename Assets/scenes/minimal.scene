@@ -280,6 +280,37 @@
           "Viewport": "0,0,1,1",
           "ZFar": 10000,
           "ZNear": 10
+        },
+        {
+          "__type": "Sandbox.Pixelate",
+          "__guid": "723168fe-2234-416d-a570-2412a5f439e3",
+          "Scale": 0.001
+        },
+        {
+          "__type": "Sandbox.FilmGrain",
+          "__guid": "38e1d27d-259b-4423-ba4d-ddda85be2905",
+          "Intensity": 0.05,
+          "Response": 0.5
+        },
+        {
+          "__type": "Sandbox.Tonemapping",
+          "__guid": "8d004061-ed82-446b-b869-32a538405316",
+          "__version": 1,
+          "ExposureBias": 2,
+          "ExposureCompensation": 0,
+          "ExposureMethod": "RGB",
+          "MaximumExposure": 2,
+          "MinimumExposure": 1,
+          "Mode": "HableFilmic",
+          "Rate": 1
+        },
+        {
+          "__type": "Sandbox.ColorAdjustments",
+          "__guid": "c21614ff-0359-4b3d-8055-ac3c6a9aa3f1",
+          "Brightness": 1,
+          "Contrast": 1,
+          "HueRotate": 0,
+          "Saturation": 0.9
         }
       ]
     },
