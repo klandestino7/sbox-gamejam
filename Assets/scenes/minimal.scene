@@ -1,5 +1,5 @@
 {
-  "__guid": "fa843b0f-0bb7-4820-8351-8d701ca1fa06",
+  "__guid": "5c374420-1f2a-4c7f-8cae-84b95e2c92ab",
   "GameObjects": [
     {
       "__guid": "eb041d88-2a10-4294-947d-7726a52a18ee",
@@ -321,15 +321,6 @@
       "Position": "0,0,14.86627",
       "Enabled": true,
       "__Prefab": "prefabs/game_setup.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "ce11a0ca-f9fa-44e0-aee8-641bfb902b52",
-      "Flags": 0,
-      "Name": "ItemTest",
-      "Position": "239.6961,149.8925,-37.52291",
-      "Enabled": true,
-      "__Prefab": "prefabs/items/item_test.prefab",
       "__PrefabVariables": {}
     }
   ],

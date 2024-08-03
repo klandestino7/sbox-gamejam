@@ -8,7 +8,7 @@
     "Components": [
       {
         "__type": "Sandbox.inventory.ItemComponent",
-        "__guid": "b8d9e5da-86d9-4c4d-8421-1633e7611005",
+        "__guid": "e740262a-00b8-493c-8aa6-eaf849816157",
         "Description": "Teste",
         "Name": "test",
         "Weight": "2.8"

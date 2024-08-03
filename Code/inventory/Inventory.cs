@@ -69,6 +69,8 @@ public class Inventory : Component
 
 		this.Items.Add( item );
 
+		Log.Info( $"AddItem :: Name='{ item.Name }'" );
+
 		return true;
 	}
 
@@ -76,7 +78,7 @@ public class Inventory : Component
 	{
 		var prefab = PrefabLibrary
 			.FindByComponent<ItemComponent>()
-			.FirstOrDefault( p => p.Name.ToLower() == itemKey.ToLower() )
+			.FirstOrDefault( p => p.GetComponent<ItemComponent>().Get<string>("Name").ToLower() == itemKey.ToLower() )
 			?.Prefab;
 
 		if ( prefab == null )
@@ -108,6 +110,8 @@ public class Inventory : Component
 		}
 
 		this.Items.RemoveAt( slotId );
+
+		this.OnItemRemoved( item );
 
 		return true;
 	}
