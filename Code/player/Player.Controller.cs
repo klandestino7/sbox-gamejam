@@ -10,7 +10,9 @@ public partial class Player : Component
 	[Sync] public Angles EyeAngles { get; set; }
 	[Sync] public Vector3 WishVelocity { get; set; }
 
-    
+	public bool IsMoving = false;
+
+    private bool isRunning = false;
 	public bool WishCrouch;
 	public float EyeHeight = 64;
 
@@ -28,8 +30,13 @@ public partial class Player : Component
 		get
 		{
 			if ( Crouching ) return CrouchMoveSpeed;
-			if ( Input.Down( "run" ) ) return SprintMoveSpeed;
-			if ( Input.Down( "walk" ) ) return WalkMoveSpeed;
+
+			if ( Input.Down( "run" ) && HealthSystem.Stamina >= 5f) {
+				return SprintMoveSpeed;
+			} 
+			if ( Input.Down( "walk" ) ) {
+				 return WalkMoveSpeed;
+			}
 
 			return RunMoveSpeed;
 		}
@@ -58,10 +65,11 @@ public partial class Player : Component
 
 		WishVelocity = Input.AnalogMove;
 
-		if ( lastGrounded < 0.2f && lastJump > 0.3f && Input.Pressed( "jump" ) )
+		if ( lastGrounded < 0.2f && lastJump > 0.3f && Input.Pressed( "jump" ) && HealthSystem.Stamina >= 20f)
 		{
 			lastJump = 0;
 			cc.Punch( Vector3.Up * 300 );
+			HealthSystem.DrainStamina( 20f ); 
 		}
 
 		if ( !WishVelocity.IsNearlyZero() )
@@ -76,6 +84,7 @@ public partial class Player : Component
 				WishVelocity = WishVelocity.ClampLength( 50 );
 			}
 		}
+
 
 		cc.ApplyFriction( GetFriction() );
 
@@ -135,6 +144,7 @@ public partial class Player : Component
 		var tr = CharacterController.TraceDirection( Vector3.Up * DuckHeight );
 		return !tr.Hit; // hit nothing - we can!
 	}
+
 
 	public void CrouchingInput()
 	{

@@ -34,11 +34,9 @@ public partial class Player : Component, Component.ExecuteInEditor
 
 	protected override void OnStart()
 	{
-		Log.Info(" OLAAA ");
 		Camera = Scene.GetAllComponents<CameraComponent>().Where( x => x.IsMainCamera ).FirstOrDefault();
 		PlayerBody = Components.Get<SkinnedModelRenderer>( FindMode.EverythingInSelfAndDescendants );
-		Collider = Components.Get<BoxCollider>( FindMode.EverythingInSelfAndDescendants );
-
+		// Collider = Components.Get<BoxCollider>( FindMode.EverythingInSelfAndDescendants );
 	}
 
 	protected override void OnUpdate()
@@ -59,6 +57,10 @@ public partial class Player : Component, Component.ExecuteInEditor
 
 		CrouchingInput();
 		MovementInput();
+		UpdateAttack();
+
+		UpdateStamina();
+		RestoreStamina();
 	}
 	protected override void OnPreRender()
 	{
@@ -70,6 +72,27 @@ public partial class Player : Component, Component.ExecuteInEditor
 		UpdateCamera();
 	}
 
+	public void UpdateStamina() 
+	{
+		if ( Input.Down( "run" ) && !WishVelocity.IsNearlyZero() ) {
+			HealthSystem.DrainStamina( ); 
+		}
+	}
+
+	private void RestoreStamina()
+	{
+		var staminaAmountIncrease = 0.1f;
+
+		if ( !WishVelocity.IsNearlyZero() ) {
+			staminaAmountIncrease = 0.02f;
+		}
+		
+		if (HealthSystem.Stamina < HealthSystem.MaxStamina)
+		{
+			HealthSystem.Stamina = Math.Clamp( HealthSystem.Stamina + staminaAmountIncrease, 0, HealthSystem.MaxStamina );
+		}
+	}
+	
 	private void UpdateBodyVisibility()
 	{
 		if ( AnimationHelper is null )
