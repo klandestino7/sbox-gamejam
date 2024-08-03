@@ -1,13 +1,13 @@
 namespace Gamejam;
 public partial class Player : Component
 {
-	[Property] public float Radius { get; set; } = 100;
+	[Property] public float Radius { get; set; } = 50;
 
 	protected override void DrawGizmos()
 	{
 		base.DrawGizmos();
 
-		Gizmo.Draw.LineSphere( Vector3.Zero, Radius );
+		Gizmo.Draw.LineSphere( Vector3.Zero.WithZ( 30f ), Radius );
 	}
 
 	public static Vector3 GetPushVector( in Vector3 position, Scene scene, GameObject ignore )
