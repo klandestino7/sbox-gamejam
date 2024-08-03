@@ -1,5 +1,5 @@
-$safe-zone-x: 25px;
-$safe-zone-y: 25px;
+$safe-zone-x: 3em;
+$safe-zone-y: 2em;
 
 $main-font: Dinish;
 
@@ -15,6 +15,12 @@ $counter-terror-color: #08B2E3;
 $unassigned-color: #808080;
 
 $blur: blur( 50px );
+
+@import "Colors.scss";
+@import "Layout.scss";
+@import "Containers.scss";
+@import "Hud.scss";
+@import "Text.scss";
 
 canvas
 {

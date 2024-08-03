@@ -1,0 +1,25 @@
+@using Sandbox
+@using Sandbox.UI
+@using System.Text
+
+@inherits Panel
+@attribute [StyleSheet]
+
+@namespace Gamejam.UI
+
+@if ( !Player.IsValid() || !HealthSystem.IsValid() || StaminaAmount == 100 ) return;
+
+<root>
+    <ProgressBar Value="@(StaminaAmount)" width="350" height="10" BgColor="#FFF848" />
+</root>
+
+@code
+{
+    public Player Player => PlayerState.Viewer.Player;
+    public HealthSystem HealthSystem => Player.HealthSystem;
+    public float StaminaAmount => HealthSystem?.Stamina ?? 0;
+    protected override int BuildHash()
+    {
+        return !Player.IsValid() ? 0 : HashCode.Combine( StaminaAmount, Player.HealthSystem?.IsDead );
+    }
+}

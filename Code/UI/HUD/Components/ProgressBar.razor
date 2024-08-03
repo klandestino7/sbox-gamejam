@@ -5,9 +5,14 @@
 @inherits Panel
 @attribute [StyleSheet]
 
-<root style="@BuildOuterStyle()">
+<root style="@BuildOuterStyle()" class="@EnablePulse()">
+
     <div style="@BuildInnerStyle()" class="backing"></div>
     <div style="@BuildInnerStyle()" class="inner"></div>
+    @if ( FileString is not null )
+    {
+        <Icon class="icon" File="@FileString" size="24" />
+    }
 </root>
 
 @code
@@ -15,22 +20,42 @@
     /// <summary>
     /// 0 to 100
     /// </summary>
-    public float Value { get; set; } = 100f;
 
+    public float Value { get; set; } = 100f;
+    private float lastValue { get; set; }
+    public String FileString { get; set; }
     public float Width { get; set; } = 128f;
+    public float Height { get; set; } = 10f;
+    
+    public String BgColor { get; set; } = "white";
 
     protected override int BuildHash()
     {
-        return System.HashCode.Combine(Value, Width);
+        return System.HashCode.Combine(Value, Width, Height);
     }
 
     private string BuildInnerStyle()
     {
-        return $"width: {Value}%;";
+        return $"width: {Value}%; background-color: {BgColor}";
+    }
+
+    private string EnablePulse()
+    {
+        var className = "";
+        if ( Value <= 20) {
+            className = $"pulse";
+        }
+
+        if ( Value < lastValue ) {
+            className = $"pulse";
+        }
+
+        lastValue = Value;
+        return className;
     }
 
     private string BuildOuterStyle()
     {
-        return $"width: {Width}px;";
+        return $"width: {Width}px; height: {Height}px;";
     }
 }

@@ -1,13 +1,16 @@
 @import "/UI/Styles/Theme.scss";
 
 ProgressBar {
-    width: 160px;
-    height: 8px;
+    width: 300px;
+    height: 30px;
     background-color: rgba( black, 0.5 );
-    border-radius: 1px;
     overflow: hidden;
     position: relative;
+    border-radius: 5px;
 
+    display:flex;
+    align-items: center;
+    
     .inner {
         position: absolute;
         top: 0;
@@ -18,4 +21,29 @@ ProgressBar {
     .inner {
         background-color: white;
     }
+
+    .icon {
+        position: absolute;
+        opacity: 0.5;
+        right: 10px;
+    }
+}
+.pulse {
+    animation: pulse 0.6s infinite;
+}
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+    }
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+	}
 }

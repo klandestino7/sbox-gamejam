@@ -10,20 +10,15 @@
 @if ( !Player.IsValid() || !HealthSystem.IsValid() ) return;
 
 <root class="@BuildClass()">
-
-    <div class="inner with-padding flex row gap justify-start">
+    <div class="inner flex column gap">
         <div class="flex column">
-   
+            <ProgressBar Value="@(Oxigen)" FileString="/ui/oxigen.png" width="220" height="20" BgColor="#45BCFE" />
         </div>
 
         <div class="flex column">
-            <ProgressBar Value="@(Health)" width="128" />
-            <span class="flex row align-center gap-sm">
-                <label class="vital">@Health</label>
-            </span>
+            <ProgressBar Value="@(Health)" FileString="/ui/heart.png" width="300" height="30" BgColor="#45DC8B" />
         </div>
     </div>
-
 </root>
 
 @code
