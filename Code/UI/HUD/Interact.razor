@@ -1,0 +1,14 @@
+@using Sandbox;
+@using Sandbox.UI;
+
+@namespace Gamejam.UI
+@inherits Panel
+
+<root>
+	<div class="title"></div>
+</root>
+
+@code
+{
+	protected override int BuildHash() => System.HashCode.Combine( "" );
+}

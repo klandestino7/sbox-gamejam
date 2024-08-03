@@ -1,0 +1,17 @@
+@using Sandbox;
+@using Sandbox.UI;
+
+@namespace Gamejam.UI
+@inherits PanelComponent
+
+@if ( !IsEnabled ) return;
+
+<root>
+	<div class=""></div>
+</root>
+
+@code
+{
+	[Property, Sync ] public bool IsEnabled {get; set; } = true;
+	protected override int BuildHash() => System.HashCode.Combine( "" );
+}
