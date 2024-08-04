@@ -3,7 +3,6 @@
     "__guid": "6cebb6df-495d-4389-a381-705649d83c20",
     "Flags": 0,
     "Name": "playerstate",
-    "Position": "-8.162079,-80.50284,-25.17052",
     "Enabled": true,
     "Components": [
       {
@@ -11,7 +10,7 @@
         "__guid": "b3ac64d2-32ce-444d-9605-409af4df4d7b",
         "PlayerPawnPrefab": {
           "_type": "gameobject",
-          "prefab": "player.prefab"
+          "prefab": "prefabs/player.prefab"
         },
         "SteamId": 0
       },
@@ -19,7 +18,9 @@
         "__type": "Gamejam.PlayerId",
         "__guid": "5a0bb910-44e6-4371-9f3a-cedcdb8d71f0"
       }
-    ]
+    ],
+    "Children": [],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,
