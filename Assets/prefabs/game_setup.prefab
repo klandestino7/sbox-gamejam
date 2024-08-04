@@ -57,6 +57,10 @@
           {
             "__type": "Gamejam.GameModeManager",
             "__guid": "d541bf7b-be65-44a9-946f-737638785c29"
+          },
+          {
+            "__type": "PrefabLibraryInitializer",
+            "__guid": "c03a954e-64b3-4827-99a3-4d457dd0ce34"
           }
         ]
       }
