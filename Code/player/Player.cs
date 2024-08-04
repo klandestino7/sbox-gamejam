@@ -1,7 +1,7 @@
 using Sandbox;
 using Sandbox.Citizen;
 using Sandbox.Diagnostics;
-using Sandbox.inventory;
+using Sandbox.Inventory;
 
 namespace Gamejam;
 
