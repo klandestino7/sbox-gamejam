@@ -140,6 +140,26 @@
         }
       ],
       "Children": []
+    },
+    {
+      "__guid": "9494f7f7-2055-4a22-a08c-2e996ba3d1cd",
+      "Flags": 0,
+      "Name": "rust_model",
+      "Position": "-378.0923,-914.1643,80.21012",
+      "Rotation": "0,0,0.258819,0.965926",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkinnedModelRenderer",
+          "__guid": "ced06a1a-f558-4f83-a567-a27bb168a98a",
+          "BodyGroups": 1,
+          "CreateBoneObjects": false,
+          "Model": "models/player/hazmatsuit/hazmatsuit.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1",
+          "UseAnimGraph": true
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -166,6 +186,8 @@
   "Title": "mainmenu",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [],
+  "__references": [
+    "sboxmp.hazmatsuit"
+  ],
   "__version": 1
 }
