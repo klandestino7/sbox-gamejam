@@ -1,0 +1,14 @@
+Cursor {
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    align-items: center;
+    justify-content: center;
+
+    &.hidden {
+        display: none;
+    }
+}

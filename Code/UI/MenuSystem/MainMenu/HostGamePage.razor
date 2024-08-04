@@ -1,0 +1,53 @@
+@using Sandbox;
+@using Sandbox.Network
+@using Sandbox.UI;
+
+@inherits Panel
+@implements INavigatorPage
+@namespace Gamejam.UI
+
+<root>
+    <Page>
+
+        <Header>
+            Host Private Game
+        </Header>
+
+        <SubHeader>
+            Select a space to save host
+        </SubHeader>
+
+        <Body>
+            <div class="layout row gap-insane">
+                <div class="save-slot"> 
+                    <div class="slot"> Empty </div>
+                    <div class="name active"> Save 1 </div>
+                </div>
+
+                <div class="save-slot"> 
+                    <div class="slot"> Empty </div>
+                    <div class="name"> Save 2 </div>
+                </div>
+
+                <div class="save-slot"> 
+                    <div class="slot"> Empty </div>
+                    <div class="name"> Save 3 </div>
+                </div>
+            </div>
+        </Body>
+
+        <SubFooter>
+            <div class="button standard" onclick=@Join> host </div>
+        </SubFooter>
+    </Page>
+</root>
+
+@code
+{
+    public MapDefinition SelectedMap { get; set; }
+    private void Join()
+    {
+		var sc = ResourceLibrary.Get<SceneFile>( "scenes/minimal.scene" );
+        Game.ActiveScene.Load( sc );
+    }
+}

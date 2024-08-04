@@ -4,7 +4,7 @@
 
 @inherits Sandbox.UI.NavHostPanel
 
-<root>
+<root style="pointer-events: all">
     <div class="background" />
 
     <div class="navigator-canvas" slot="navigator-canvas" />
@@ -16,6 +16,7 @@
     {
         DefaultUrl = "/";
 	    AddDestination( "/", typeof( LandingPage ) );
+	    AddDestination( "/new", typeof( HostGamePage ) );
 	    AddDestination( "/settings", typeof( LandingPage ) );
     }
 }

@@ -4,12 +4,23 @@
 @namespace Gamejam.UI
 @implements INavigatorPage
 
-<root class="hc1">
+<root>
     <Page>
+
+        <Header>
+            <div
+                class="logo-box"
+            >
+                <img class="logo" src="/ui/game_logo.png" />
+            </div>
+        </Header>
+        
         <Body>
-            <div class="inset column" >
+           
+            <div class="inset column" style="width: 22%; position: absolute; left:0; gap: 50px;">
+       
                 <div class="flex padding-extra gap column">
-                    <a class="button current" href="/new"><i>play_circle_outline</i> Play With Friends </a>
+                    <a class="button" href="/new"><i>play_circle_outline</i> Play With Friends </a>
                     <a class="button" href=""><i>dns</i> Join Random </a>
                     <a class="button" href="/settings"><i>settings</i> Options </a>
                     <a class="button" href="/credits"><i>dns</i> Credits </a>
@@ -22,6 +33,7 @@
 
 @code
 {
+    
     void Quit()
     {
         Game.Close();
