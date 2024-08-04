@@ -1,6 +1,11 @@
 using Gamejam;
+
 using Sandbox;
-namespace Sandbox.inventory;
+using Sandbox.Citizen;
+using Sandbox.ModelEditor;
+using System.Threading;
+
+namespace Sandbox.Inventory;
 
 public class Inventory : Component
 {
@@ -49,7 +54,7 @@ public class Inventory : Component
 
 		if ( freeSlotId == -1 )
 		{
-			return false;
+			return true;
 		}
 
 		if ( item?.OwnedBy == this.Player )
@@ -76,10 +81,10 @@ public class Inventory : Component
 
 	public bool AddItemByKey( string itemKey )
 	{
-		var prefab = PrefabLibrary
-			.FindByComponent<ItemComponent>()
-			.FirstOrDefault( p => p.GetComponent<ItemComponent>().Get<string>("Name").ToLower() == itemKey.ToLower() )
-			?.Prefab;
+		var allItems = PrefabLibrary.FindByComponent<ItemComponent>( );
+		var prefab = allItems.Where( p =>  
+			p.GetComponent<ItemComponent>().Get<string>("Name").ToLower() == itemKey.ToLower() 
+		).FirstOrDefault()?.Prefab;
 
 		if ( prefab == null )
 		{
@@ -87,6 +92,7 @@ public class Inventory : Component
 		}
 
 		var gameobject = SceneUtility.GetPrefabScene( prefab ).Clone();
+
 		gameobject.NetworkMode = NetworkMode.Object;
 		gameobject.NetworkSpawn();
 
@@ -138,6 +144,10 @@ public class Inventory : Component
 	public static void OnCommandGiveItem( string itemKey )
 	{
 		Player player = Player.Local;
+
+		Log.Info("giveitem :: ");
+
+		Log.Info($"player :: {player}");
 
 		if ( player == null )
 		{

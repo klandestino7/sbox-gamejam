@@ -1,6 +1,6 @@
 using Gamejam;
 using Sandbox;
-namespace Sandbox.inventory;
+namespace Sandbox.Inventory;
 
 public class ItemComponent : Component
 {
