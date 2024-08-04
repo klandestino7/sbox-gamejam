@@ -2,18 +2,47 @@
   "RootObject": {
     "__guid": "ce11a0ca-f9fa-44e0-aee8-641bfb902b52",
     "Flags": 0,
-    "Name": "ItemTest",
-    "Position": "239.6961,149.8925,-37.52291",
+    "Name": "item_test",
     "Enabled": true,
     "Components": [
       {
-        "__type": "Sandbox.inventory.ItemComponent",
-        "__guid": "e740262a-00b8-493c-8aa6-eaf849816157",
+        "__type": "Sandbox.Inventory.ItemComponent",
+        "__guid": "5307f7c3-46ae-4e32-9665-389d5ffa877f",
         "Description": "Teste",
         "Name": "test",
         "Weight": "2.8"
+      },
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "98600cec-6ce7-43dd-b312-596108fcb728",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/citizen_props/hotdog01.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "d44754cc-03f0-4aa6-85da-955cbc93341b",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "3f94b133-77bb-424d-850b-386bc26dbab0",
+        "Center": "-0.5,0,3.499999",
+        "IsTrigger": false,
+        "Scale": "24,10,8",
+        "Static": false
       }
-    ]
+    ],
+    "Children": [],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,
