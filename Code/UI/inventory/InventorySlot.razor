@@ -3,20 +3,26 @@
 @inherits Panel
 @attribute [StyleSheet]
 
-<root>
-	<span>@SlotId</span>
+<root class="@MountClassSlotName()">
+	<span class="slotId ">@(SlotId + 1)</span>
 	@if ( Item != null )
 	{
-		<span>@Item.Name</span>
+		@* <span>@Item.Name</span> *@
 		<image src=@Item.Icon />
 	}
 </root>
 
 @code
 {
+	public Inventory Container { get; set; } 
+	public bool Selected { get; set; }
 	public int SlotId { get; set; }
 
 	public ItemComponent? Item { get; set; }
 
-	protected override int BuildHash() => HashCode.Combine( this.Item?.GetHashCode() );
+	public String MountClassSlotName()
+	{
+		return Selected ? "active" : "";
+	}
+	protected override int BuildHash() => HashCode.Combine( Selected, this.Item?.GetHashCode() );
 }

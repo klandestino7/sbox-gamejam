@@ -8,13 +8,14 @@
 	{
 		ItemComponent item = Player.Local.Inventory.GetItemAtSlot( slotId );
 		
-		<InventorySlot SlotId=@slotId Item=@item />
+		<InventorySlot SlotId=@slotId Item=@item Selected=@(SelectedSlotId == slotId) />
 	}
 </root>
 
 @code
 {
+	private int SelectedSlotId { get; set; } = -1;
 	// public static Inventory CurrentInventory { get; private set; }
 
-	protected override int BuildHash() => HashCode.Combine( Player.Local.Inventory.Items.HashCombine( i => i?.GetHashCode() ?? -1 ) );
+	protected override int BuildHash() => HashCode.Combine( SelectedSlotId, Player.Local.Inventory.Items.HashCombine( i => i?.GetHashCode() ?? -1 ) );
 }
