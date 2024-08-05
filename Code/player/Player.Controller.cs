@@ -69,7 +69,7 @@ public partial class Player : Component
 		{
 			lastJump = 0;
 			cc.Punch( Vector3.Up * 300 );
-			HealthSystem.DrainStamina( 20f ); 
+			HealthSystem.DrainStamina( 15f ); 
 		}
 
 		if ( !WishVelocity.IsNearlyZero() )
