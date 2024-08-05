@@ -16,7 +16,7 @@ public class Inventory : Component
 	{
 		Log.Info( "Initialized inventory" );
 
-		_items = new List<ItemComponent?>( NUM_SLOTS );
+		_items = new List<ItemComponent?>( new ItemComponent[NUM_SLOTS] );
 	}
 
 	private void OnItemAdded( ItemComponent item )
@@ -105,6 +105,8 @@ public class Inventory : Component
 		}
 
 		int slotId = this.GetFreeSlotId();
+
+		Log.Info($" slotId :: {slotId}");
 
 		if ( slotId == -1 )
 		{
