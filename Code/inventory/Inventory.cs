@@ -1,25 +1,22 @@
-using Gamejam;
-
-using Sandbox;
-using Sandbox.Citizen;
-using Sandbox.ModelEditor;
-using System.Threading;
-
-namespace Sandbox.Inventory;
+namespace Gamejam;
 
 public class Inventory : Component
 {
 	[Property] public Player Player { get; set; }
 
-	public const int MAX_NUM_INVENTORY_ITEMS = 3;
+	public int NUM_SLOTS = 3;
 	
 	public int Weight { get; private set; }
 
-	private List<ItemComponent> Items;
+	private List<ItemComponent?> _items;
+
+	public IReadOnlyList<ItemComponent?> Items => this._items;
 
 	public Inventory()
 	{
-		Items = new List<ItemComponent>( MAX_NUM_INVENTORY_ITEMS );
+		Log.Info( "Initialized inventory" );
+
+		_items = new List<ItemComponent?>( NUM_SLOTS );
 	}
 
 	private void OnItemAdded( ItemComponent item )
@@ -43,18 +40,26 @@ public class Inventory : Component
 
 	}
 
+	public ItemComponent? GetItemAtSlot( int slotId )
+	{
+		return this._items.ElementAtOrDefault( slotId );
+	}
+
 	public int GetItemSlotId( ItemComponent? item )
 	{
 #pragma warning disable CS8604 // Possible null reference argument.
-		return this.Items.IndexOf( item );
+		return this._items.IndexOf( item );
 #pragma warning restore CS8604 // Possible null reference argument.
 	}
 
-	public bool CanAddItem( ItemComponent? item )
+	public int GetFreeSlotId()
 	{
-		int freeSlotId = this.GetItemSlotId( null );
+		return this.GetItemSlotId( null );
+	}
 
-		if ( freeSlotId == -1 )
+	public bool CanAddItem( ItemComponent item, int slotId )
+	{
+		if ( this._items[ slotId ] != null )
 		{
 			return true;
 		}
@@ -67,14 +72,14 @@ public class Inventory : Component
 		return true;
 	}
 
-	public bool AddItem( ItemComponent item )
+	public bool AddItem( ItemComponent item, int slotId )
 	{
-		if ( !this.CanAddItem( item ) )
+		if ( !this.CanAddItem( item, slotId ) )
 		{
 			return false;
 		}
 
-		this.Items.Add( item );
+		this._items[ slotId ] = item;
 
 		Log.Info( $"AddItem :: Name='{ item.Name }'" );
 
@@ -83,14 +88,29 @@ public class Inventory : Component
 
 	public bool AddItemByKey( string itemKey )
 	{
-		var allItems = PrefabLibrary.FindByComponent<ItemComponent>( );
-		var prefab = allItems.Where( p =>  
-			p.GetComponent<ItemComponent>().Get<string>("Name").ToLower() == itemKey.ToLower() 
-		).FirstOrDefault()?.Prefab;
+		var prefab = PrefabLibrary
+			.FindByComponent<ItemComponent>( )
+			.Where( p =>
+			{
+				Log.Info( $"itemname {  p.GetComponent<ItemComponent>().Get<string>("Name").ToLower() } other= { itemKey.ToLower() }" );
+
+				return p.GetComponent<ItemComponent>().Get<string>("Name").ToLower() == itemKey.ToLower();
+			}
+			).FirstOrDefault()
+			?.Prefab;
 
 		if ( prefab == null )
 		{
 			Log.Error( $"Item not found with key equals to '{ itemKey }'" );
+		}
+
+		int slotId = this.GetFreeSlotId();
+
+		if ( slotId == -1 )
+		{
+			Log.Error( "No free slots available" );
+
+			return false;
 		}
 
 		var gameobject = SceneUtility.GetPrefabScene( prefab ).Clone();
@@ -98,7 +118,7 @@ public class Inventory : Component
 		gameobject.NetworkMode = NetworkMode.Object;
 		gameobject.NetworkSpawn();
 
-		if ( !this.AddItem( gameobject.Components.Get<ItemComponent>() ) )
+		if ( !this.AddItem( gameobject.Components.Get<ItemComponent>(), slotId ) )
 		{
 			gameobject.Destroy();
 
@@ -117,7 +137,7 @@ public class Inventory : Component
 			return false;
 		}
 
-		this.Items.RemoveAt( slotId );
+		this._items[ slotId ] = null;
 
 		this.OnItemRemoved( item );
 

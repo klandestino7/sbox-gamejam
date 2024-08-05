@@ -1,0 +1,20 @@
+﻿@namespace Gamejam.UI
+
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	@for ( var slotId = 0; slotId < Player.Local.Inventory.NUM_SLOTS; slotId++ )
+	{
+		ItemComponent item = Player.Local.Inventory.GetItemAtSlot( slotId );
+		
+		<InventorySlot SlotId=@slotId Item=@item />
+	}
+</root>
+
+@code
+{
+	// public static Inventory CurrentInventory { get; private set; }
+
+	protected override int BuildHash() => HashCode.Combine( Player.Local.Inventory.Items.HashCombine( i => i?.GetHashCode() ?? -1 ) );
+}

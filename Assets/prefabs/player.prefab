@@ -76,8 +76,8 @@
         "Invincible": false
       },
       {
-        "__type": "Sandbox.inventory.Inventory",
-        "__guid": "e4a80bee-0d33-4d0e-9a82-067efb8c2601",
+        "__type": "Gamejam.Inventory",
+        "__guid": "ba23dea2-c88d-4bb8-adac-31582796ef9a",
         "Player": {
           "_type": "component",
           "component_id": "15795f97-dfa6-44ca-8fdf-f5683a824281",

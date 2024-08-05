@@ -1,0 +1,22 @@
+﻿@namespace Gamejam.UI
+
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+	<span>@SlotId</span>
+	@if ( Item != null )
+	{
+		<span>@Item.Name</span>
+		<image src=@Item.Icon />
+	}
+</root>
+
+@code
+{
+	public int SlotId { get; set; }
+
+	public ItemComponent? Item { get; set; }
+
+	protected override int BuildHash() => HashCode.Combine( this.Item?.GetHashCode() );
+}

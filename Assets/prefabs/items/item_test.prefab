@@ -6,7 +6,7 @@
     "Enabled": true,
     "Components": [
       {
-        "__type": "Sandbox.Inventory.ItemComponent",
+        "__type": "Gamejam.ItemComponent",
         "__guid": "5307f7c3-46ae-4e32-9665-389d5ffa877f",
         "Description": "Teste",
         "Name": "test",
