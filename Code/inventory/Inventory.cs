@@ -43,12 +43,14 @@ public class Inventory : Component
 
 	}
 
-	public int GetItemSlotId( ItemComponent item )
+	public int GetItemSlotId( ItemComponent? item )
 	{
+#pragma warning disable CS8604 // Possible null reference argument.
 		return this.Items.IndexOf( item );
+#pragma warning restore CS8604 // Possible null reference argument.
 	}
 
-	public bool CanAddItem( ItemComponent item )
+	public bool CanAddItem( ItemComponent? item )
 	{
 		int freeSlotId = this.GetItemSlotId( null );
 

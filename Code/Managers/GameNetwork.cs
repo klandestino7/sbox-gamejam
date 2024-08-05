@@ -42,18 +42,18 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 	/// </summary>
 	/// <param name="channel"></param>
 	/// <returns></returns>
-	private PlayerState GetOrCreatePlayerState( Connection channel = null )
+	private PlayerState? GetOrCreatePlayerState( Connection? channel = null )
 	{
 		var playerStates = Scene.GetAllComponents<PlayerState>();
 
 		var possiblePlayerState = playerStates.FirstOrDefault( x => {
 			// A candidate player state has no owner.
-			return x.Connection is null && x.SteamId == channel.SteamId;
+			return x.Connection is null && x.SteamId == channel?.SteamId;
 		} );
 
 		if ( possiblePlayerState.IsValid() )
 		{
-			Log.Warning( $"Found existing player state for {channel.SteamId} that we can re-use. {possiblePlayerState}" );
+			Log.Warning( $"Found existing player state for {channel?.SteamId} that we can re-use. {possiblePlayerState}" );
 			return possiblePlayerState;
 		}
 
@@ -61,7 +61,7 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 
 		var player = PlayerStatePrefab.Clone();
 		player.BreakFromPrefab();
-		player.Name = $"PlayerState ({channel.DisplayName})";
+		player.Name = $"PlayerState ({channel?.DisplayName})";
 		player.Network.SetOrphanedMode( NetworkOrphaned.ClearOwner );
 
 		var playerState = player.Components.Get<PlayerState>();
