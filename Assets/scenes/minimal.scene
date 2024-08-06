@@ -317,11 +317,79 @@
     {
       "__guid": "5a675606-d89d-401c-9fbb-e999568e5691",
       "Flags": 0,
-      "Name": "Game_Setup",
+      "Name": "Game",
       "Position": "0,0,14.86627",
       "Enabled": true,
-      "__Prefab": "prefabs/game_setup.prefab",
-      "__PrefabVariables": {}
+      "Components": [
+        {
+          "__type": "Gamejam.Game",
+          "__guid": "7fd4b8dc-8d36-477e-93c0-ce0f427dfe54"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "bda95eed-5509-4f65-8ec9-d79126ee2111",
+          "Flags": 0,
+          "Name": "Networking",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Gamejam.GameNetworkManager",
+              "__guid": "d824f88b-1aae-408b-a276-808d75447067",
+              "IsMultiplayer": true,
+              "PlayerStatePrefab": {
+                "_type": "gameobject",
+                "prefab": "prefabs/playerstate.prefab"
+              }
+            }
+          ]
+        },
+        {
+          "__guid": "58ec1185-4946-4dc9-b954-cffc3c2a5973",
+          "Flags": 0,
+          "Name": "HUD",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 1,
+          "Components": [
+            {
+              "__type": "Gamejam.UI.MainHUD",
+              "__guid": "c7af37b8-336c-4e0a-91a0-b72dabde69bb"
+            },
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "b4eced46-3ba7-478d-a07e-25089f609540",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "Gamejam.UI.BlackScreen",
+              "__guid": "a343a660-c181-4307-91b9-8a7559e6dde3",
+              "IsEnabled": false
+            }
+          ]
+        },
+        {
+          "__guid": "16850efa-4c0f-4262-b25a-f1bf5b00d438",
+          "Flags": 0,
+          "Name": "GameMode",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Gamejam.GameModeManager",
+              "__guid": "d9fab75a-91e6-461a-916e-dbd677dcc0a0"
+            },
+            {
+              "__type": "PrefabLibraryInitializer",
+              "__guid": "430d96bf-dc89-48ad-869d-0be0265c184c"
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {

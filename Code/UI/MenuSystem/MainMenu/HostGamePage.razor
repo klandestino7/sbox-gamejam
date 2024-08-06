@@ -1,10 +1,7 @@
-@using Sandbox;
-@using Sandbox.Network
-@using Sandbox.UI;
+@namespace Gamejam.UI
 
 @inherits Panel
 @implements INavigatorPage
-@namespace Gamejam.UI
 
 <root>
     <Page>
@@ -45,9 +42,10 @@
 @code
 {
     public MapDefinition SelectedMap { get; set; }
+
     private void Join()
     {
-		var sc = ResourceLibrary.Get<SceneFile>( "scenes/minimal.scene" );
-        Game.ActiveScene.Load( sc );
+		// Rename to StartSession, only allow the host to init the level!
+		Game.Instance.InitLevel( eGameLevel.Level0 );
     }
 }

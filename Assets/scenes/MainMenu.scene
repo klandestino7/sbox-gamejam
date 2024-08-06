@@ -138,8 +138,7 @@
           "NoOrigin": false,
           "UseMapFromLaunch": false
         }
-      ],
-      "Children": []
+      ]
     },
     {
       "__guid": "9494f7f7-2055-4a22-a08c-2e996ba3d1cd",
@@ -158,6 +157,19 @@
           "RenderType": "On",
           "Tint": "1,1,1,1",
           "UseAnimGraph": true
+        }
+      ]
+    },
+    {
+      "__guid": "741b4e3b-8ff2-44b6-911d-f787d4fe8195",
+      "Flags": 0,
+      "Name": "Game",
+      "Position": "-459.6428,-1003.25,114.9844",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Gamejam.Game",
+          "__guid": "d30defbc-c042-47ca-8e1c-3819df89127c"
         }
       ]
     }

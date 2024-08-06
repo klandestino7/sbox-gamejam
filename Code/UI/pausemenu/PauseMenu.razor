@@ -1,0 +1,37 @@
+@namespace Gamejam.UI
+
+@inherits Panel
+
+@if ( Game.Instance.IsPaused )
+{
+	<div>
+		<span>Quit</span>
+	</div>
+}
+
+@code
+{
+	public void Quit()
+	{
+		if ( Game.Instance.Level != eGameLevel.Menu )
+		{
+			Game.Instance.InitLevel( eGameLevel.Menu );
+
+			return;
+		}
+
+		@* Game.Instance.Close(); *@
+	}
+
+	@* protected override void OnUpdate()
+    {
+        if ( Input.EscapePressed )
+        {
+            Input.EscapePressed = false;
+
+			Game.Instance.IsPaused = !Game.Instance.IsPaused;
+        }
+    } *@
+
+	protected override int BuildHash() => HashCode.Combine( Game.Instance.IsPaused );
+}

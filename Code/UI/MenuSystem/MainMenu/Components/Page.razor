@@ -75,12 +75,12 @@
 
     public void InviteOverlay()
     {
-        if ( Game.IsEditor )
+        if ( Sandbox.Game.IsEditor )
         {
             
         }
 
-        Game.Overlay.ShowFriendsList( new Sandbox.Modals.FriendsListModalOptions()
+        Sandbox.Game.Overlay.ShowFriendsList( new Sandbox.Modals.FriendsListModalOptions()
 		{
 			 ShowOfflineMembers = false,
 		} );
@@ -93,6 +93,6 @@
 
     public void Quit()
     {
-        Game.Close();
+        Sandbox.Game.Close();
     }
 }

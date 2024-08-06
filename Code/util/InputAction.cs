@@ -13,4 +13,6 @@ public static class InputAction
 	public const string Zoom = "Zoom";
 	public const string Ragdoll = "Ragdoll";
 	public const string Tasks = "Tasks";
+
+	public const string PauseMenu = "PauseMenu";
 }

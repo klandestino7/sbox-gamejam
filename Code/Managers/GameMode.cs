@@ -24,7 +24,7 @@ public sealed class GameModeManager : SingletonComponent<GameModeManager>, Compo
 
     public static void CreateSession( PlayerState playerState )
     {
-        var gameMode = Game.ActiveScene.GetAllComponents<GameModeManager>().First();
+        var gameMode = Sandbox.Game.ActiveScene.GetAllComponents<GameModeManager>().First();
 		if ( gameMode == null ) return;
 
 

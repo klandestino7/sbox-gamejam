@@ -23,7 +23,7 @@ public class ItemComponent : Component
 
 	protected override void OnDestroy()
 	{
-		if ( IsProxy || !Game.IsPlaying )
+		if ( IsProxy || !Sandbox.Game.IsPlaying )
 			return;
 	}
 }
