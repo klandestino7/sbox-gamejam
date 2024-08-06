@@ -3,6 +3,7 @@
     "__guid": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
     "Flags": 0,
     "Name": "player",
+    "Tags": "player",
     "Enabled": true,
     "Components": [
       {
@@ -967,7 +968,7 @@
               "component_type": "SkinnedModelRenderer"
             },
             "CreateBoneObjects": false,
-            "Model": "models/citizen_clothes/shorts/boxing_shorts/models/boxing_shorts.vmdl",
+            "Model": "models/citizen_clothes/trousers/cardboardtrousers/models/cardboard_trousers.vmdl",
             "RenderType": "ShadowsOnly",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
@@ -994,7 +995,7 @@
               "component_type": "SkinnedModelRenderer"
             },
             "CreateBoneObjects": false,
-            "Model": "models/citizen_clothes/shirt/tshirt/models/tshirt.vmdl",
+            "Model": "models/citizen_clothes/vest/cardboard_chest/models/cardboard_chest.vmdl",
             "RenderType": "ShadowsOnly",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
@@ -1019,7 +1020,7 @@
               "component_type": "SkinnedModelRenderer"
             },
             "CreateBoneObjects": false,
-            "Model": "models/citizen_clothes/shoes/boots/models/black_boots.vmdl",
+            "Model": "models/citizen_clothes/shoes/slippers/models/slippers.vmdl",
             "RenderType": "ShadowsOnly",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
