@@ -3,6 +3,7 @@
     "__guid": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
     "Flags": 0,
     "Name": "player",
+    "Rotation": "-0,0,0.2586439,-0.9659727",
     "Tags": "player",
     "Enabled": true,
     "Components": [
@@ -1056,7 +1057,7 @@
         "__guid": "f0b48d83-4191-41df-961f-3bdf8a6af742",
         "Flags": 0,
         "Name": "Spot Light",
-        "Position": "41.38604,0,43.10408",
+        "Position": "38.25761,-3.721334,43.10408",
         "Tags": "light_spot,light",
         "Enabled": true,
         "Components": [
