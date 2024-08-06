@@ -79,7 +79,7 @@ public partial class Player : Component, Component.ExecuteInEditor
 	public void UpdateStamina() 
 	{
 		if ( Input.Down( "run" ) && !WishVelocity.IsNearlyZero() ) {
-			HealthSystem.DrainStamina( 0.25f ); 
+			HealthSystem.DrainStamina( 0.1f ); 
 		}
 	}
 
