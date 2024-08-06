@@ -1,8 +1,8 @@
 InventorySlot
 {
     position: relative;
-    width: 7em;
-    height: 7em;
+    width: 10vh;
+    height: 10vh;
 
     background-color: rgba(black, 0.2);
     border-radius: 5px;
@@ -14,7 +14,7 @@ InventorySlot
 
     &.active {
         border: 1px solid rgba(white, 0.5);
-        width: 8em;
-        height: 8em;
+        width: 11vh;
+        height: 11vh;
     }
 }
