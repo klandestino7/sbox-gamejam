@@ -59,7 +59,7 @@ public class Game : SingletonComponent<Game>
 				this.Level = eGameLevel.Level0;
 				break;
 			default:
-				throw new Exception( $"Invalid level SceneFile Title { Sandbox.Game.ActiveScene.Title }" );
+				throw new Exception( $"Invalid level SceneFile Title \"{ Sandbox.Game.ActiveScene.Title }\"" );
 		}
 
 		Log.Info( $"Game started with level { this.Level }" );
@@ -74,6 +74,8 @@ public class Game : SingletonComponent<Game>
 
 	public void InitLevel( eGameLevel level )
 	{
+		Assert.Equals( Sandbox.Networking.IsHost, true );
+
 		this.SessionState = eGameSessionState.LoadLevel;
 
 		Log.Info( $"Loading level { level }" );
@@ -98,5 +100,12 @@ public class Game : SingletonComponent<Game>
 		this.LoadScene( this.SceneFileMenu );
 
 		this.SessionState = eGameSessionState.Idle;
+	}
+
+	public void HostLobby()
+	{
+		Assert.Equals( this.Level, eGameLevel.Menu );
+
+		this.InitLevel( eGameLevel.Level0 );
 	}
 }
