@@ -8,7 +8,7 @@
 	@if ( Item != null )
 	{
 		@* <span>@Item.Name</span> *@
-		<image src=@Item.Icon />
+		@* <image src=@Item.Icon /> *@
 	}
 </root>
 
@@ -20,9 +20,67 @@
 
 	public ItemComponent? Item { get; set; }
 
+	Angles CamAngles = new( 45.0f, -20.0f, 0.0f );
+	float CamDistance = 120;
+	Vector3 CamPos => Vector3.Up * 5 + CamAngles.Forward * -CamDistance;
+	SceneParticles particleObj;
+
+	private SceneModel itemObject;
+	private SceneWorld sceneWorld;
+	private ScenePanel scenePanel;
+	private SceneLight sceneLight;
+	private SceneDirectionalLight sceneDirectionalLight;
+	protected override void OnAfterTreeRender( bool firstTime )
+	{
+		base.OnAfterTreeRender( firstTime );
+
+		Log.Info($" Item :: {Item}");
+
+		if ( Item == null || !Item.IsValid() ){
+			return;
+		}
+
+		if ( !firstTime ) FlushScene();
+
+		sceneWorld = new SceneWorld();
+		scenePanel = new ScenePanel();
+
+		itemObject = new SceneModel( sceneWorld, Item.ModelPath, Transform.Zero );
+		sceneDirectionalLight = new SceneDirectionalLight( sceneWorld, global::Rotation.From( 45, -45, 45 ), Color.White * 10f );
+		sceneLight = new SceneLight( sceneWorld, Vector3.Forward * 15f, 1000f, Color.White * 4f );
+
+		scenePanel.World = sceneWorld;
+		scenePanel.Camera.Position = CamPos;
+		scenePanel.Camera.Rotation = Rotation.From( CamAngles );
+		scenePanel.Camera.FieldOfView = 15f;
+
+		scenePanel.Style.Width = Length.Percent( 100 );
+		scenePanel.Style.Height = Length.Percent( 100 );
+
+		AddChild( scenePanel );
+		Log.Info(" InventorySlot ");
+	}
+
+	public void FlushScene()
+	{
+		sceneWorld?.Delete();
+		scenePanel?.Delete();
+		itemObject?.Delete();
+
+		sceneDirectionalLight?.Delete();
+		sceneLight?.Delete();
+
+		sceneWorld = null;
+		scenePanel = null;
+		itemObject = null;
+		sceneDirectionalLight = null;
+		sceneLight = null;
+	}
+
 	public String MountClassSlotName()
 	{
 		return Selected ? "active" : "";
 	}
+
 	protected override int BuildHash() => HashCode.Combine( Selected, this.Item?.GetHashCode() );
 }

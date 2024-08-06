@@ -9,6 +9,7 @@
         "__type": "Gamejam.ItemComponent",
         "__guid": "5307f7c3-46ae-4e32-9665-389d5ffa877f",
         "Description": "Teste",
+        "ModelPath": "models/citizen_props/hotdog01.vmdl",
         "Name": "test",
         "Weight": "2.8"
       },
