@@ -3,10 +3,13 @@ public partial class Player : Component
 {
 	float Zoom = 100f;
 
+
+
 	protected void UpdateCamera()
 	{
 		if ( Camera == null )
 			return;
+
 		
 		var oldCamRot = Camera.Transform.Rotation;
 		var newCamRot = EyeAngles;
@@ -26,6 +29,7 @@ public partial class Player : Component
 
 		Camera.Transform.Rotation = Rotation.Lerp( oldCamRot, newCamRot, Time.Delta * 10f );
 		Camera.Transform.Position =  Vector3.Lerp( oldCamPos, newCamPos, Time.Delta * 15f );
+		SpotLight.Transform.Rotation = Camera.Transform.Rotation;
 
 		Camera.FieldOfView = Preferences.FieldOfView;
 	}
