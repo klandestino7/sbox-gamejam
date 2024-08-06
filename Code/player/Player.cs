@@ -30,17 +30,20 @@ public partial class Player : Component, Component.ExecuteInEditor
 	[Property] public CharacterController CharacterController { get; set; }
 	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
 	[Property] public virtual HealthSystem HealthSystem { get; set; }
+	[Property] public virtual SpotLight SpotLight { get; set; }
 	protected BoxCollider Collider;
 
 	public Inventory Inventory { get; private set; }
 
 	protected override void OnStart()
 	{
+		
 		Camera = Scene.GetAllComponents<CameraComponent>().Where( x => x.IsMainCamera ).FirstOrDefault();
 		PlayerBody = Components.Get<SkinnedModelRenderer>( FindMode.EverythingInSelfAndDescendants );
 		// Collider = Components.Get<BoxCollider>( FindMode.EverythingInSelfAndDescendants );
 
 		Inventory = Components.Get<Inventory>( FindMode.EverythingInSelfAndDescendants );;
+		SpotLight = GameObject.Components.Get<SpotLight>( FindMode.InChildren );
 	}
 
 	protected override void OnUpdate()
