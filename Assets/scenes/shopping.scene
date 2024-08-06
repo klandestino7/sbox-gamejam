@@ -1,0 +1,353 @@
+{
+  "__guid": "1a2ab797-c497-495d-ae1a-a469f994801d",
+  "GameObjects": [
+    {
+      "__guid": "e3e167f3-2847-4fc9-b569-99460a000e21",
+      "Flags": 0,
+      "Name": "Gradient Fog (Light)",
+      "Position": "-1952.084,0,314.7336",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CubemapFog",
+          "__guid": "3b65fad3-4ac4-4a71-a455-3e51df776be7",
+          "Blur": 0.53,
+          "EndDistance": 4096,
+          "FalloffExponent": 1,
+          "HeightExponent": 2,
+          "HeightStart": 2000,
+          "HeightWidth": 1,
+          "Sky": "materials/skybox/skybox_workshop.vmat",
+          "StartDistance": 10,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "6517cad1-17bb-4189-925c-52e77c2c033e",
+      "Flags": 0,
+      "Name": "Screen",
+      "Position": "0,19.09842,0",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "fc716d04-d704-410d-9dac-d1e0cc1d8618",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "ea886a53-261e-49fe-a5ad-cc9cdd44a8a1",
+          "Flags": 0,
+          "Name": "Object",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "cursor.prefab",
+          "__PrefabVariables": {}
+        }
+      ]
+    },
+    {
+      "__guid": "0c013e06-0afe-4b9b-8f27-81dfbfc1d980",
+      "Flags": 0,
+      "Name": "Game",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Gamejam.Game",
+          "__guid": "2c553f94-7e25-400c-b85c-713e5f227f0d"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "13029af7-50a1-4b34-a549-ee0ba32c1f94",
+          "Flags": 0,
+          "Name": "Networking",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Gamejam.GameNetworkManager",
+              "__guid": "46038f0f-f310-42f1-9315-1b6156d1c522",
+              "IsMultiplayer": true,
+              "PlayerStatePrefab": {
+                "_type": "gameobject",
+                "prefab": "prefabs/playerstate.prefab"
+              }
+            }
+          ]
+        },
+        {
+          "__guid": "5f34884d-18d6-4519-9ebd-ec0b1e309dec",
+          "Flags": 0,
+          "Name": "HUD",
+          "Enabled": true,
+          "NetworkMode": 1,
+          "Components": [
+            {
+              "__type": "Gamejam.UI.MainHUD",
+              "__guid": "ecfaee17-5289-484b-88b1-8c857a6633fa"
+            },
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "eec724d9-3889-4dac-8d44-2a350f738df7",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "Gamejam.UI.BlackScreen",
+              "__guid": "cd54f7c2-7414-4361-9ef5-9b0670a4c088",
+              "IsEnabled": false
+            }
+          ]
+        },
+        {
+          "__guid": "84646d0f-4495-4974-9e72-607b9266b2b4",
+          "Flags": 0,
+          "Name": "GameMode",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Gamejam.GameModeManager",
+              "__guid": "4d9b9b2c-ba3a-4bd1-b406-c88566701bb9"
+            },
+            {
+              "__type": "PrefabLibraryInitializer",
+              "__guid": "450cab46-559e-4e0d-a10f-7d97f8e6e9ad"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "ef32a0e2-09af-4870-b2b0-fb85a6afc168",
+      "Flags": 0,
+      "Name": "Map",
+      "Position": "-987.7787,93.42577,-0.0001183309",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "5941eff7-6853-4241-b663-9e2d1306e2c6",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "maps/shopping.vmap",
+          "NoOrigin": false,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "2ff2b418-803b-4c59-a498-9cc22678d289",
+          "Flags": 0,
+          "Name": "shipping_container_closed_dev",
+          "Position": "510.1536,-1969.834,0.1143338",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "f6fdfa00-a43e-4b67-bfc6-f81f3a09680f",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": false,
+              "Model": "models/dev/shippingcontainer/shipping_container_closed_dev.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "cde8b96e-b56c-429c-a8cc-e889d5248f93",
+          "Flags": 0,
+          "Name": "shipping_container_open_dev",
+          "Position": "866.4316,-269.8647,0.1145745",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "21babefb-5999-4eb4-a0d9-0588017ddfe4",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": false,
+              "Model": "models/dev/shippingcontainer/shipping_container_open_dev.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "cb36310c-42ec-40ec-8337-182db84c124d",
+          "Flags": 0,
+          "Name": "scissorlift",
+          "Position": "955.373,215.2679,1.479762",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "b5f11fef-726d-4334-8eab-03b90d3f1cc3",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": false,
+              "Model": "models/props/scissorlift/scissorlift.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "dfc844d8-6017-49ec-b463-a1aed0f3ad6f",
+      "Flags": 0,
+      "Name": "Light Inicial",
+      "Position": "-179.4135,-186.2729,133.7921",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "bb0fd1a0-84f6-4179-868c-c8542d4e1309",
+          "Attenuation": 1,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Radius": 400,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "512aa51e-7298-43a1-9b9f-9d4d61efbba8",
+      "Flags": 0,
+      "Name": "Camera",
+      "Position": "-56.19302,-129.7545,62.50369",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "d0ceffa9-5233-42d7-94fb-34cfd1560f1c",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 78,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        },
+        {
+          "__type": "Sandbox.Pixelate",
+          "__guid": "5ce2432d-16af-45c3-97bd-177390146389",
+          "Scale": 0.001
+        },
+        {
+          "__type": "Sandbox.FilmGrain",
+          "__guid": "49af2b83-5be1-4332-9384-b37f96be0e12",
+          "Intensity": 0.05,
+          "Response": 0.5
+        },
+        {
+          "__type": "Sandbox.Tonemapping",
+          "__guid": "0bcde370-62b2-41c0-b894-aae29bdc7caa",
+          "__version": 1,
+          "ExposureBias": 2,
+          "ExposureCompensation": 0,
+          "ExposureMethod": "RGB",
+          "MaximumExposure": 2,
+          "MinimumExposure": 1,
+          "Mode": "HableFilmic",
+          "Rate": 1
+        },
+        {
+          "__type": "Sandbox.ColorAdjustments",
+          "__guid": "2819f980-c8dd-49b6-baba-f2d83f778f77",
+          "Brightness": 1,
+          "Contrast": 1,
+          "HueRotate": 0,
+          "Saturation": 0.9
+        }
+      ]
+    },
+    {
+      "__guid": "cb76dcba-c9b6-4cfd-b571-2b4efdcb4ffc",
+      "Flags": 0,
+      "Name": "Light 2",
+      "Position": "-2377.051,-651.3987,74.23962",
+      "Rotation": "-0.0499502,0.1205904,0.3794094,0.9159757",
+      "Tags": "light_point,light,light_spot",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SpotLight",
+          "__guid": "1faaaf6c-ca68-4b0c-8740-a4c7da77eb55",
+          "Attenuation": 1.5,
+          "ConeInner": 33.46,
+          "ConeOuter": 44.23,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Radius": 1200,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "8cfc7d99-023e-483e-84ef-fb0cbc8f4710",
+      "Flags": 0,
+      "Name": "Ambiance Audio",
+      "Position": "-1576.966,-357.677,53.47535",
+      "Scale": "57.78445,37.81691,12.74968",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SoundscapeTrigger",
+          "__guid": "6eb666d9-70b7-408b-a70c-fdc4a33106f3",
+          "BoxSize": "50,50,50",
+          "Radius": 500,
+          "Soundscape": "sounds/shopping_ambiance.sndscape",
+          "StayActiveOnExit": true,
+          "Type": "Point"
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "shopping",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.shipping_container_closed_dev",
+    "facepunch.shipping_container_open_dev",
+    "fpopium.scissorlift"
+  ],
+  "__version": 1
+}

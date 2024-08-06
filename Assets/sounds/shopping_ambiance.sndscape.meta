@@ -1,0 +1,19 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "shopping_ambiance",
+      "Type": "asset",
+      "Org": "local",
+      "Ident": "shopping_ambiance",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "sounds/shopping_ambiance.sndscape"
+      }
+    }
+  }
+}
