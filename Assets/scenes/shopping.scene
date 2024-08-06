@@ -200,7 +200,7 @@
           "__guid": "5941eff7-6853-4241-b663-9e2d1306e2c6",
           "__version": 1,
           "EnableCollision": true,
-          "MapName": "maps/shopping.vmap",
+          "MapName": "nxtstudio.shopping_map",
           "NoOrigin": false,
           "UseMapFromLaunch": false
         }

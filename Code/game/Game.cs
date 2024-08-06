@@ -122,6 +122,6 @@ public class Game : SingletonComponent<Game>
 	{
 		Assert.Equals( this.Level, eGameLevel.Menu );
 
-		this.InitLevel( eGameLevel.Level0 );
+		this.InitLevel( eGameLevel.Hideout );
 	}
 }

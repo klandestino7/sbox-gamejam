@@ -1,10 +1,10 @@
 {
   "publish": {
-    "Enabled": false,
+    "Enabled": true,
     "ProjectConfig": {
-      "Title": "hideout",
+      "Title": "Hideout Map",
       "Type": "map",
-      "Org": "local",
+      "Org": "nxtstudio",
       "Ident": "hideout",
       "Schema": 0,
       "IncludeSourceFiles": false,

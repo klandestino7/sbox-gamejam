@@ -25,6 +25,25 @@
       ]
     },
     {
+      "__guid": "5c020af3-d567-4565-b329-2ddc20da4df9",
+      "Flags": 32,
+      "Name": "Map Instance",
+      "Position": "363.2718,-209.4914,-0.0002105982",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "75ce7e91-d845-43ce-b9f0-5a630ba6ef4f",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "nxtstudio.hideout",
+          "NoOrigin": false,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
       "__guid": "01898144-59fb-403f-a8d4-23762245698a",
       "Flags": 0,
       "Name": "Camera",
@@ -98,6 +117,34 @@
           "Soundscape": "sounds/shopping_ambiance.sndscape",
           "StayActiveOnExit": true,
           "Type": "Point"
+        }
+      ]
+    },
+    {
+      "__guid": "46693b50-ea93-450b-b7e3-0735b06719c3",
+      "Flags": 0,
+      "Name": "Screen",
+      "Position": "384.5195,-51.71291,33.21584",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "254555ce-b5dc-4437-bb8f-da61d68cbf8c",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "7f80375b-9aea-48fb-a4f7-9f54a75c5cd7",
+          "Flags": 0,
+          "Name": "Object",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "cursor.prefab",
+          "__PrefabVariables": {}
         }
       ]
     },
@@ -177,53 +224,6 @@
           ]
         }
       ]
-    },
-    {
-      "__guid": "46693b50-ea93-450b-b7e3-0735b06719c3",
-      "Flags": 0,
-      "Name": "Screen",
-      "Position": "384.5195,-51.71291,33.21584",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ScreenPanel",
-          "__guid": "254555ce-b5dc-4437-bb8f-da61d68cbf8c",
-          "AutoScreenScale": true,
-          "Opacity": 1,
-          "Scale": 1,
-          "ZIndex": 100
-        }
-      ],
-      "Children": [
-        {
-          "__guid": "7f80375b-9aea-48fb-a4f7-9f54a75c5cd7",
-          "Flags": 0,
-          "Name": "Object",
-          "Position": "0,0,0",
-          "Enabled": true,
-          "__Prefab": "cursor.prefab",
-          "__PrefabVariables": {}
-        }
-      ]
-    },
-    {
-      "__guid": "5c020af3-d567-4565-b329-2ddc20da4df9",
-      "Flags": 0,
-      "Name": "Map Instance",
-      "Position": "363.2718,-209.4914,-0.0002105982",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.MapInstance",
-          "__guid": "75ce7e91-d845-43ce-b9f0-5a630ba6ef4f",
-          "__version": 1,
-          "EnableCollision": true,
-          "MapName": "maps/hideout.vmap",
-          "NoOrigin": false,
-          "UseMapFromLaunch": false
-        }
-      ],
-      "Children": []
     },
     {
       "__guid": "36927ef7-24d9-48b7-a157-34b46ee7c12c",
