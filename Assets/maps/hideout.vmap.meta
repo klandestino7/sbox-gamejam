@@ -1,18 +1,18 @@
 {
   "publish": {
-    "Enabled": true,
+    "Enabled": false,
     "ProjectConfig": {
-      "Title": "Shopping Map",
+      "Title": "hideout",
       "Type": "map",
-      "Org": "nxtstudio",
-      "Ident": "shopping_map",
+      "Org": "local",
+      "Ident": "hideout",
       "Schema": 0,
       "IncludeSourceFiles": false,
       "Resources": null,
       "PackageReferences": [],
       "EditorReferences": [],
       "Metadata": {
-        "SingleAssetSource": "maps/shopping.vmap"
+        "SingleAssetSource": "maps/hideout.vmap"
       }
     }
   }

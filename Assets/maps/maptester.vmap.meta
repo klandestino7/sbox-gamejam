@@ -2,22 +2,23 @@
   "publish": {
     "Enabled": false,
     "ProjectConfig": {
-      "Title": null,
-      "Type": null,
-      "Org": null,
-      "Ident": null,
-      "Tags": null,
+      "Title": "maptester",
+      "Type": "map",
+      "Org": "local",
+      "Ident": "maptester",
       "Schema": 0,
-      "HasAssets": false,
-      "AssetsPath": null,
-      "ResourcePaths": null,
-      "HasCode": false,
-      "CodePath": null,
+      "IncludeSourceFiles": false,
+      "Resources": null,
       "PackageReferences": [],
       "EditorReferences": [
-        "nxtstudio.collapse#local"
+        "nxtstudio.collapse#local",
+        "facepunch.tree_oak_small_a#33693",
+        "rust.4_grass#25018",
+        "facepunch.tree_oak_big_a#38050"
       ],
-      "Metadata": {}
+      "Metadata": {
+        "SingleAssetSource": "maps/maptester.vmap"
+      }
     }
   }
 }

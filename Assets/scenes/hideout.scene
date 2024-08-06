@@ -1,0 +1,323 @@
+{
+  "__guid": "eb02d5d0-9584-409b-96a2-9929455b00b9",
+  "GameObjects": [
+    {
+      "__guid": "97492952-75ac-401f-ba2e-8d51d2c0bf7d",
+      "Flags": 0,
+      "Name": "Gradient Fog (Light)",
+      "Position": "291.8344,-154.8132,-44.70597",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CubemapFog",
+          "__guid": "c12d2b6a-ea76-4ad1-a5d5-7a2cab451247",
+          "Blur": 0.53,
+          "EndDistance": 4096,
+          "FalloffExponent": 1,
+          "HeightExponent": 2,
+          "HeightStart": 2000,
+          "HeightWidth": 1,
+          "Sky": "materials/skybox/skybox_workshop.vmat",
+          "StartDistance": 10,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "01898144-59fb-403f-a8d4-23762245698a",
+      "Flags": 0,
+      "Name": "Camera",
+      "Position": "267.324,-33.8226,34.10503",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "2b2775c8-7688-4bdd-a93f-dc4c1a40a879",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 78,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        },
+        {
+          "__type": "Sandbox.Pixelate",
+          "__guid": "1eff5994-ba4e-491a-b1c5-ebac4df916ac",
+          "Scale": 0.001
+        },
+        {
+          "__type": "Sandbox.FilmGrain",
+          "__guid": "a5bb099c-d004-4afb-a015-519018af5bea",
+          "Intensity": 0.05,
+          "Response": 30
+        },
+        {
+          "__type": "Sandbox.Tonemapping",
+          "__guid": "330ef21f-28b2-4252-b5d5-ff9eb40d7bd6",
+          "__version": 1,
+          "ExposureBias": 2,
+          "ExposureCompensation": 0,
+          "ExposureMethod": "RGB",
+          "MaximumExposure": 2,
+          "MinimumExposure": 1,
+          "Mode": "HableFilmic",
+          "Rate": 1
+        },
+        {
+          "__type": "Sandbox.ColorAdjustments",
+          "__guid": "4162cf57-2195-4474-b0aa-126b02418236",
+          "Brightness": 1,
+          "Contrast": 1,
+          "HueRotate": 0,
+          "Saturation": 0.9
+        }
+      ]
+    },
+    {
+      "__guid": "434105cb-1bef-4fac-8251-cf44009f94fe",
+      "Flags": 0,
+      "Name": "Ambiance Audio",
+      "Position": "229.9597,-60.42761,66.70834",
+      "Scale": "20,20,20",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SoundscapeTrigger",
+          "__guid": "7a410d4c-1787-4f1c-8fe0-8a5637a586fc",
+          "BoxSize": "50,50,50",
+          "Radius": 500,
+          "Soundscape": "sounds/shopping_ambiance.sndscape",
+          "StayActiveOnExit": true,
+          "Type": "Point"
+        }
+      ]
+    },
+    {
+      "__guid": "1c056130-a122-4df1-9c30-1bafba0da7f9",
+      "Flags": 0,
+      "Name": "Game",
+      "Position": "270.1185,-59.69046,65.25427",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Gamejam.Game",
+          "__guid": "b12d9253-a415-43fb-8372-fae7da9fcfdc"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "da538017-84c9-4229-8098-5cccb7b0869b",
+          "Flags": 0,
+          "Name": "Networking",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Gamejam.GameNetworkManager",
+              "__guid": "41da316b-fcad-4cf2-9691-ad054a791f41",
+              "IsMultiplayer": true,
+              "PlayerStatePrefab": {
+                "_type": "gameobject",
+                "prefab": "prefabs/playerstate.prefab"
+              }
+            }
+          ]
+        },
+        {
+          "__guid": "38a7d277-df1b-4601-bcfb-7b8f72cc5225",
+          "Flags": 0,
+          "Name": "HUD",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 1,
+          "Components": [
+            {
+              "__type": "Gamejam.UI.MainHUD",
+              "__guid": "235f14ce-aa28-42fc-8546-0fd64c782370"
+            },
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "f0f47bfe-ecac-4cab-b82f-dc3fb17dbea6",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "Gamejam.UI.BlackScreen",
+              "__guid": "d6e43ebe-eca8-4b83-8800-594da137afc8",
+              "IsEnabled": false
+            }
+          ]
+        },
+        {
+          "__guid": "f1797b79-b03c-4579-96c7-812776e48094",
+          "Flags": 0,
+          "Name": "GameMode",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Gamejam.GameModeManager",
+              "__guid": "5428b85e-708b-4f92-9afc-4f100494c75c"
+            },
+            {
+              "__type": "PrefabLibraryInitializer",
+              "__guid": "ba63e703-3806-4654-8e1f-6cde7f5d40d9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "46693b50-ea93-450b-b7e3-0735b06719c3",
+      "Flags": 0,
+      "Name": "Screen",
+      "Position": "384.5195,-51.71291,33.21584",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "254555ce-b5dc-4437-bb8f-da61d68cbf8c",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "7f80375b-9aea-48fb-a4f7-9f54a75c5cd7",
+          "Flags": 0,
+          "Name": "Object",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "cursor.prefab",
+          "__PrefabVariables": {}
+        }
+      ]
+    },
+    {
+      "__guid": "5c020af3-d567-4565-b329-2ddc20da4df9",
+      "Flags": 0,
+      "Name": "Map Instance",
+      "Position": "363.2718,-209.4914,-0.0002105982",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.MapInstance",
+          "__guid": "75ce7e91-d845-43ce-b9f0-5a630ba6ef4f",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "maps/hideout.vmap",
+          "NoOrigin": false,
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "36927ef7-24d9-48b7-a157-34b46ee7c12c",
+      "Flags": 0,
+      "Name": "Object",
+      "Position": "222.4863,-57.93245,147.936",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "967873ed-231d-46d5-bebd-033049adb67b",
+          "Attenuation": 1,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Radius": 400,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "6384ff25-b88e-4ef3-90c7-3cf81fd20cd4",
+      "Flags": 0,
+      "Name": "Object (2)",
+      "Position": "-27.14105,590.8887,147.9354",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "343189b1-2543-4368-b2c7-ee8794c66a0f",
+          "Attenuation": 1,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Radius": 400,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "93b5a0b0-cb79-4fc1-b996-00d1c4a4bd85",
+      "Flags": 0,
+      "Name": "Object (1)",
+      "Position": "-54.28281,-38.04675,147.9361",
+      "Rotation": "0.7071067,0,0,0.7071068",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "d1f7b96b-6d3d-4881-86c4-02fd4e21d538",
+          "Attenuation": 1,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Radius": 400,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "8663f587-57ed-4bf9-a3bf-fe9e51546a30",
+      "Flags": 0,
+      "Name": "Object",
+      "Position": "241.3083,56.43559,38.87313",
+      "Enabled": true
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 60,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "hideout",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
