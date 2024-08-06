@@ -5,7 +5,10 @@ namespace Gamejam;
 public enum eGameLevel
 {
 	Menu,
+	Hideout,
 	Level0,
+	Level1,
+	Dev
 }
 
 public enum eGameSessionState
@@ -33,8 +36,9 @@ public enum eGameState
 public class Game : SingletonComponent<Game>
 {
 	private SceneFile SceneFileMenu = ResourceLibrary.Get<SceneFile>( "scenes/MainMenu.scene" );
-
-	private SceneFile SceneFileLevel0 = ResourceLibrary.Get<SceneFile>( "scenes/minimal.scene" );
+	private SceneFile SceneFileHideout = ResourceLibrary.Get<SceneFile>( "scenes/hideout.scene" );
+	private SceneFile SceneFileDev = ResourceLibrary.Get<SceneFile>( "scenes/minimal.scene" );
+	private SceneFile SceneFileLevel0 = ResourceLibrary.Get<SceneFile>( "scenes/shopping.scene" );
 
 	public eGameSessionState SessionState = eGameSessionState.Init;
 	public eGameLevel Level = eGameLevel.Menu;
@@ -55,8 +59,14 @@ public class Game : SingletonComponent<Game>
 			case "mainmenu":
 				this.Level = eGameLevel.Menu;
 				break;
-			case "minimal":
+			case "hideout":
+				this.Level = eGameLevel.Hideout;
+				break;
+			case "shopping":
 				this.Level = eGameLevel.Level0;
+				break;
+			case "minimal":
+				this.Level = eGameLevel.Dev;
 				break;
 			default:
 				throw new Exception( $"Invalid level SceneFile Title \"{ Sandbox.Game.ActiveScene.Title }\"" );
@@ -85,8 +95,14 @@ public class Game : SingletonComponent<Game>
 			case eGameLevel.Menu:
 				this.LoadScene( this.SceneFileMenu );
 				break;
+			case eGameLevel.Hideout:
+				this.LoadScene( this.SceneFileHideout );
+				break;
 			case eGameLevel.Level0:
 				this.LoadScene( this.SceneFileLevel0 );
+				break;
+			case eGameLevel.Dev:
+				this.LoadScene( this.SceneFileDev );
 				break;
 			default:
 				throw new Exception( "Invalid level" );
