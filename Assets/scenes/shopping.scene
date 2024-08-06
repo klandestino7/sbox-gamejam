@@ -126,6 +126,69 @@
       ]
     },
     {
+      "__guid": "e155f48d-0ba5-49a3-9001-be46b7303eae",
+      "Flags": 0,
+      "Name": "Map Objects",
+      "Position": "-32.40564,308.6937,1.479644",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "cb36310c-42ec-40ec-8337-182db84c124d",
+          "Flags": 0,
+          "Name": "scissorlift",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "b5f11fef-726d-4334-8eab-03b90d3f1cc3",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": false,
+              "Model": "models/props/scissorlift/scissorlift.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "cde8b96e-b56c-429c-a8cc-e889d5248f93",
+          "Flags": 0,
+          "Name": "shipping_container_open_dev",
+          "Position": "-88.94141,-485.1326,-1.365188",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "21babefb-5999-4eb4-a0d9-0588017ddfe4",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": false,
+              "Model": "models/dev/shippingcontainer/shipping_container_open_dev.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "2ff2b418-803b-4c59-a498-9cc22678d289",
+          "Flags": 0,
+          "Name": "shipping_container_closed_dev",
+          "Position": "-445.2195,-2185.102,-1.365428",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "f6fdfa00-a43e-4b67-bfc6-f81f3a09680f",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": false,
+              "Model": "models/dev/shippingcontainer/shipping_container_closed_dev.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "__guid": "ef32a0e2-09af-4870-b2b0-fb85a6afc168",
       "Flags": 0,
       "Name": "Map",
@@ -142,62 +205,7 @@
           "UseMapFromLaunch": false
         }
       ],
-      "Children": [
-        {
-          "__guid": "2ff2b418-803b-4c59-a498-9cc22678d289",
-          "Flags": 0,
-          "Name": "shipping_container_closed_dev",
-          "Position": "510.1536,-1969.834,0.1143338",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.Prop",
-              "__guid": "f6fdfa00-a43e-4b67-bfc6-f81f3a09680f",
-              "BodyGroups": 18446744073709551615,
-              "Health": 0,
-              "IsStatic": false,
-              "Model": "models/dev/shippingcontainer/shipping_container_closed_dev.vmdl",
-              "Tint": "1,1,1,1"
-            }
-          ]
-        },
-        {
-          "__guid": "cde8b96e-b56c-429c-a8cc-e889d5248f93",
-          "Flags": 0,
-          "Name": "shipping_container_open_dev",
-          "Position": "866.4316,-269.8647,0.1145745",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.Prop",
-              "__guid": "21babefb-5999-4eb4-a0d9-0588017ddfe4",
-              "BodyGroups": 18446744073709551615,
-              "Health": 0,
-              "IsStatic": false,
-              "Model": "models/dev/shippingcontainer/shipping_container_open_dev.vmdl",
-              "Tint": "1,1,1,1"
-            }
-          ]
-        },
-        {
-          "__guid": "cb36310c-42ec-40ec-8337-182db84c124d",
-          "Flags": 0,
-          "Name": "scissorlift",
-          "Position": "955.373,215.2679,1.479762",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.Prop",
-              "__guid": "b5f11fef-726d-4334-8eab-03b90d3f1cc3",
-              "BodyGroups": 18446744073709551615,
-              "Health": 0,
-              "IsStatic": false,
-              "Model": "models/props/scissorlift/scissorlift.vmdl",
-              "Tint": "1,1,1,1"
-            }
-          ]
-        }
-      ]
+      "Children": []
     },
     {
       "__guid": "dfc844d8-6017-49ec-b463-a1aed0f3ad6f",
@@ -253,7 +261,7 @@
           "__type": "Sandbox.FilmGrain",
           "__guid": "49af2b83-5be1-4332-9384-b37f96be0e12",
           "Intensity": 0.05,
-          "Response": 0.5
+          "Response": 30
         },
         {
           "__type": "Sandbox.Tonemapping",
@@ -304,8 +312,8 @@
       "__guid": "8cfc7d99-023e-483e-84ef-fb0cbc8f4710",
       "Flags": 0,
       "Name": "Ambiance Audio",
-      "Position": "-1576.966,-357.677,53.47535",
-      "Scale": "57.78445,37.81691,12.74968",
+      "Position": "-1485.222,-206.9166,53.47628",
+      "Scale": "20,20,20",
       "Enabled": true,
       "Components": [
         {
