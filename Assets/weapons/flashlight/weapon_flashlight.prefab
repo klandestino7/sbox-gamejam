@@ -24,6 +24,14 @@
           "_type": "gameobject",
           "prefab": "weapons/flashlight/vm_weapon_flashlight.prefab"
         }
+      },
+      {
+        "__type": "Sandbox.SphereCollider",
+        "__guid": "49981c90-2aa0-41b1-8b3d-d2520e9a0017",
+        "Center": "-0.3,1.7,0",
+        "IsTrigger": false,
+        "Radius": 4,
+        "Static": true
       }
     ],
     "Children": [],
