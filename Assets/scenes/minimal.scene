@@ -60,6 +60,7 @@
       "Name": "Surface",
       "Position": "15.20664,-14.95253,-9.302258",
       "Scale": "20,20,18.70629",
+      "Tags": "world",
       "Enabled": true,
       "Components": [
         {
@@ -117,6 +118,7 @@
       "Position": "-992.4373,-2.453242,46.92635",
       "Rotation": "0.5,0.5,0.5,0.5",
       "Scale": "20.13902,1.448292,1",
+      "Tags": "world",
       "Enabled": true,
       "Components": [
         {
@@ -145,6 +147,7 @@
       "Position": "987.804,-2.453242,46.92635",
       "Rotation": "0.5,-0.5,-0.5,0.5",
       "Scale": "20.13902,1.448292,1",
+      "Tags": "world",
       "Enabled": true,
       "Components": [
         {
@@ -173,6 +176,7 @@
       "Position": "1.277954,971.0945,46.92658",
       "Rotation": "0.7071068,0,0,0.7071067",
       "Scale": "20.13902,1.448292,1",
+      "Tags": "world",
       "Enabled": true,
       "Components": [
         {
@@ -201,6 +205,7 @@
       "Position": "1.277931,-993.8094,46.92641",
       "Rotation": "-0.00000003090862,-0.7071068,-0.7071067,-0.00000003090862",
       "Scale": "20.13902,1.448292,1",
+      "Tags": "world",
       "Enabled": true,
       "Components": [
         {
