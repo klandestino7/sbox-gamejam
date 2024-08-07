@@ -1,0 +1,28 @@
+{
+  "RootObject": {
+    "__guid": "b07f10df-40b4-45ab-9f2c-c5e9a87b73a5",
+    "Flags": 0,
+    "Name": "arms",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "1458d091-2d24-448b-97cd-f5a3dfdced95",
+        "BodyGroups": 21,
+        "CreateBoneObjects": false,
+        "Model": "models/first_person/first_person_arms.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

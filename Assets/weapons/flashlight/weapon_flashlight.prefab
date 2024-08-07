@@ -1,0 +1,40 @@
+{
+  "RootObject": {
+    "__guid": "1150335e-80c1-45f0-862a-26618bb9332f",
+    "Flags": 0,
+    "Name": "weapon_flashlight",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "33bc10df-2f70-4460-a44a-c608d9a2f18a",
+        "BodyGroups": 18446744073709551615,
+        "CreateBoneObjects": false,
+        "Model": "models/flashlight/flashlight.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "Gamejam.WeaponFlashlight",
+        "__guid": "1f92219d-c27a-446f-9420-8940b1c4af84",
+        "AttachPoint": "RightHand",
+        "HoldType": "Rifle",
+        "ViewModelPrefab": {
+          "_type": "gameobject",
+          "prefab": "weapons/flashlight/vm_weapon_flashlight.prefab"
+        }
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "fish.flashlight"
+  ],
+  "__version": 1
+}

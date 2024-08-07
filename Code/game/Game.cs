@@ -35,6 +35,8 @@ public enum eGameState
 
 public class Game : SingletonComponent<Game>
 {
+	[Property] public PrefabScene DefaultWeapon { get; set; }
+
 	private SceneFile SceneFileMenu = ResourceLibrary.Get<SceneFile>( "scenes/MainMenu.scene" );
 	private SceneFile SceneFileHideout = ResourceLibrary.Get<SceneFile>( "scenes/hideout.scene" );
 	private SceneFile SceneFileDev = ResourceLibrary.Get<SceneFile>( "scenes/minimal.scene" );

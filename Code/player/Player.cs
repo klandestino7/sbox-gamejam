@@ -6,7 +6,7 @@ namespace Gamejam;
 
 public partial class Player : Component, Component.ExecuteInEditor
 {
-	public CameraComponent Camera;
+	public CameraComponent ViewModelCamera;
 
 	/// <summary>
 	/// The position this player last spawned at.
@@ -37,8 +37,7 @@ public partial class Player : Component, Component.ExecuteInEditor
 
 	protected override void OnStart()
 	{
-		
-		Camera = Scene.GetAllComponents<CameraComponent>().Where( x => x.IsMainCamera ).FirstOrDefault();
+		ViewModelCamera = Scene.GetAllComponents<CameraComponent>().Where( x => x.IsMainCamera ).FirstOrDefault();
 		PlayerBody = Components.Get<SkinnedModelRenderer>( FindMode.EverythingInSelfAndDescendants );
 		// Collider = Components.Get<BoxCollider>( FindMode.EverythingInSelfAndDescendants );
 

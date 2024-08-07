@@ -246,7 +246,7 @@ public partial class NPC : Component
 			var obj = SceneUtility.GetPrefabScene( foundNpc.Prefab ).Clone();
 			obj.NetworkMode = NetworkMode.Object;
 			obj.NetworkSpawn();
-			var trace = Sandbox.Game.ActiveScene.Trace.Ray( Player.Local.Camera.Transform.Position, Player.Local.Camera.Transform.Position + Player.Local.Camera.Transform.Rotation.Forward * 1000f )
+			var trace = Sandbox.Game.ActiveScene.Trace.Ray( Player.Local.ViewModelCamera.Transform.Position, Player.Local.ViewModelCamera.Transform.Position + Player.Local.ViewModelCamera.Transform.Rotation.Forward * 1000f )
 				.WithoutTags( "player", "npc", "trigger" )
 				.IgnoreGameObjectHierarchy( Player.Local.GameObject )
 				.Run();
