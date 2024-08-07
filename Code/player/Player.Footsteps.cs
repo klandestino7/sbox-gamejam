@@ -37,6 +37,9 @@ public partial class Player : Component
 
 		timeSinceStep = 0;
 
+		var positionFootHit = tr.HitPosition + tr.Normal * 5;
+		var addictional = ViewModelCamera.Transform.Position - positionFootHit;
+
 		var sound = e.FootId == 0 ? tr.Surface.Sounds.FootLeft : tr.Surface.Sounds.FootRight;
 		if ( sound is null ) return;
 

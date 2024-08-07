@@ -8,7 +8,7 @@ public partial class Player
 	public bool HasTimedAction => TimedAction is not null;
 
 	public Vector2 Cursor { get; set; }
-	public Ray ViewRay => new( Camera.Transform.Position, Camera.Transform.Rotation.Forward );
+	public Ray ViewRay => new( ViewModelCamera.Transform.Position, ViewModelCamera.Transform.Rotation.Forward );
 	public GameObject TargetedGameObject { get; private set; }
 	public SceneTraceResult InteractionTrace { get; private set; }
 	public BBox? InteractionBounds { get; private set; }
@@ -37,7 +37,6 @@ public partial class Player
 		// 			.WithoutTags( "world" )
 		// 			.Run();
 
-		// Log.Info($"trace :: {thinTrace.GameObject}");
 
 
 		TargetedGameObject = thinTrace.GameObject;
