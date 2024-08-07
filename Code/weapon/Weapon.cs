@@ -11,8 +11,16 @@ public enum eHoldType
 	Rifle,
 }
 
-public class Weapon : Component
+public class Weapon : Component, IContextActionProvider
 {
+	public Color GlowColor => Color.Green;
+	public bool AlwaysGlow => true;
+	public float InteractionRange => 100f;
+	public Vector3 Position { get; set; }
+    
+	private ContextAction GetWeapon { get; set; }
+	public virtual string Title { get; set; } = "Loot Spawner";
+    
 	[Property] public GameObject ViewModelPrefab { get; set; }
 
 	// [Property] public SkinnedModelRenderer BodyRenderer { get; set; }
@@ -38,9 +46,12 @@ public class Weapon : Component
 
 	protected override void OnStart()
 	{
-		OnDeployed();
+		GetWeapon = new ContextAction( "weapon.get", "Pegar", "textures/crosshair.png" );
+		Position = Transform.Position;
+		Tags.Add("interaction");
 
-		base.OnStart();
+		OnDeployed();
+		// base.OnStart();
 	}
 
 	protected virtual void OnDeployed()
@@ -72,4 +83,39 @@ public class Weapon : Component
 
 		this.ModelRenderer.Enabled = false;
 	}
+
+	public string GetContextName()
+	{
+		return Title;
+	}
+
+		public IEnumerable<ContextAction> GetSecondaryActions( Player player )
+	{
+		yield break;
+	}
+
+	public ContextAction GetPrimaryAction( Player player )
+	{
+		return GetWeapon;
+	}
+
+	public virtual void OnContextAction( Player player, ContextAction action )
+	{
+		if ( action == GetWeapon )
+		{
+			// if ( Game.IsServer )
+			// {
+			// 	var timedAction = new TimedActionInfo( Open );
+
+			// 	timedAction.SoundName = OpeningSound;
+			// 	timedAction.Title = "Opening";
+			// 	timedAction.Origin = Position;
+			// 	timedAction.Duration = 1f;
+			// 	timedAction.Icon = "textures/ui/actions/open.png";
+
+			// 	player.StartTimedAction( timedAction );
+			// }
+		}
+	}
+
 }
