@@ -1,0 +1,69 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.UI.Construct;
+@using System;
+@using System.Collections.Generic;
+@using Sandbox.Utility;
+
+@namespace Gamejam.UI
+@attribute [StyleSheet( "/ui/TimedAction.scss" )]
+@inherits Panel
+
+@if ( Info is null ) return;
+
+<root>
+    <div @ref="Container" class="container">
+        <div class="circle">
+            <img class="icon" src=@Info.Icon />
+            <div @ref="Fill" class="fill"></div>
+        </div>
+        <label class="title">@Info.Title</label>
+    </div>
+</root>
+
+@code
+{
+    public Gamejam.TimedAction Info => Player.Local?.TimedAction ?? default;
+    public Panel Container { get; private set; }
+    public Panel Fill { get; private set; }
+
+    public void UpdatePosition()
+    {
+        var position = Info.Origin.ToScreen();
+        if ( position.z < 0f ) return;
+
+        position.x *= Screen.Size.x;
+        position.x -= Container.Box.Rect.Width * 0.5f;
+
+        position.y *= Screen.Size.y;
+        position.y -= Container.Box.Rect.Height * 0.5f;
+
+        Container.Style.Left = Length.Pixels( position.x * ScaleFromScreen );
+        Container.Style.Top = Length.Pixels( position.y * ScaleFromScreen );
+    }
+
+    public override void Tick()
+    {
+        if ( Fill is null || Container is null )
+            return;
+
+        if ( Info is not null )
+        {
+            var fraction = Info.EndTime / Info.Duration;
+
+            UpdatePosition();
+
+            var tx = new PanelTransform();
+            tx.AddScale( Easing.EaseOut( 1f - fraction ) );
+
+            Fill.Style.Transform = tx;
+        }
+
+        base.Tick();
+    }
+
+    protected override int BuildHash()
+    {
+        return HashCode.Combine( Info );
+    }
+}

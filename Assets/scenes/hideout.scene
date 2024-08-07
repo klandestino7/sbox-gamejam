@@ -26,9 +26,9 @@
     },
     {
       "__guid": "5c020af3-d567-4565-b329-2ddc20da4df9",
-      "Flags": 32,
+      "Flags": 0,
       "Name": "Map Instance",
-      "Position": "363.2718,-209.4914,-0.0002105982",
+      "Position": "363.2718,-209.4914,0",
       "Enabled": true,
       "Components": [
         {
@@ -292,6 +292,35 @@
       "Name": "Object",
       "Position": "241.3083,56.43559,38.87313",
       "Enabled": true
+    },
+    {
+      "__guid": "d0fd8ce7-cd5d-4a96-8a06-da7369763865",
+      "Flags": 0,
+      "Name": "Cube",
+      "Position": "-485.4712,-420.9295,25.23108",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "59535dae-66b7-483c-ab5b-88245ace2be7",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Gamejam.OpenDoor",
+          "__guid": "14d734ca-ca38-4c8c-8ffa-fea9d9f0d50d"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "9c2e898e-84d6-4867-9f08-c16ea54c7c6e",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": true
+        }
+      ]
     }
   ],
   "SceneProperties": {

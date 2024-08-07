@@ -67,6 +67,7 @@ public partial class Player : Component, Component.ExecuteInEditor
 
 		UpdateStamina();
 		RestoreStamina();
+		UpdateInteractions();
 	}
 	protected override void OnPreRender()
 	{

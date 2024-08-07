@@ -1,0 +1,202 @@
+﻿CursorAction {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: black;
+    border: 2px solid white;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in;
+    opacity: 0;
+
+    .icon {
+        width: 75%;
+        height: 75%;
+    }
+
+    .name {
+        transition: all 0.2s ease-in;
+        text-shadow: 0px 0px 2px black;
+        position: absolute;
+        font-family: Vollkorn;
+        font-weight: bold;
+        font-size: 16px;
+        color: lightyellow;
+        top: 0px;
+    }
+
+    .condition {
+        transition: all 0.2s ease-in;
+        text-shadow: 0px 0px 2px black;
+        position: absolute;
+        font-family: Vollkorn;
+        font-weight: bold;
+        font-size: 16px;
+        color: white;
+        top: 0px;
+    }
+
+    &.unavailable {
+        &.visible {
+            opacity: 0.9;
+            background-color: darken( indianred, 1 );
+            border-color: indianred;
+
+            .icon {
+                background-tint: lighten( indianred, 0.2 );
+            }
+        }
+
+        .condition {
+            color: red;
+        }
+    }
+
+    &.is-hovered {
+        &:not( .unavailable ) {
+            background-color: darken( springgreen, 0.8 );
+            border-color: springgreen;
+            transform: scale( 1.15 );
+
+            .name {
+                color: springgreen;
+            }
+        }
+    }
+
+    &.visible {
+        .name {
+            top: 72px;
+        }
+
+        .condition {
+            top: 90px;
+        }
+
+        width: 64px;
+        height: 64px;
+        opacity: 1;
+    }
+}
+
+Cursor {
+    position: absolute;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    align-items: center;
+    justify-content: center;
+
+    &.is-aiming {
+        border-color: red;
+    }
+
+    .title {
+        transition: all 0.2s ease-in;
+        text-shadow: 0px 0px 2px black;
+        position: absolute;
+        font-family: Vollkorn;
+        font-size: 18px;
+        color: white;
+        opacity: 0;
+        top: 0px;
+    }
+
+    .actions {
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        transition: all 0.2s ease-in;
+        opacity: 0;
+
+        CursorAction {
+            margin-right: 16px;
+
+            &:last-child {
+                margin-right: 0px;
+            }
+        }
+    }
+
+    .primary-action {
+        position: absolute;
+    }
+
+    .plus-more {
+        background-image: url( /textures/ui/plus.png );
+        background-size: cover;
+        transition: all 0.2s ease-in;
+        position: absolute;
+        opacity: 0;
+        width: 0px;
+        height: 0px;
+        left: 16px;
+        top: 16px;
+    }
+
+    .action-cursor {
+        position: absolute;
+        background-color: white;
+        box-shadow: 0px 0px 4px 4px rgba( black, 0.2 );
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: none;
+    }
+
+    &.recent-action {
+        .title, .primary-action, .plus-more {
+            display: none;
+        }
+    }
+
+    &.was-deleted {
+        .title, .primary-action, .plus-more {
+            display: none;
+        }
+    }
+
+    &.secondary-open {
+        .actions {
+            opacity: 1;
+        }
+
+        .primary-action {
+            opacity: 0;
+        }
+
+        .action-cursor {
+            display: flex;
+        }
+
+        background-color: transparent;
+        border-color: transparent;
+    }
+
+    &.has-actions {
+        &.has-secondary {
+            .plus-more {
+                width: 24px;
+                height: 24px;
+            }
+
+            &:not( .secondary-open ) {
+                .plus-more {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .title {
+            opacity: 1;
+            top: -64px;
+        }
+    }
+
+    &.hidden {
+        display: none;
+    }
+}
