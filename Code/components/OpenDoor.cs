@@ -16,7 +16,7 @@ public class OpenDoor : Component, IContextActionProvider
 	}
 	protected override void OnStart()
 	{
-		GoToWorld = new ContextAction( "home", "Make Home", "textures/crosshair.png" );
+		GoToWorld = new ContextAction( "go.raid", "Go Raid", "ui/actions/open_door.png" );
 		Position = Transform.Position;
 		Tags.Add("interaction");
 	}
@@ -35,18 +35,7 @@ public class OpenDoor : Component, IContextActionProvider
 	{
 		if ( action == GoToWorld )
 		{
-			// if ( Game.IsServer )
-			// {
-			// 	var timedAction = new TimedActionInfo( Open );
-
-			// 	timedAction.SoundName = OpeningSound;
-			// 	timedAction.Title = "Opening";
-			// 	timedAction.Origin = Position;
-			// 	timedAction.Duration = 1f;
-			// 	timedAction.Icon = "textures/ui/actions/open.png";
-
-			// 	player.StartTimedAction( timedAction );
-			// }
+			Game.Instance.InitLevel( eGameLevel.Level0 );
 		}
 	}
 
