@@ -23,7 +23,9 @@ public partial class Player
 
 	public void SetContextAction( ContextAction action )
 	{
+		var actions = TargetedGameObject.Components.Get<IContextActionProvider>();
 		ContextActionId = action.Hash;
+		actions.OnContextAction( this, action );
 	}
 	private void UpdateInteractions()
 	{
@@ -37,50 +39,48 @@ public partial class Player
 		// 			.WithoutTags( "world" )
 		// 			.Run();
 
-
-
 		TargetedGameObject = thinTrace.GameObject;
 
-		var actions = TargetedGameObject as IContextActionProvider;
-		var actionId = ContextActionId;
+		// var actions = TargetedGameObject as IContextActionProvider;
+		// var actionId = ContextActionId;
 
-		if ( !IsProxy )
-		{
-			var entities = Scene.Trace.Sphere( 500f, new Ray( Transform.Position, Vector3.Forward ), 0f )
-							.WithTag( "interaction" )
-							.IgnoreGameObject( GameObject )
-							.RunAll();
+		// if ( !IsProxy )
+		// {
+			// var entities = Scene.Trace.Sphere( 500f, new Ray( Transform.Position, Vector3.Forward ), 0f )
+			// 				.WithTag( "interaction" )
+			// 				.IgnoreGameObject( GameObject )
+			// 				.RunAll();
 
-			foreach ( var entity in LastEntitiesInRange )
-			{
-				var glow = entity.Components.Get<HighlightOutline>();
-				glow.Enabled = false;
-			}
+			// foreach ( var entity in LastEntitiesInRange )
+			// {
+			// 	var glow = entity.Components.Get<HighlightOutline>();
+			// 	glow.Enabled = false;
+			// }
 
-			LastEntitiesInRange.Clear();
+			// LastEntitiesInRange.Clear();
 
-			foreach ( var entity in entities )
-			{
-				// if ( entity.GameObject is not IContextActionProvider)
-				// 		return;
+			// foreach ( var entity in entities )
+			// {
+			// 	if ( entity.GameObject is not IContextActionProvider)
+			// 			return;
 
-				var contextAction = entity.Component.Components.Get<IContextActionProvider>();
-				// Log.Info($" contextAction :: {contextAction}");
+			// 	var contextAction = entity.Component.Components.Get<IContextActionProvider>();
+			// 	// Log.Info($" contextAction :: {contextAction}");
 
-				if ( Transform.Position.Distance( entity.GameObject.Transform.Position ) > contextAction.InteractionRange * 3f )
-					continue;
+			// 	if ( Transform.Position.Distance( entity.GameObject.Transform.Position ) > contextAction.InteractionRange * 3f )
+			// 		continue;
 
-				if ( !contextAction.AlwaysGlow )
-					continue;
+			// 	if ( !contextAction.AlwaysGlow )
+			// 		continue;
 
-				var glow = entity.Component.Components.GetOrCreate<HighlightOutline>();
-				glow.InsideObscuredColor = contextAction.GlowColor.WithAlpha( 1f );
-				glow.Color = contextAction.GlowColor.WithAlpha( 1f );
-				glow.Width = 1f;
-				glow.Enabled = true;
+			// 	var glow = entity.Component.Components.GetOrCreate<HighlightOutline>();
+			// 	glow.InsideObscuredColor = contextAction.GlowColor.WithAlpha( 1f );
+			// 	glow.Color = contextAction.GlowColor.WithAlpha( 1f );
+			// 	glow.Width = 1f;
+			// 	glow.Enabled = true;
 
-				LastEntitiesInRange.Add( entity.GameObject );
-			}
+			// 	LastEntitiesInRange.Add( entity.GameObject );
+			// }
 
 			// if ( actions.IsValid() && Transform.Position.Distance( actions.Position ) <= actions.InteractionRange )
 			// {
@@ -90,26 +90,26 @@ public partial class Player
 			// 	glow.Width = 0.2f;
 			// 	glow.Enabled = true;
 
-			// 	LastEntitiesInRange.Add( actions );
+			// 	LastEntitiesInRange.Add( TargetedGameObject );
 			// }
 
-			ContextActionId = 0;
-		}
+		// 	ContextActionId = 0;
+		// }
 
-		if ( actions.IsValid() && Transform.Position.Distance( actions.Position ) <= actions.InteractionRange )
-		{
-			if ( actionId != 0 )
-			{
-				var allActions = IContextActionProvider.GetAllActions( this, actions );
-				var action = allActions.Where( a => a.IsAvailable( this ) && a.Hash == actionId ).FirstOrDefault();
+		// if ( actions.IsValid() && Transform.Position.Distance( actions.Position ) <= actions.InteractionRange )
+		// {
+		// 	if ( actionId != 0 )
+		// 	{
+		// 		var allActions = IContextActionProvider.GetAllActions( this, actions );
+		// 		var action = allActions.Where( a => a.IsAvailable( this ) && a.Hash == actionId ).FirstOrDefault();
 
-				if ( action.IsValid() )
-				{
-					actions.OnContextAction( this, action );
-					// return true;
-				}
-			}
-		}
+		// 		if ( action.IsValid() )
+		// 		{
+		// 			actions.OnContextAction( this, action );
+		// 			// return true;
+		// 		}
+		// 	}
+		// }
 
 		// return false;
 	}

@@ -19,7 +19,7 @@ public class Weapon : Component, IContextActionProvider
 	public Vector3 Position { get; set; }
     
 	private ContextAction GetWeapon { get; set; }
-	public virtual string Title { get; set; } = "Loot Spawner";
+	public virtual string Title { get; set; } = "Generic Item";
     
 	[Property] public GameObject ViewModelPrefab { get; set; }
 
@@ -103,18 +103,7 @@ public class Weapon : Component, IContextActionProvider
 	{
 		if ( action == GetWeapon )
 		{
-			// if ( Game.IsServer )
-			// {
-			// 	var timedAction = new TimedActionInfo( Open );
-
-			// 	timedAction.SoundName = OpeningSound;
-			// 	timedAction.Title = "Opening";
-			// 	timedAction.Origin = Position;
-			// 	timedAction.Duration = 1f;
-			// 	timedAction.Icon = "textures/ui/actions/open.png";
-
-			// 	player.StartTimedAction( timedAction );
-			// }
+			Log.Info(" Lógica de Pegar Arma ");
 		}
 	}
 

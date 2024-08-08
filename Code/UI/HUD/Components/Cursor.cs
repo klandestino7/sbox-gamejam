@@ -30,6 +30,7 @@ public class CursorAction : Panel
 		if ( Action.IsValid() && Action.IsAvailable( Player ) )
 		{
 			Player.SetContextAction( Action );
+			
 			return true;
 		}
 
@@ -38,7 +39,7 @@ public class CursorAction : Panel
 
 	public void ClearAction()
 	{
-		Action = default;
+		Action = null;
 	}
 
 	public void SetAction( ContextAction action )
@@ -71,7 +72,7 @@ public class CursorAction : Panel
 	}
 }
 
-[StyleSheet( "/ui/Cursor.scss" )]
+[StyleSheet( "/UI/HUD/Components/Cursor.scss" )]
 public class Cursor : Panel
 {
 	public static Cursor Current { get; private set; }
@@ -108,17 +109,18 @@ public class Cursor : Panel
 
 	public override void Tick()
 	{
-		if ( !Player.IsValid() || !TargetedGameObject.IsValid() ) {			
+		if ( !Player.IsValid() ) {			
+			return;
+		}
+
+		OnUpdateFixed();
+
+		if ( TargetedGameObject == null || !TargetedGameObject.IsValid() ) {
 			ClearActionProvider();
 			return;
-		} 
-
-		// Style.Left = Length.Fraction( player.Cursor.x );
-		// Style.Top = Length.Fraction( player.Cursor.y );
+		}
 
 		var provider = TargetedGameObject.Components.Get<IContextActionProvider>();
-
-		Log.Info($" provider  :{ TargetedGameObject}");
 
 		if ( Player.HasTimedAction )
 		{
@@ -204,8 +206,10 @@ public class Cursor : Panel
 		if ( ActionProvider == null )
 			return;
 
-		ActionContainer.DeleteChildren( true );
-		PrimaryAction.ClearAction();
+		PrimaryAction?.ClearAction();
+		ActionContainer?.DeleteChildren( true );
+
+		Title.Text = null;
 
 		SetClass( "was-deleted", !ActionProvider.IsValid() );
 		SetClass( "has-secondary", false );
@@ -214,8 +218,7 @@ public class Cursor : Panel
 		ActionProvider = null;
 	}
 
-	// [Event.Client.BuildInput]
-	private void BuildInput()
+	public void OnUpdateFixed()
 	{
 		var hasSecondaries = ActionContainer.ChildrenCount > 0;
 		var secondaryHoldDelay = 0.25f;
