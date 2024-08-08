@@ -46,7 +46,7 @@ public class Weapon : Component, IContextActionProvider
 
 	protected override void OnStart()
 	{
-		GetWeapon = new ContextAction( "weapon.get", "Pegar", "textures/crosshair.png" );
+		GetWeapon = new ContextAction( "weapon.get", "Pickup", "ui/actions/pickup.png" );
 		Position = Transform.Position;
 		Tags.Add("interaction");
 
@@ -89,7 +89,7 @@ public class Weapon : Component, IContextActionProvider
 		return Title;
 	}
 
-		public IEnumerable<ContextAction> GetSecondaryActions( Player player )
+	public IEnumerable<ContextAction> GetSecondaryActions( Player player )
 	{
 		yield break;
 	}
