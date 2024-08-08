@@ -1,7 +1,7 @@
 {
   "Title": "Gamejam - Project",
   "Type": "game",
-  "Org": "local",
+  "Org": "nxtstudio",
   "Ident": "gamejam___project",
   "Schema": 1,
   "IncludeSourceFiles": false,
