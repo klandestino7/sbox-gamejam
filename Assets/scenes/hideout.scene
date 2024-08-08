@@ -29,6 +29,7 @@
       "Flags": 0,
       "Name": "Map Instance",
       "Position": "363.2718,-209.4914,0",
+      "Tags": "world",
       "Enabled": true,
       "Components": [
         {
@@ -321,6 +322,16 @@
           "Static": true
         }
       ]
+    },
+    {
+      "__guid": "35adad1d-c99b-4d9b-a18c-38a8e2672c21",
+      "Flags": 0,
+      "Name": "weapon_flashlight",
+      "Position": "-398.4753,-433.2674,3.989994",
+      "Scale": "-1.463042,-1.514319,1",
+      "Enabled": true,
+      "__Prefab": "weapons/flashlight/weapon_flashlight.prefab",
+      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {
