@@ -16,20 +16,13 @@
 
         <Body>
             <div class="layout row gap-insane">
-                <div class="save-slot"> 
-                    <div class="slot"> Empty </div>
-                    <div class="name active"> Save 1 </div>
-                </div>
-
-                <div class="save-slot"> 
-                    <div class="slot"> Empty </div>
-                    <div class="name"> Save 2 </div>
-                </div>
-
-                <div class="save-slot"> 
-                    <div class="slot"> Empty </div>
-                    <div class="name"> Save 3 </div>
-                </div>
+                @for ( var slotId = 0; slotId < 3; slotId++ )
+                {
+                    <div class="@IsActiveSlot(slotId)" onclick=@( () => SelectSlot( @slotId ) ) > 
+                        <div class="slot"> Empty </div>
+                        <div class="name "> Save @(slotId + 1) </div>
+                    </div>
+                }
             </div>
         </Body>
 
@@ -42,6 +35,23 @@
 @code
 {
     public MapDefinition SelectedMap { get; set; }
+    public int SelectedSlot = -1;
+
+    public void SelectSlot( int selectedId )
+    {
+        Log.Info($" SelectSlot :: {selectedId}"); // retornando sempre 3
+        SelectedSlot = selectedId;
+    }
+
+    public String IsActiveSlot(int slotId) 
+    {   
+        if ( slotId == SelectedSlot )
+        {
+            return "save-slot active";
+        }
+        
+        return "save-slot";
+    }
 
     private void Join()
     {

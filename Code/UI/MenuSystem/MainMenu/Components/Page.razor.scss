@@ -196,6 +196,14 @@ Page
                 color: $main-color-dark;
             }
         }
+
+        &:hover, &.active, &:active
+        {
+            .name {
+                background-color: $main-color;
+                color: $main-color-dark;
+            }
+        }
     }
 
 }
