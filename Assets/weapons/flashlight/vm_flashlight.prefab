@@ -8,12 +8,6 @@
       {
         "__type": "Gamejam.ViewModel",
         "__guid": "0de2f15b-2093-40fd-a985-05cb497fb2ff",
-        "ArmsModelRenderer": {
-          "_type": "component",
-          "component_id": "0f997255-5ce6-4140-8275-a83c9659612a",
-          "go": "08d32ba0-64ab-452d-8d9c-e752fa91da9c",
-          "component_type": "SkinnedModelRenderer"
-        },
         "ModelRenderer": {
           "_type": "component",
           "component_id": "5c7ad84b-2046-4bb8-af7a-c3f140916ad2",
@@ -25,22 +19,38 @@
         "__type": "Sandbox.SkinnedModelRenderer",
         "__guid": "5c7ad84b-2046-4bb8-af7a-c3f140916ad2",
         "BodyGroups": 18446744073709551615,
-        "CreateBoneObjects": false,
+        "CreateBoneObjects": true,
         "Model": "models/flashlight/flashlight.vmdl",
-        "RenderType": "On",
+        "RenderType": "Off",
         "Tint": "1,1,1,1",
         "UseAnimGraph": true
       }
     ],
     "Children": [
       {
-        "__guid": "08d32ba0-64ab-452d-8d9c-e752fa91da9c",
+        "__guid": "eb44eea5-0fed-49e6-a8bc-ca0f973300bf",
         "Flags": 0,
-        "Name": "arms (1)",
+        "Name": "arms",
         "Enabled": true,
         "NetworkMode": 0,
-        "__Prefab": "weapons/arms.prefab",
-        "__PrefabVariables": {}
+        "Components": [
+          {
+            "__type": "Sandbox.SkinnedModelRenderer",
+            "__guid": "3bb91fea-1bee-4910-a083-79f8baa069b3",
+            "BodyGroups": 21,
+            "BoneMergeTarget": {
+              "_type": "component",
+              "component_id": "5c7ad84b-2046-4bb8-af7a-c3f140916ad2",
+              "go": "76cbccb7-c258-4e65-aca1-9a1011f9b09b",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "CreateBoneObjects": false,
+            "Model": "models/first_person/first_person_arms.vmdl",
+            "RenderType": "Off",
+            "Tint": "1,1,1,1",
+            "UseAnimGraph": true
+          }
+        ]
       }
     ],
     "__variables": []

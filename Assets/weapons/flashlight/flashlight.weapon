@@ -1,5 +1,6 @@
 {
   "Name": "Flashlight",
+  "Description": "The flashlight.",
   "MainPrefab": {
     "_type": "gameobject",
     "prefab": "weapons/flashlight/w_flashlight.prefab"
@@ -8,6 +9,7 @@
     "_type": "gameobject",
     "prefab": "weapons/flashlight/vm_flashlight.prefab"
   },
+  "WorldModel": "models/flashlight/flashlight.vmdl",
   "__references": [],
   "__version": 0
 }
