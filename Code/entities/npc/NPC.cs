@@ -8,12 +8,28 @@ public partial class NPC : Component
 {
 	public static bool Debug { get; set; } = false;
 
-
 	[Property] public virtual HealthSystem HealthSystem { get; set; }
 	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
 	[Property] public SkinnedModelRenderer Body;
 	[Property] public CharacterController CharacterController { get; set; }
 	[Property] public bool IsStatic { get; set; } = false;
+
+	[Property]
+	[Range( 0f, 1024f, 16f, false )]
+	public float MaxDetectDistance { get; set; } = 256f;
+
+	[Property]
+	// [Category( "Stats" )]
+	public bool ScaleStats { get; set; } = true;
+	public float ObjectScale => ScaleStats ? MathF.Max( MathF.Max( GameObject.Transform.Scale.x, GameObject.Transform.Scale.y ), GameObject.Transform.Scale.z ) : 1f;
+
+	[Property]
+	public TagSet EnemyTags { get; set; }
+
+	[Property]
+	// [Category( "Stats" )]
+	[Range( 0f, 2024f, 16f, false )]
+	public float MaxDistanceToLostTarget { get; set; } = 512f;
 
 	public delegate void NpcTrigger( GameObject enemy );
 
@@ -71,6 +87,22 @@ public partial class NPC : Component
 	[HostSync] public Vector3 TargetPosition { get; set; }
 	public Collider Collider { get; private set; }
 
+	/// <summary>
+	/// How far the NPC can reach to attack with the target
+	/// </summary>
+	[Property]
+	[Category( "Stats" )]
+	[Range( 30f, 200f, 10f, false )]
+	public float AttackRange { get; private set; } = 80f;
+	/// <summary>
+	/// How many seconds must pass before the NPC can attack with the target again
+	/// </summary>
+	[Property]
+	[Category( "Stats" )]
+	[Range( 0.5f, 10f, 0.1f, false )]
+	public float AttackCooldown { get; private set; } = 5f;
+	[HostSync] public TimeUntil NextAttack { get; set; }
+
 	protected override void OnStart()
 	{
 		Tags.Add( "npc" );
@@ -111,7 +143,6 @@ public partial class NPC : Component
 		BroadcastOnSpawn();
 	}
 
-
 	public virtual string GetDisplayName()
 	{
 		return "NPC";
@@ -125,31 +156,54 @@ public partial class NPC : Component
 	protected override void OnUpdate()
 	{
 		UpdateAnimation();
-		SearchPlayerTarget();
 	}
+
 
 	public void SearchPlayerTarget()
 	{
-		if (TargetObject == null) {
-			var playerObject = Scene.GetAllComponents<Player>().First().GameObject;
-			var playerPosition = playerObject.Transform.Position;
-			var distanceToTarget = Transform.Position.Distance( playerPosition ) / 2f;
-
-			if ( distanceToTarget <= 200) {
-				TargetObject = playerObject;
-			} else {
-				TargetObject = null;
+		if ( TargetObject != null )
+		{
+			if ( IsWithinRange( TargetObject ) ) // Is the target within reach
+			{
+				if ( NextAttack )
+				{
+					BroadcastOnAttack();
+					NextAttack = AttackCooldown;
+				}
 			}
 		}
 
-		if ( TargetObject.IsValid() ) {
-			var playerPosition = TargetObject.Transform.Position;
-			var distanceToTarget = Transform.Position.Distance( playerPosition ) / 2f;
+		var playersClosest = Scene.FindInPhysics( new Sphere( Transform.Position, MaxDetectDistance * ObjectScale ) ) // Find gameobjects nearby
+			.Where( x => x.Enabled )
+			.Where( x => x.Tags.HasAny( "player" ) ) // Do they have any of our enemy tags
+			.Where( x => !x.Components.Get<HealthSystem>()?.IsDead ?? true ); // Are they dead or undead]
 
-			if ( distanceToTarget >= 200) {
-				TargetObject = null;
+		if ( TargetObject == null )
+		{
+			if ( playersClosest.Any() ) {
+				LockTarget( playersClosest.First(), true ); // If we don't have any target yet, pick the first one around us
+				return;
 			}
 		}
+
+		if ( TargetObject != null && TargetObject.IsValid() )
+		{
+			var targetDead = TargetObject.Components.Get<HealthSystem>()?.IsDead ?? false; // Is our target dead or undead
+			var targetEscaped = TargetObject.Transform.Position.Distance( Transform.Position ) > MaxDistanceToLostTarget * ObjectScale; // Did our target get out of vision range
+
+			if ( targetEscaped || targetDead ) // Did our target die or escape
+				UnlockTarget();
+		}
+	}
+
+	public void LockTarget( GameObject target, bool alertOthers = false )
+	{
+		TargetObject = target;
+	}
+
+	public void UnlockTarget( )
+	{
+		TargetObject = null;
 	}
 
 	protected override void OnFixedUpdate()
@@ -160,6 +214,21 @@ public partial class NPC : Component
 			UpdateMovement();
 		}
 
+		SearchPlayerTarget();
+	}
+
+	public bool IsWithinRange( GameObject target )
+	{
+		if ( !GameObject.IsValid() ) return false;
+
+		return IsWithinRange( target, AttackRange * ObjectScale );
+	}
+
+	public bool IsWithinRange( GameObject target, float range = 60f )
+	{
+		if ( !GameObject.IsValid() ) return false;
+
+		return target.Transform.Position.Distance( Transform.Position ) <= range;
 	}
 
 	TimeSince timeSinceStep;
@@ -222,13 +291,15 @@ public partial class NPC : Component
 			OnEnemyEscaped?.Invoke( TargetObject );
 	}
 
+	public void SearchTarget()
+	{
 
-	
+	}
+
 	[ConCmd( "spawn_npc" )]
 	public static void DebugSpawnNPC( string name )
 	{
 		var allNpcs = PrefabLibrary.FindByComponent<NPC>();
-		Log.Info($" allNpcs :: {allNpcs}");
 
 		var foundNpc = allNpcs
 			.Where( p =>
@@ -238,8 +309,7 @@ public partial class NPC : Component
 				return p.GetComponent<NPC>().Get<string>("Name").ToLower() == name.ToLower();
 			}
 			).FirstOrDefault();
-		
-		Log.Info($" foundNpc :: {foundNpc}");
+	
 
 		if ( foundNpc != null )
 		{

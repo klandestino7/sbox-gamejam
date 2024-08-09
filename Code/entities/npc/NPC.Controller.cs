@@ -46,10 +46,7 @@ public partial class NPC : Component
 		TargetPosition = TargetObject.Transform.Position;
 		if ( TargetPosition == Vector3.Zero ) return;
 
-				
 		var distanceToTarget = Transform.Position.Distance( TargetPosition ) / 2f;
-
-		Log.Info($" distanceToTarget :: {distanceToTarget}");
 
 		if (distanceToTarget <= 30f) {
 			WishVelocity = Vector3.Zero;
