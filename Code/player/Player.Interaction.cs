@@ -24,15 +24,16 @@ public partial class Player
 	public void SetContextAction( ContextAction action )
 	{
 		var actions = TargetedGameObject.Components.Get<IContextActionProvider>();
+		if ( actions == null ) return;
 		ContextActionId = action.Hash;
 		actions.OnContextAction( this, action );
 	}
 	private void UpdateInteractions()
 	{
 		var thinTrace = Scene.Trace.Ray( ViewRay, INTERACTION_DISTANCE )
-					.IgnoreGameObject( GameObject )
-					.WithoutTags( "world" )
-					.Run();
+				.IgnoreGameObject( GameObject )
+				.WithoutTags( "world" )
+				.Run();
 
 		// var	trace = Scene.Trace.Ray( Transform.Position, Camera.Transform.Position * Vector3.Forward )
 		// 			.Size( 4f )

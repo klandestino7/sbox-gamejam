@@ -122,6 +122,8 @@ public class Cursor : Panel
 
 		var provider = TargetedGameObject.Components.Get<IContextActionProvider>();
 
+		if ( provider == null ) return;
+
 		if ( Player.HasTimedAction )
 		{
 			LastActionTime = 0f;
