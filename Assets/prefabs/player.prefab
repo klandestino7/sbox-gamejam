@@ -109,6 +109,20 @@
             "RenderType": "ShadowsOnly",
             "Tint": "1,1,1,1",
             "UseAnimGraph": true
+          },
+          {
+            "__type": "Sandbox.ModelPhysics",
+            "__guid": "338a7034-6e5e-4b15-bcfa-9109f78b81ce",
+            "Locking": {},
+            "Model": "models/player/hazmatsuit/hazmatsuit.vmdl",
+            "MotionEnabled": false,
+            "Renderer": {
+              "_type": "component",
+              "component_id": "9e47f821-cb5a-4abf-a5dc-00a542765474",
+              "go": "b5ef135d-b42a-4599-bc83-8fd4bd38e947",
+              "component_type": "SkinnedModelRenderer"
+            },
+            "RigidbodyFlags": 0
           }
         ],
         "Children": [
