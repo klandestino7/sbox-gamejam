@@ -1,13 +1,15 @@
 {
   "RootObject": {
-    "__guid": "b07f10df-40b4-45ab-9f2c-c5e9a87b73a5",
+    "__guid": "38b1ae4f-39e8-4f90-a7d9-a258a368dcb3",
     "Flags": 0,
     "Name": "arms",
+    "Position": "119.0181,120.5181,-178.9384",
     "Enabled": true,
+    "NetworkMode": 0,
     "Components": [
       {
         "__type": "Sandbox.SkinnedModelRenderer",
-        "__guid": "1458d091-2d24-448b-97cd-f5a3dfdced95",
+        "__guid": "7f3ca501-f6c3-4c77-8b44-ad2e378ba553",
         "BodyGroups": 21,
         "CreateBoneObjects": false,
         "Model": "models/first_person/first_person_arms.vmdl",
@@ -15,9 +17,7 @@
         "Tint": "1,1,1,1",
         "UseAnimGraph": true
       }
-    ],
-    "Children": [],
-    "__variables": []
+    ]
   },
   "ShowInMenu": false,
   "MenuPath": null,

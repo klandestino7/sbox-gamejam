@@ -7,7 +7,7 @@ namespace Gamejam;
 public partial class Player : Component, Component.ExecuteInEditor
 {
 	public CameraComponent ViewModelCamera;
-
+	
 	/// <summary>
 	/// The position this player last spawned at.
 	/// </summary>

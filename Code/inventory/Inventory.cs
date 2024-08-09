@@ -12,6 +12,8 @@ public class Inventory : Component
 
 	public IReadOnlyList<ItemComponent?> Items => this._items;
 
+
+
 	public Inventory()
 	{
 		Log.Info( "Initialized inventory" );
@@ -164,6 +166,29 @@ public class Inventory : Component
 		return true;
 	}
 
+	public Weapon? AddWeapon( WeaponInfo weaponInfo )
+	{
+		if ( !weaponInfo.MainPrefab.IsValid() )
+		{
+			Log.Error( "WeaponInfo.MainPrefab is not valid" );
+
+			return null;
+		}
+
+		var gameObject = weaponInfo.MainPrefab.Clone( new CloneConfig()
+		{
+			Transform = new(),
+			Parent 	  = this.Player.GameObject,
+		});
+
+		gameObject.NetworkSpawn( Player.Network.OwnerConnection );
+
+		Weapon weapon = gameObject.Components.Get<Weapon>( FindMode.EverythingInSelfAndDescendants );
+		weapon.OwnerId = Player.Id;
+
+		return weapon;
+	}
+
 	[ConCmd( "giveitem" )]
 	public static void OnCommandGiveItem( string itemKey )
 	{
@@ -179,5 +204,20 @@ public class Inventory : Component
 		}
 
 		player.Inventory.AddItemByKey( itemKey );
+	}
+
+	[ConCmd( "giveweapon" )]
+	public static void OnGiveWeaponCommand()
+	{
+		WeaponInfo? weaponInfo = Sandbox.ResourceLibrary.Get<WeaponInfo>( "weapons/flashlight/flashlight.weapon" );
+
+		if ( weaponInfo == null )
+		{
+			Log.Error( "WeaponInfo not found" );
+
+			return;
+		}
+
+		Player.Local.Inventory.AddWeapon( weaponInfo );
 	}
 }

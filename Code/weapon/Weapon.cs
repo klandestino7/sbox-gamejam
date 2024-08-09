@@ -13,6 +13,8 @@ public enum eHoldType
 
 public class Weapon : Component, IContextActionProvider
 {
+	[Property, Group( "Resources" )] public WeaponInfo Info { get; set; }
+
 	public Color GlowColor => Color.Green;
 	public bool AlwaysGlow => true;
 	public float InteractionRange => 100f;
@@ -20,18 +22,39 @@ public class Weapon : Component, IContextActionProvider
     
 	private ContextAction GetWeapon { get; set; }
 	public virtual string Title { get; set; } = "Generic Item";
-    
-	[Property] public GameObject ViewModelPrefab { get; set; }
 
-	// [Property] public SkinnedModelRenderer BodyRenderer { get; set; }
+	[Property] public SkinnedModelRenderer? ModelRenderer { get; set; }
 
 	[Property] protected eAttachPoint AttachPoint { get; set; } = eAttachPoint.RightHand;
 
 	[Property] protected eHoldType HoldType { get; set; } = eHoldType.Rifle;
 
-	private SkinnedModelRenderer ModelRenderer { get; set; }
+	private Player? _owner;
 
-	private ViewModel ViewModel { get; set; }
+	public Player? Owner
+	{
+		get => _owner ??= Scene.Directory.FindComponentByGuid( OwnerId ) as Player;
+	}
+
+	[HostSync] public Guid OwnerId { get; set; }
+
+	[Sync] public bool IsDeployed { get; private set; }
+
+	private ViewModel? viewModel { get; set; }
+
+	private ViewModel? ViewModel
+	{
+		get => viewModel;
+		set
+		{
+			viewModel = value;
+
+			if ( viewModel.IsValid() )
+			{
+				viewModel.SetWeapon( this );
+			}
+		}
+	}
 
 	public bool HasViewModel => ViewModel.IsValid();
 
@@ -50,38 +73,73 @@ public class Weapon : Component, IContextActionProvider
 		Position = Transform.Position;
 		Tags.Add("interaction");
 
-		OnDeployed();
+		Log.Info( "Weapon started" );
+
+		if ( !this.IsDeployed )
+		{
+			this.OnDeployed();
+		}
+		else
+		{
+
+		}
+
+		// OnDeployed();
 		// base.OnStart();
 	}
 
-	protected virtual void OnDeployed()
+	protected void ClearViewModel()
 	{
-		this.ModelRenderer.Enabled = !this.HasViewModel;
-
-		if ( !this.IsProxy )
+		if ( ViewModel.IsValid() )
 		{
-			this.CreateViewModel();
+			this.ViewModel.GameObject.Destroy();
+
+			this.ViewModel = null;
 		}
 	}
 
 	protected void CreateViewModel()
 	{
-		if ( !this.ViewModelPrefab.IsValid() )
+		if ( !this.Owner.IsValid() )
 		{
 			return;
 		}
 
-		Player player = Components.GetInAncestors<Player>();
+		this.ClearViewModel();
+		this.UpdateRenderMode();
 
-		GameObject gameobject = this.ViewModelPrefab.Clone();
-		gameobject.Flags |= GameObjectFlags.NotNetworked;
-		gameobject.SetParent( player.GameObject );
-		
-		this.ViewModel = gameobject.Components.Get<ViewModel>();
-		this.ViewModel.SetWeapon( this );
-		this.ViewModel.SetCamera( player.ViewModelCamera );
+		if ( this.Info.ViewModelPrefab.IsValid() )
+		{
+			Log.Info( "Weapon::CreateViewModel -> View model creating" );
 
-		this.ModelRenderer.Enabled = false;
+			GameObject viewModelGameObject = this.Info.ViewModelPrefab.Clone( new CloneConfig()
+			{
+				Transform 	 = new(),
+				Parent 		 = this.Owner.ViewModelCamera.GameObject,
+				StartEnabled = true,
+			});
+
+			this.ViewModel = viewModelGameObject.Components.Get<ViewModel>();
+
+			viewModelGameObject.BreakFromPrefab();
+		}
+	}
+
+	protected void UpdateRenderMode()
+	{
+		bool enabled = this.Owner.IsValid() && !this.Owner.IsPossessed && this.IsDeployed;
+	}
+
+	protected virtual void OnDeployed()
+	{
+		if ( this.Owner.IsValid() && Owner.IsPossessed )
+		{
+			Log.Info( "Weapon::OnDeployed is possessed" );
+
+			this.CreateViewModel();
+		}
+
+		this.UpdateRenderMode();
 	}
 
 	public string GetContextName()

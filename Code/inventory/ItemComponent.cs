@@ -9,8 +9,6 @@ public class ItemComponent : Component
 	[Property, Sync] public string? Weight { get; set; }
 	[Sync] public string? Prefab { get; private set; }
 
-
-
 	public Player? OwnedBy { get; set; }
 
 	protected override void OnStart()

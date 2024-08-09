@@ -1,0 +1,13 @@
+{
+  "Name": "Flashlight",
+  "MainPrefab": {
+    "_type": "gameobject",
+    "prefab": "weapons/flashlight/w_flashlight.prefab"
+  },
+  "ViewModelPrefab": {
+    "_type": "gameobject",
+    "prefab": "weapons/flashlight/vm_flashlight.prefab"
+  },
+  "__references": [],
+  "__version": 0
+}
