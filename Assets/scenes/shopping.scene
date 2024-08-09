@@ -25,34 +25,6 @@
       ]
     },
     {
-      "__guid": "6517cad1-17bb-4189-925c-52e77c2c033e",
-      "Flags": 0,
-      "Name": "Screen",
-      "Position": "0,19.09842,0",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ScreenPanel",
-          "__guid": "fc716d04-d704-410d-9dac-d1e0cc1d8618",
-          "AutoScreenScale": true,
-          "Opacity": 1,
-          "Scale": 1,
-          "ZIndex": 100
-        }
-      ],
-      "Children": [
-        {
-          "__guid": "ea886a53-261e-49fe-a5ad-cc9cdd44a8a1",
-          "Flags": 0,
-          "Name": "Object",
-          "Position": "0,0,0",
-          "Enabled": true,
-          "__Prefab": "cursor.prefab",
-          "__PrefabVariables": {}
-        }
-      ]
-    },
-    {
       "__guid": "0c013e06-0afe-4b9b-8f27-81dfbfc1d980",
       "Flags": 0,
       "Name": "Game",
@@ -154,7 +126,7 @@
           "__guid": "cde8b96e-b56c-429c-a8cc-e889d5248f93",
           "Flags": 0,
           "Name": "shipping_container_open_dev",
-          "Position": "-88.94141,-485.1326,-1.365188",
+          "Position": "-88.94141,-601.7992,-1.365188",
           "Enabled": true,
           "Components": [
             {

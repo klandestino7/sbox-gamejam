@@ -404,6 +404,13 @@
       "Enabled": true,
       "__Prefab": "weapons/flashlight/weapon_flashlight.prefab",
       "__PrefabVariables": {}
+    },
+    {
+      "__guid": "3d0e932a-bdb0-44e0-b52f-bf5c902a1ddd",
+      "Flags": 0,
+      "Name": "Object",
+      "Position": "38.91431,-32.23053,52.35631",
+      "Enabled": true
     }
   ],
   "SceneProperties": {
