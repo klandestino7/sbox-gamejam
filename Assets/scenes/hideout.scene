@@ -204,6 +204,10 @@
               "__type": "Gamejam.UI.BlackScreen",
               "__guid": "d6e43ebe-eca8-4b83-8800-594da137afc8",
               "IsEnabled": false
+            },
+            {
+              "__type": "Gamejam.UI.PauseMenuPanel",
+              "__guid": "62505cd6-24ca-459e-8358-c58f9b9486b7"
             }
           ]
         },
