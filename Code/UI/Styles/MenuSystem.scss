@@ -10,6 +10,7 @@ MainMenuPanel, PauseMenuPanel
 }
 
 PauseMenuPanel {
+    position: absolute;
     pointer-events: none;
     opacity: 0;
     display: none;

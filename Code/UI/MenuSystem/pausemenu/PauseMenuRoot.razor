@@ -1,0 +1,20 @@
+@using Sandbox.Menu
+@using Sandbox.UI;
+@namespace Gamejam.UI
+
+@inherits Sandbox.UI.NavHostPanel
+
+<root>
+    <div class="background" />
+
+    <div class="navigator-canvas" slot="navigator-canvas" />
+</root>
+
+@code
+{
+	public PauseMenuRoot()
+    {
+        DefaultUrl = "/";
+	    AddDestination( "/", typeof( PausePage ) );
+    }
+}
