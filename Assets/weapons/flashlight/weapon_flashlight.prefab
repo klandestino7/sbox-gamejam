@@ -1,0 +1,63 @@
+{
+  "RootObject": {
+    "__guid": "1150335e-80c1-45f0-862a-26618bb9332f",
+    "Flags": 0,
+    "Name": "weapon_flashlight",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "33bc10df-2f70-4460-a44a-c608d9a2f18a",
+        "BodyGroups": 18446744073709551615,
+        "CreateBoneObjects": true,
+        "Model": "models/flashlight/flashlight.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": true
+      },
+      {
+        "__type": "Gamejam.WeaponFlashlight",
+        "__guid": "1f92219d-c27a-446f-9420-8940b1c4af84",
+        "AttachPoint": "RightHand",
+        "HoldType": "Rifle",
+        "ModelRenderer": {
+          "_type": "component",
+          "component_id": "33bc10df-2f70-4460-a44a-c608d9a2f18a",
+          "go": "1150335e-80c1-45f0-862a-26618bb9332f",
+          "component_type": "SkinnedModelRenderer"
+        }
+      },
+      {
+        "__type": "Sandbox.SphereCollider",
+        "__guid": "49981c90-2aa0-41b1-8b3d-d2520e9a0017",
+        "Center": "-0.3,1.7,0",
+        "IsTrigger": false,
+        "Radius": 5,
+        "Static": true
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "93bb70dd-6841-4c53-a476-02f20bf27209",
+        "Flags": 0,
+        "Name": "Muzzle",
+        "Position": "0.000002416024,-6.204249,0",
+        "Rotation": "0,0,-1,0.0000001947072",
+        "Enabled": true
+      },
+      {
+        "__guid": "3ce2fd50-1568-4087-b463-830315d77052",
+        "Flags": 4,
+        "Name": "hand_r",
+        "Enabled": true
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
