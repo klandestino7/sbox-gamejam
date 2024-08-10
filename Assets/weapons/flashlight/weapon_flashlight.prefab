@@ -28,12 +28,11 @@
         }
       },
       {
-        "__type": "Sandbox.SphereCollider",
-        "__guid": "49981c90-2aa0-41b1-8b3d-d2520e9a0017",
-        "Center": "-0.3,1.7,0",
+        "__type": "Sandbox.ModelCollider",
+        "__guid": "6ca9f2f2-7b63-4971-91a4-363e6011a63f",
         "IsTrigger": false,
-        "Radius": 5,
-        "Static": true
+        "Model": "models/flashlight/flashlight.vmdl",
+        "Static": false
       }
     ],
     "Children": [
