@@ -26,13 +26,6 @@
           "go": "1150335e-80c1-45f0-862a-26618bb9332f",
           "component_type": "SkinnedModelRenderer"
         }
-      },
-      {
-        "__type": "Sandbox.ModelCollider",
-        "__guid": "6ca9f2f2-7b63-4971-91a4-363e6011a63f",
-        "IsTrigger": false,
-        "Model": "models/flashlight/flashlight.vmdl",
-        "Static": false
       }
     ],
     "Children": [
