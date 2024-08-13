@@ -17,5 +17,16 @@
 	private int SelectedSlotId { get; set; } = -1;
 	// public static Inventory CurrentInventory { get; private set; }
 
+	public override void Tick()
+	{
+		for ( var slotId = 0; slotId < Player.Local.Inventory.NUM_SLOTS; slotId++ ) 
+		{
+			if (  Input.Pressed( $"Slot{slotId+1}" ) ) 
+			{
+				SelectedSlotId = SelectedSlotId == slotId ? -1 : slotId;
+			}
+		}
+	}
+
 	protected override int BuildHash() => HashCode.Combine( SelectedSlotId, Player.Local.Inventory.Items.HashCombine( i => i?.GetHashCode() ?? -1 ) );
 }
