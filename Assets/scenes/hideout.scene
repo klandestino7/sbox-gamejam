@@ -1,5 +1,5 @@
 {
-  "__guid": "eb02d5d0-9584-409b-96a2-9929455b00b9",
+  "__guid": "79cd07e4-2d85-4763-bd8a-db44f2b87046",
   "GameObjects": [
     {
       "__guid": "97492952-75ac-401f-ba2e-8d51d2c0bf7d",
@@ -231,20 +231,20 @@
       ]
     },
     {
-      "__guid": "36927ef7-24d9-48b7-a157-34b46ee7c12c",
+      "__guid": "bb44ab5d-713b-45f5-883b-da8620e79681",
       "Flags": 0,
-      "Name": "Object",
-      "Position": "222.4863,-57.93245,147.936",
+      "Name": "Object (4)",
+      "Position": "694.5753,-55.01305,147.9361",
       "Tags": "light_point,light",
       "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.PointLight",
-          "__guid": "967873ed-231d-46d5-bebd-033049adb67b",
+          "__guid": "24ff397c-9853-4b9b-ba3a-4e098646dca5",
           "Attenuation": 1,
           "FogMode": "Enabled",
           "FogStrength": 1,
-          "LightColor": "0.91373,0.98039,1,1",
+          "LightColor": "1,0.8549,0.40784,1",
           "Radius": 400,
           "Shadows": true
         }
@@ -254,7 +254,7 @@
       "__guid": "6384ff25-b88e-4ef3-90c7-3cf81fd20cd4",
       "Flags": 0,
       "Name": "Object (2)",
-      "Position": "-27.14105,590.8887,147.9354",
+      "Position": "40.05159,659.8533,147.9351",
       "Tags": "light_point,light",
       "Enabled": true,
       "Components": [
@@ -264,7 +264,7 @@
           "Attenuation": 1,
           "FogMode": "Enabled",
           "FogStrength": 1,
-          "LightColor": "0.91373,0.98039,1,1",
+          "LightColor": "1,0.8549,0.40784,1",
           "Radius": 400,
           "Shadows": true
         }
@@ -274,7 +274,7 @@
       "__guid": "93b5a0b0-cb79-4fc1-b996-00d1c4a4bd85",
       "Flags": 0,
       "Name": "Object (1)",
-      "Position": "-54.28281,-38.04675,147.9361",
+      "Position": "67.50375,-8.428041,147.9361",
       "Rotation": "0.7071067,0,0,0.7071068",
       "Tags": "light_point,light",
       "Enabled": true,
@@ -285,24 +285,39 @@
           "Attenuation": 1,
           "FogMode": "Enabled",
           "FogStrength": 1,
-          "LightColor": "0.91373,0.98039,1,1",
+          "LightColor": "1,0.85233,0.4093,1",
           "Radius": 400,
           "Shadows": true
         }
       ]
     },
     {
-      "__guid": "8663f587-57ed-4bf9-a3bf-fe9e51546a30",
+      "__guid": "b9bdc782-a743-4401-a3e2-903dc0f092b5",
       "Flags": 0,
-      "Name": "Object",
-      "Position": "241.3083,56.43559,38.87313",
-      "Enabled": true
+      "Name": "Object (3)",
+      "Position": "-409.9018,-407.129,147.9366",
+      "Rotation": "0.7071067,0,0,0.7071068",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "262d1562-4902-44e0-9857-e13f5944c3fb",
+          "Attenuation": 1,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "1,0.85233,0.4093,1",
+          "Radius": 400,
+          "Shadows": true
+        }
+      ]
     },
     {
       "__guid": "d0fd8ce7-cd5d-4a96-8a06-da7369763865",
       "Flags": 0,
       "Name": "Cube",
-      "Position": "-485.4712,-420.9295,25.23108",
+      "Position": "-532.0082,-523.9816,72.62798",
+      "Scale": "0.2701468,0.1855957,0.2153901",
       "Enabled": true,
       "Components": [
         {
@@ -311,11 +326,11 @@
           "BodyGroups": 18446744073709551615,
           "Model": "models/dev/box.vmdl",
           "RenderType": "On",
-          "Tint": "1,1,1,1"
+          "Tint": "0.91163,0.10176,0.10176,1"
         },
         {
-          "__type": "Gamejam.OpenDoor",
-          "__guid": "14d734ca-ca38-4c8c-8ffa-fea9d9f0d50d"
+          "__type": "Gamejam.GoRaid",
+          "__guid": "b5aeaaea-e539-4f80-8f44-16bb1bdefaaa"
         },
         {
           "__type": "Sandbox.BoxCollider",
@@ -326,16 +341,6 @@
           "Static": true
         }
       ]
-    },
-    {
-      "__guid": "35adad1d-c99b-4d9b-a18c-38a8e2672c21",
-      "Flags": 0,
-      "Name": "weapon_flashlight",
-      "Position": "-398.4753,-433.2674,3.989994",
-      "Scale": "-1.463042,-1.514319,1",
-      "Enabled": true,
-      "__Prefab": "weapons/flashlight/weapon_flashlight.prefab",
-      "__PrefabVariables": {}
     }
   ],
   "SceneProperties": {

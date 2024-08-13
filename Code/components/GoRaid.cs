@@ -1,13 +1,13 @@
 namespace Gamejam;
 
-public class OpenDoor : Component, IContextActionProvider
+public class GoRaid : Component, IContextActionProvider
 {
 	public Color GlowColor => Color.Green;
 	public bool AlwaysGlow => true;
 	public float InteractionRange => 100f;
 	[Property] public SoundEvent ToggleSound { get; set; }
 	private ContextAction GoToWorld { get; set; }
-	public virtual string Title { get; set; } = "Loot Spawner";
+	public virtual string Title { get; set; } = "Door";
 	public Vector3 Position { get; set; }
 
 	public string GetContextName()
@@ -35,7 +35,7 @@ public class OpenDoor : Component, IContextActionProvider
 	{
 		if ( action == GoToWorld )
 		{
-			Game.Instance.InitLevel( eGameLevel.Level0 );
+			GameModeManager.StartRaid( );
 		}
 	}
 
