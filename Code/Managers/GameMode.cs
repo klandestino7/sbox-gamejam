@@ -11,16 +11,22 @@ namespace Gamejam;
 public sealed class GameModeManager : SingletonComponent<GameModeManager>, Component.INetworkListener
 {
 
-    
 	[Broadcast( NetPermission.HostOnly )]
     public static void StartSession( PlayerState playerState)
 	{
 		// Player.Local.BlackScreen( 0f, 4f, 1f );
 		// UI.Hud.Instance.Panel.PlaySound( "car_intro" );
 		// await GameTask.DelayRealtimeSeconds( 2f );
-
+        
         CreateSession( playerState );
 	}
+
+	[Authority( NetPermission.HostOnly )]
+    public static void StartRaid()
+    {
+
+        Game.Instance.InitLevel( eGameLevel.Level0 );
+    }
 
     public static void CreateSession( PlayerState playerState )
     {
