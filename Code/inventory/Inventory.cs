@@ -1,8 +1,10 @@
+using Sandbox.Diagnostics;
+
 namespace Gamejam;
 
 public class Inventory : Component
 {
-	[Property] public Player Player { get; set; }
+	[Property] public required Player Player { get; set; }
 
 	public int NUM_SLOTS = 3;
 	
@@ -11,8 +13,6 @@ public class Inventory : Component
 	private List<ItemComponent?> _items;
 
 	public IReadOnlyList<ItemComponent?> Items => this._items;
-
-
 
 	public Inventory()
 	{
@@ -76,6 +76,15 @@ public class Inventory : Component
 
 	public bool AddItem( ItemComponent item, int slotId )
 	{
+		if ( slotId == 2 )
+		{
+			slotId = this.GetFreeSlotId();
+
+			Assert.AreNotEqual( slotId, -1, "Could not find a valid slotId for SlotId.Any" );
+		}
+
+		Assert.AreNotEqual( slotId, -1, "Invalid slot id!" );
+
 		if ( !this.CanAddItem( item, slotId ) )
 		{
 			return false;
@@ -83,7 +92,7 @@ public class Inventory : Component
 
 		this._items[ slotId ] = item;
 
-		Log.Info( $"AddItem :: Name='{ item.Name }'" );
+		Log.Info( $"AddItem :: Name='{ item.GetInfo()?.Name }'" );
 
 		return true;
 	}
@@ -92,18 +101,16 @@ public class Inventory : Component
 	{
 		var prefab = PrefabLibrary
 			.FindByComponent<ItemComponent>( )
-			.Where( p =>
-			{
-				Log.Info( $"itemname {  p.GetComponent<ItemComponent>().Get<string>("Name").ToLower() } other= { itemKey.ToLower() }" );
-
-				return p.GetComponent<ItemComponent>().Get<string>("Name").ToLower() == itemKey.ToLower();
-			}
-			).FirstOrDefault()
+			.FirstOrDefault( x => x.Name.ToLower() == itemKey.ToLower() )
 			?.Prefab;
 
 		if ( prefab == null )
 		{
-			Log.Error( $"Item not found with key equals to '{ itemKey }'" );
+			var itemNames = string.Join( ',', PrefabLibrary.FindByComponent<ItemComponent>().Select( v => v.Name ) );
+			Log.Warning( $"couldn't find { itemKey }" );
+			Log.Warning( $"valid item names: { itemNames }" );
+
+			return false;
 		}
 
 		int slotId = this.GetFreeSlotId();
@@ -117,16 +124,27 @@ public class Inventory : Component
 			return false;
 		}
 
-		var gameobject = SceneUtility.GetPrefabScene( prefab ).Clone();
+		var gameobject = SceneUtility.GetPrefabScene( prefab ).Clone( new CloneConfig()
+		{
+			Transform = new(),
+			Parent 	  = this.Player.GameObject,
+		});
 
 		gameobject.NetworkMode = NetworkMode.Object;
 		gameobject.NetworkSpawn();
 
-		if ( !this.AddItem( gameobject.Components.Get<ItemComponent>(), slotId ) )
+		var item = gameobject.Components.Get<ItemComponent>();
+
+		if ( !this.AddItem( item, slotId ) )
 		{
 			gameobject.Destroy();
 
 			return false;
+		}
+
+		if ( gameobject.Components.TryGet<WeaponItem>( out var weapon ) )
+		{
+			weapon.OwnerId = this.Player.Id;
 		}
 
 		return true;
@@ -166,7 +184,7 @@ public class Inventory : Component
 		return true;
 	}
 
-	public Weapon? AddWeapon( WeaponInfo weaponInfo )
+	public WeaponItem? AddWeapon( WeaponInfo weaponInfo )
 	{
 		if ( !weaponInfo.MainPrefab.IsValid() )
 		{
@@ -183,8 +201,10 @@ public class Inventory : Component
 
 		gameObject.NetworkSpawn( Player.Network.OwnerConnection );
 
-		Weapon weapon = gameObject.Components.Get<Weapon>( FindMode.EverythingInSelfAndDescendants );
+		WeaponItem weapon = gameObject.Components.Get<WeaponItem>( FindMode.EverythingInSelfAndDescendants );
 		weapon.OwnerId = Player.Id;
+
+		this.AddItem( weapon, -2 /* eSlotId.Any */ );
 
 		return weapon;
 	}

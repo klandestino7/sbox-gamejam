@@ -16,16 +16,22 @@
         "UseAnimGraph": true
       },
       {
-        "__type": "Gamejam.WeaponFlashlight",
-        "__guid": "1f92219d-c27a-446f-9420-8940b1c4af84",
+        "__type": "Gamejam.WeaponItem",
+        "__guid": "0145c25a-1163-4377-8c1a-34bd98b2864e",
         "AttachPoint": "RightHand",
         "HoldType": "Rifle",
+        "Info": "weapons/flashlight/flashlight.weapon",
         "ModelRenderer": {
           "_type": "component",
           "component_id": "33bc10df-2f70-4460-a44a-c608d9a2f18a",
           "go": "1150335e-80c1-45f0-862a-26618bb9332f",
           "component_type": "SkinnedModelRenderer"
         }
+      },
+      {
+        "__type": "Gamejam.ItemComponent",
+        "__guid": "ea1e007a-39b8-4696-adfe-bf54f93d0231",
+        "Info": "weapons/flashlight/flashlight.weapon"
       }
     ],
     "Children": [

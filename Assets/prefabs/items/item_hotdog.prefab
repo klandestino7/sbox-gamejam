@@ -2,16 +2,13 @@
   "RootObject": {
     "__guid": "ce11a0ca-f9fa-44e0-aee8-641bfb902b52",
     "Flags": 0,
-    "Name": "item_test",
+    "Name": "item_hotdog",
     "Enabled": true,
     "Components": [
       {
         "__type": "Gamejam.ItemComponent",
         "__guid": "5307f7c3-46ae-4e32-9665-389d5ffa877f",
-        "Description": "Teste",
-        "ModelPath": "models/citizen_props/hotdog01.vmdl",
-        "Name": "test",
-        "Weight": "2.8"
+        "Info": "weapons/flashlight/flashlight.weapon"
       },
       {
         "__type": "Sandbox.ModelRenderer",
@@ -28,8 +25,10 @@
         "Gravity": true,
         "LinearDamping": 0,
         "Locking": {},
+        "MassCenterOverride": "0,0,0",
         "MassOverride": 0,
         "MotionEnabled": true,
+        "OverrideMassCenter": false,
         "RigidbodyFlags": 0,
         "StartAsleep": false
       },

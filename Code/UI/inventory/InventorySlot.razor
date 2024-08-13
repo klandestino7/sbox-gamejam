@@ -36,7 +36,8 @@
 
 		Log.Info($" Item :: {Item}");
 
-		if ( Item == null || !Item.IsValid() ){
+		if ( !Item.IsValid() )
+		{
 			return;
 		}
 
@@ -45,7 +46,11 @@
 		sceneWorld = new SceneWorld();
 		scenePanel = new ScenePanel();
 
-		itemObject = new SceneModel( sceneWorld, Item.ModelPath, Transform.Zero );
+		if ( Item.IsValid() && Item.GameObject.Components.TryGet<ModelRenderer>( out var modelRenderer ) )
+		{
+			itemObject = new SceneModel( sceneWorld, modelRenderer.Model, Transform.Zero );
+		}
+
 		sceneDirectionalLight = new SceneDirectionalLight( sceneWorld, global::Rotation.From( 45, -45, 45 ), Color.White * 10f );
 		sceneLight = new SceneLight( sceneWorld, Vector3.Forward * 15f, 1000f, Color.White * 4f );
 
@@ -82,5 +87,5 @@
 		return Selected ? "active" : "";
 	}
 
-	protected override int BuildHash() => HashCode.Combine( Selected, this.Item?.GetHashCode() );
+	protected override int BuildHash() => HashCode.Combine( Selected , this.Item?.GetHashCode() );
 }

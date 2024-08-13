@@ -101,12 +101,18 @@ public static class PrefabLibrary
 					Prefab = prefab,
 					Components = components
 				};
+
+				Log.Info( $"Loaded prefab {name}" );
+
 				foreach ( var component in rootComponents )
 				{
 					var obj = component.AsObject();
 					var typeName = obj?["__type"]?.GetValue<string>();
 					if ( typeName == null )
 						continue;
+
+					Log.Info( $"	component {typeName}" );
+
 					components.Add( new()
 					{
 						Type = GlobalGameNamespace.TypeLibrary.GetType( typeName ),

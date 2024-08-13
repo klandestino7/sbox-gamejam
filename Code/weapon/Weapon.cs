@@ -11,16 +11,8 @@ public enum eHoldType
 	Rifle,
 }
 
-public class Weapon : Component, IContextActionProvider
+public class WeaponItem : ItemComponent, IContextActionProvider
 {
-	[Property, Group( "Resources" )] public WeaponInfo Info { get; set; }
-
-	public Color GlowColor => Color.Green;
-	public bool AlwaysGlow => true;
-	public float InteractionRange => 100f;
-	public Vector3 Position { get; set; }
-    
-	private ContextAction GetWeapon { get; set; }
 	public virtual string Title { get; set; } = "Generic Item";
 
 	[Property] public SkinnedModelRenderer? ModelRenderer { get; set; }
@@ -69,7 +61,6 @@ public class Weapon : Component, IContextActionProvider
 
 	protected override void OnStart()
 	{
-		GetWeapon = new ContextAction( "weapon.get", "Pickup", "ui/actions/pickup.png" );
 		Position = Transform.Position;
 		Tags.Add("interaction");
 
@@ -86,6 +77,11 @@ public class Weapon : Component, IContextActionProvider
 
 		// OnDeployed();
 		// base.OnStart();
+	}
+
+	public override WeaponInfo? GetInfo()
+	{
+		return (WeaponInfo?) base.GetInfo();
 	}
 
 	protected void ClearViewModel()
@@ -108,11 +104,13 @@ public class Weapon : Component, IContextActionProvider
 		this.ClearViewModel();
 		this.UpdateRenderMode();
 
-		if ( this.Info.ViewModelPrefab.IsValid() )
+		var info = this.GetInfo();
+
+		if ( info != null && info.ViewModelPrefab.IsValid() )
 		{
 			Log.Info( "Weapon::CreateViewModel -> View model creating" );
 
-			GameObject viewModelGameObject = this.Info.ViewModelPrefab.Clone( new CloneConfig()
+			GameObject viewModelGameObject = info.ViewModelPrefab.Clone( new CloneConfig()
 			{
 				Transform 	 = new(),
 				Parent 		 = this.Owner.ViewModelCamera.GameObject,
@@ -141,28 +139,4 @@ public class Weapon : Component, IContextActionProvider
 
 		this.UpdateRenderMode();
 	}
-
-	public string GetContextName()
-	{
-		return Title;
-	}
-
-	public IEnumerable<ContextAction> GetSecondaryActions( Player player )
-	{
-		yield break;
-	}
-
-	public ContextAction GetPrimaryAction( Player player )
-	{
-		return GetWeapon;
-	}
-
-	public virtual void OnContextAction( Player player, ContextAction action )
-	{
-		if ( action == GetWeapon )
-		{
-			Log.Info(" Lógica de Pegar Arma ");
-		}
-	}
-
 }

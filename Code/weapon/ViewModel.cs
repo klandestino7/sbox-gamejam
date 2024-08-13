@@ -11,7 +11,7 @@ public class ViewModel : Component
 	/// </summary>
 	// private PlayerController PlayerController => Weapon.Components.GetInAncestors<PlayerController>();
 	private CameraComponent Camera { get; set; }
-	private Weapon Weapon { get; set; }
+	private WeaponItem Weapon { get; set; }
 
 	/// Looks up the tree to find the player controller.
 	/// </summary>
@@ -28,7 +28,7 @@ public class ViewModel : Component
 	// TODO: FAZER OS OFFSETS, É NECESSARIO!!!!
 	// IEnumerable<IViewModelOffset> Offsets => this.Weapon.Components.GetAll<IViewModelOffset>( FindMode.EverythingInSelfAndDescendants );
 
-	public void SetWeapon( Weapon weapon )
+	public void SetWeapon( WeaponItem weapon )
 	{
 		Weapon = weapon;
 	}
@@ -97,11 +97,11 @@ public class ViewModel : Component
 	void ApplyOffsets()
 	{
 		// foreach ( var offset in Offsets )
-		// {
-		// 	// Log.Info( $"Offsetting by {offset.PositionOffset}" );
-		// 	localPosition += offset.PositionOffset;
-		// 	localRotation *= offset.AngleOffset.ToRotation();
-		// }
+		{
+			// Log.Info( $"Offsetting by {offset.PositionOffset}" );
+			localPosition += Vector3.Zero; // offset.PositionOffset;
+			localRotation *= Angles.Zero; // offset.AngleOffset.ToRotation();
+		}
 	}
 
 	void ApplyInertia()
@@ -236,7 +236,7 @@ public class ViewModel : Component
 		ApplyInertia();
 		ApplyOffsets();
 
-		var baseFov = 60.0f; // GameSettingsSystem.Current.FieldOfView;
+		var baseFov = 85.0f; // GameSettingsSystem.Current.FieldOfView;
 
 		TargetFieldOfView = TargetFieldOfView.LerpTo( baseFov + FieldOfViewOffset, Time.Delta * 10f );
 		FieldOfViewOffset = 0;

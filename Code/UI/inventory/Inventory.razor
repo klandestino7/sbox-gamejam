@@ -6,7 +6,7 @@
 <root>
 	@for ( var slotId = 0; slotId < Player.Local.Inventory.NUM_SLOTS; slotId++ )
 	{
-		ItemComponent item = Player.Local.Inventory.GetItemAtSlot( slotId );
+		var item = Player.Local.Inventory.GetItemAtSlot( slotId );
 		
 		<InventorySlot SlotId=@slotId Item=@item Selected=@(SelectedSlotId == slotId) />
 	}
