@@ -81,7 +81,13 @@ public class Game : SingletonComponent<Game>
 
 	public void LoadScene( SceneFile sceneFile )
 	{
-        Sandbox.Game.ActiveScene.Load( sceneFile );
+		SceneLoadOptions options = new()
+		{
+		};
+
+		Assert.True( options.SetScene( sceneFile ), $"Failed to set scene { sceneFile }" );
+
+		Scene.Load( options );
 	}
 
 	public void InitLevel( eGameLevel level )
