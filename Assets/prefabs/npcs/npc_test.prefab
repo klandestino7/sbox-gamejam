@@ -41,6 +41,8 @@
           "go": "1bd73335-dbd0-4122-b7a6-1a50bd888ab4",
           "component_type": "CitizenAnimationHelper"
         },
+        "AttackCooldown": 5,
+        "AttackRange": 80,
         "CharacterController": {
           "_type": "component",
           "component_id": "bd0e5017-44b5-45a7-83b7-71e7eec4e411",
@@ -58,6 +60,352 @@
         "MaxDetectDistance": 256,
         "MaxDistanceToLostTarget": 512,
         "Name": "test",
+        "OnAttack": {
+          "__version": 7,
+          "__guid": "e4b9ac1c-f91d-4e21-a093-061b7985801a",
+          "UserData": {
+            "Title": "On Attack",
+            "ReferencedComponentTypes": [
+              "Sandbox.Citizen.CitizenAnimationHelper",
+              "Gamejam.HealthSystem",
+              "Sandbox.CharacterController"
+            ]
+          },
+          "Variables": [],
+          "Nodes": [
+            {
+              "Id": 0,
+              "Type": "input",
+              "UserData": {
+                "Position": "16,-0"
+              }
+            },
+            {
+              "Id": 359,
+              "Type": "property",
+              "Properties": {
+                "_name": "Parent",
+                "_type": "Sandbox.GameObject"
+              },
+              "UserData": {
+                "Position": "144,-192"
+              }
+            },
+            {
+              "Id": 360,
+              "Type": "scene.get",
+              "Properties": {
+                "T": "Gamejam.HealthSystem"
+              },
+              "UserData": {
+                "Position": "384,-304"
+              }
+            },
+            {
+              "Id": 361,
+              "Type": "scene.get",
+              "Properties": {
+                "T": "Sandbox.Citizen.CitizenAnimationHelper"
+              },
+              "UserData": {
+                "Position": "-96,64"
+              }
+            },
+            {
+              "Id": 362,
+              "Type": "property",
+              "Properties": {
+                "_name": "HoldType",
+                "_type": "Sandbox.Citizen.CitizenAnimationHelper"
+              },
+              "UserData": {
+                "Position": "1040,208"
+              }
+            },
+            {
+              "Id": 374,
+              "Type": "if",
+              "UserData": {
+                "Position": "1056,16"
+              }
+            },
+            {
+              "Id": 375,
+              "Type": "call",
+              "Properties": {
+                "_name": "Punch",
+                "_type": "Sandbox.CharacterController",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "1488,128"
+              }
+            },
+            {
+              "Id": 377,
+              "Type": "scene.get",
+              "Properties": {
+                "T": "Sandbox.CharacterController"
+              },
+              "UserData": {
+                "Position": "-80,128"
+              }
+            },
+            {
+              "Id": 381,
+              "Type": "property",
+              "Properties": {
+                "_name": "HoldType",
+                "_type": "Sandbox.Citizen.CitizenAnimationHelper"
+              },
+              "UserData": {
+                "Position": "1040,336"
+              }
+            },
+            {
+              "Id": 399,
+              "Type": "call",
+              "Properties": {
+                "_name": "Distance",
+                "_type": "Vector3",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "656,-96"
+              }
+            },
+            {
+              "Id": 404,
+              "Type": "op.lessthanorequal",
+              "UserData": {
+                "Position": "832,-208"
+              }
+            },
+            {
+              "Id": 435,
+              "Type": "property",
+              "Properties": {
+                "_name": "Transform",
+                "_type": "Sandbox.GameObject"
+              },
+              "UserData": {
+                "Position": "400,-208"
+              }
+            },
+            {
+              "Id": 436,
+              "Type": "property",
+              "Properties": {
+                "_name": "Position",
+                "_type": "Sandbox.GameTransform"
+              },
+              "UserData": {
+                "Position": "416,-112"
+              }
+            },
+            {
+              "Id": 437,
+              "Type": "property",
+              "Properties": {
+                "_name": "Transform",
+                "_type": "Sandbox.GameObject"
+              },
+              "UserData": {
+                "Position": "112,208"
+              }
+            },
+            {
+              "Id": 438,
+              "Type": "property",
+              "Properties": {
+                "_name": "Position",
+                "_type": "Sandbox.GameTransform"
+              },
+              "UserData": {
+                "Position": "352,256"
+              }
+            },
+            {
+              "Id": 439,
+              "Type": "input.value",
+              "Properties": {
+                "_name": "_target"
+              },
+              "UserData": {
+                "Position": "-48,272"
+              }
+            },
+            {
+              "Id": 448,
+              "Type": "call",
+              "Properties": {
+                "_name": "DecreaseHealthByDamageType",
+                "_type": "Gamejam.HealthSystem",
+                "_isStatic": false
+              },
+              "UserData": {
+                "Position": "1824,64"
+              }
+            }
+          ],
+          "Links": [
+            {
+              "SrcId": 0,
+              "SrcName": "enemy",
+              "DstId": 359,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 359,
+              "SrcName": "_result",
+              "DstId": 360,
+              "DstName": "_this"
+            },
+            {
+              "SrcId": 0,
+              "SrcName": "_target",
+              "DstId": 361,
+              "DstName": "_this"
+            },
+            {
+              "SrcId": 374,
+              "SrcName": "true",
+              "DstId": 362,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 361,
+              "SrcName": "_result",
+              "DstId": 362,
+              "DstName": "_target"
+            },
+            {
+              "Value": "Punch",
+              "DstId": 362,
+              "DstName": "_value"
+            },
+            {
+              "SrcId": 0,
+              "SrcName": "_signal",
+              "DstId": 374,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 404,
+              "SrcName": "_result",
+              "DstId": 374,
+              "DstName": "condition"
+            },
+            {
+              "SrcId": 362,
+              "SrcName": "_signal",
+              "DstId": 375,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 377,
+              "SrcName": "_result",
+              "DstId": 375,
+              "DstName": "_target"
+            },
+            {
+              "Value": "1,1,0",
+              "DstId": 375,
+              "DstName": "amount"
+            },
+            {
+              "SrcId": 0,
+              "SrcName": "_target",
+              "DstId": 377,
+              "DstName": "_this"
+            },
+            {
+              "SrcId": 374,
+              "SrcName": "false",
+              "DstId": 381,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 361,
+              "SrcName": "_result",
+              "DstId": 381,
+              "DstName": "_target"
+            },
+            {
+              "Value": "None",
+              "DstId": 381,
+              "DstName": "_value"
+            },
+            {
+              "SrcId": 436,
+              "SrcName": "_result",
+              "DstId": 399,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 438,
+              "SrcName": "_result",
+              "DstId": 399,
+              "DstName": "target"
+            },
+            {
+              "SrcId": 399,
+              "SrcName": "_result",
+              "DstId": 404,
+              "DstName": "a"
+            },
+            {
+              "Value": {
+                "$type": "Simple",
+                "Type": "System.Single",
+                "Value": 50
+              },
+              "DstId": 404,
+              "DstName": "b"
+            },
+            {
+              "SrcId": 359,
+              "SrcName": "_result",
+              "DstId": 435,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 435,
+              "SrcName": "_result",
+              "DstId": 436,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 439,
+              "SrcName": "_result",
+              "DstId": 437,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 437,
+              "SrcName": "_result",
+              "DstId": 438,
+              "DstName": "_target"
+            },
+            {
+              "SrcId": 375,
+              "SrcName": "_signal",
+              "DstId": 448,
+              "DstName": "_signal"
+            },
+            {
+              "SrcId": 360,
+              "SrcName": "_result",
+              "DstId": 448,
+              "DstName": "_target"
+            },
+            {
+              "Value": "Punch",
+              "DstId": 448,
+              "DstName": "type"
+            }
+          ]
+        },
         "RunMoveSpeed": 190,
         "ScaleStats": true,
         "SprintMoveSpeed": 320,
@@ -608,7 +956,7 @@
                                             "__guid": "670d952e-ace3-4983-99c1-f541a0281041",
                                             "Flags": 4,
                                             "Name": "arm_elbow_helper_R",
-                                            "Position": "-0.00000667572,0.00003147125,-0.00005340576",
+                                            "Position": "0,0,0",
                                             "Rotation": "0.0000007692941,-0.0000002412072,-0.7577677,0.6525243",
                                             "Enabled": true
                                           }
@@ -926,7 +1274,7 @@
                     "__guid": "02ad84c7-c119-4b6f-837a-bd0dd2ba88bb",
                     "Flags": 4,
                     "Name": "leg_glute_helper_L",
-                    "Position": "-0.000005722046,0.000001907349,-0.000003814697",
+                    "Position": "0,0,0",
                     "Rotation": "-0.000001102686,-0.0000007682514,-0.7071056,0.707108",
                     "Enabled": true
                   }
