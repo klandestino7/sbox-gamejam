@@ -42,18 +42,18 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 	/// </summary>
 	/// <param name="channel"></param>
 	/// <returns></returns>
-	private PlayerState? GetOrCreatePlayerState( Connection? channel = null )
+	private PlayerState? GetOrCreatePlayerState( Connection channel )
 	{
 		var playerStates = Scene.GetAllComponents<PlayerState>();
 
 		var possiblePlayerState = playerStates.FirstOrDefault( x => {
 			// A candidate player state has no owner.
-			return x.Connection is null && x.SteamId == channel?.SteamId;
+			return /* x.Connection is null && */ x.SteamId == channel.SteamId;
 		} );
 
 		if ( possiblePlayerState.IsValid() )
 		{
-			Log.Warning( $"Found existing player state for {channel?.SteamId} that we can re-use. {possiblePlayerState}" );
+			Log.Warning( $"Found existing player state for {channel.SteamId} that we can re-use. {possiblePlayerState}" );
 			return possiblePlayerState;
 		}
 
@@ -63,10 +63,15 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 		player.BreakFromPrefab();
 		player.Name = $"PlayerState ({channel?.DisplayName})";
 		player.Network.SetOrphanedMode( NetworkOrphaned.ClearOwner );
+		player.Flags |= GameObjectFlags.DontDestroyOnLoad;
 
 		var playerState = player.Components.Get<PlayerState>();
 		if ( !playerState.IsValid() )
-			return null;
+		{
+			throw new Exception( $"Something went wrong when trying to create PlayerState for {channel.DisplayName}" );
+		}
+
+		OnPlayerJoined( playerState, channel );
 
 		return playerState;
 	}
@@ -79,13 +84,7 @@ public sealed class GameNetworkManager : SingletonComponent<GameNetworkManager>,
 	{
 		Log.Info( $"Player '{channel.DisplayName}' is becoming active" );
 
-		var playerState = GetOrCreatePlayerState( channel );
-		if ( !playerState.IsValid() )
-		{
-			throw new Exception( $"Something went wrong when trying to create PlayerState for {channel.DisplayName}" );
-		}
-
-		OnPlayerJoined( playerState, channel );
+		GetOrCreatePlayerState( channel );
 	}
 
 	public void OnPlayerJoined( PlayerState playerState, Connection channel )

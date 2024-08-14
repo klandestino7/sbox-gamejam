@@ -31,14 +31,15 @@ public partial class PlayerState
 	{
 		Log.Info(" PlayerState :: Spawn ");
 
-		var prefab = PlayerPawnPrefab.Clone( spawnPoint.Transform );
-		var pawn = prefab.Components.Get<Player>();
+		var gameobject = PlayerPawnPrefab.Clone( spawnPoint.Transform );
+		var pawn = gameobject.Components.Get<Player>();
 
 		pawn.PlayerState = this;
 
 		// pawn.SetSpawnPoint( spawnPoint );
 
-		prefab.NetworkSpawn( Network.OwnerConnection );
+		gameobject.NetworkSpawn( Network.OwnerConnection );
+		gameobject.Flags |= GameObjectFlags.DontDestroyOnLoad;
 
 		Player = pawn;
 				
