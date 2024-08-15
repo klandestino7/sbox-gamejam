@@ -3,6 +3,7 @@
     "__guid": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
     "Flags": 0,
     "Name": "player",
+    "Position": "0,0,456007.3",
     "Tags": "player",
     "Enabled": true,
     "Components": [
@@ -36,10 +37,6 @@
       {
         "__type": "Gamejam.Player",
         "__guid": "15795f97-dfa6-44ca-8fdf-f5683a824281",
-        "EyePos": {
-          "_type": "gameobject",
-          "go": "46aec606-23bb-4356-9fb2-1bfbf99a4831"
-        },
         "PlayerBody": {
           "_type": "component",
           "component_id": "9e47f821-cb5a-4abf-a5dc-00a542765474",
@@ -52,6 +49,10 @@
           "go": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
           "component_type": "CitizenAnimationHelper"
         },
+        "Boom": {
+          "_type": "gameobject",
+          "go": "e0541bb1-3654-4c9a-9ed2-8d46427d3b23"
+        },
         "CharacterController": {
           "_type": "component",
           "component_id": "7371e180-f443-48f7-ab12-353889a02cb0",
@@ -59,6 +60,14 @@
           "component_type": "CharacterController"
         },
         "CrouchMoveSpeed": 64,
+        "DefaultPlayerCameraPrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/player/cameras/default_player_camera.prefab"
+        },
+        "Head": {
+          "_type": "gameobject",
+          "go": "9f11064e-fe0f-42a6-ae57-f531e878d17d"
+        },
         "HealthSystem": {
           "_type": "component",
           "component_id": "88dcab04-eb27-4900-b1b5-dbe68a1fc095",
@@ -91,9 +100,42 @@
           "go": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
           "component_type": "Player"
         }
+      },
+      {
+        "__type": "Sandbox.CameraComponent",
+        "__guid": "ea4f35a0-80e9-4b5a-bcac-95c066962809",
+        "BackgroundColor": "0.33333,0.46275,0.52157,1",
+        "ClearFlags": "All",
+        "FieldOfView": 78,
+        "IsMainCamera": true,
+        "Orthographic": false,
+        "OrthographicHeight": 1204,
+        "Priority": 1,
+        "RenderExcludeTags": "",
+        "RenderTags": "",
+        "TargetEye": "None",
+        "Viewport": "0,0,1,1",
+        "ZFar": 10000,
+        "ZNear": 10
       }
     ],
     "Children": [
+      {
+        "__guid": "9f11064e-fe0f-42a6-ae57-f531e878d17d",
+        "Flags": 0,
+        "Name": "Head",
+        "Position": "0,0,60",
+        "Enabled": true,
+        "Children": [
+          {
+            "__guid": "e0541bb1-3654-4c9a-9ed2-8d46427d3b23",
+            "Flags": 0,
+            "Name": "Boom",
+            "Position": "0,0,0",
+            "Enabled": true
+          }
+        ]
+      },
       {
         "__guid": "b5ef135d-b42a-4599-bc83-8fd4bd38e947",
         "Flags": 0,
@@ -2589,14 +2631,6 @@
             ]
           }
         ]
-      },
-      {
-        "__guid": "46aec606-23bb-4356-9fb2-1bfbf99a4831",
-        "Flags": 0,
-        "Name": "EyePos",
-        "Position": "0,0,64",
-        "Tags": "red,green",
-        "Enabled": true
       },
       {
         "__guid": "e3a9ceec-24b6-46ac-8c8f-2eea5d68de75",

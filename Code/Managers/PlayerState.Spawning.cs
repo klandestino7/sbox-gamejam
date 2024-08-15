@@ -45,6 +45,7 @@ public partial class PlayerState
 				
 		// RespawnState = RespawnState.Not;
 		pawn.OnRespawn();
+		pawn.SetActive( true );
 	}
 
 	public void Respawn( bool forceNew )
@@ -66,6 +67,7 @@ public partial class PlayerState
 
 		// Player.SetSpawnPoint( spawnPoint );
 		Player.OnRespawn();
+		Player.SetActive( true );
 		Log.Info(" PlayerState :: Respawn FIM");
 	}
 

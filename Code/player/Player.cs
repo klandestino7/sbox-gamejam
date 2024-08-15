@@ -6,8 +6,9 @@ namespace Gamejam;
 
 public partial class Player : Component, Component.ExecuteInEditor
 {
-	public CameraComponent ViewModelCamera;
+	public  CameraComponent ViewModelCamera;
 	
+	[Property] public GameObject Head { get; set; }
 	/// <summary>
 	/// The position this player last spawned at.
 	/// </summary>
@@ -24,20 +25,24 @@ public partial class Player : Component, Component.ExecuteInEditor
 	/// The player state ID
 	/// </summary>
 	[HostSync] public PlayerState PlayerState { get; private set; }
-
-	[Property] public GameObject EyePos;
 	[Property] public SkinnedModelRenderer PlayerBody;
 	[Property] public CharacterController CharacterController { get; set; }
 	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
 	[Property] public virtual HealthSystem HealthSystem { get; set; }
 	[Property] public virtual SpotLight SpotLight { get; set; }
 	protected BoxCollider Collider;
+	[Property] public GameObject Boom { get; set; }
+
+	[Property] public GameObject DefaultPlayerCameraPrefab { get; set; }
+	public GameObject PlayerCameraGameObject { get; set; }
 
 	public Inventory Inventory { get; private set; }
 
 	protected override void OnStart()
 	{
-		ViewModelCamera = Scene.GetAllComponents<CameraComponent>().Where( x => x.IsMainCamera ).FirstOrDefault();
+		// ViewModelCamera = Scene.GetAllComponents<CameraComponent>().Where( x => x.IsMainCamera ).FirstOrDefault();
+		// ViewModelCamera = Components.GetOrCreate<CameraComponent>( FindMode.InChildren );
+
 		PlayerBody = Components.Get<SkinnedModelRenderer>( FindMode.EverythingInSelfAndDescendants );
 		// Collider = Components.Get<BoxCollider>( FindMode.EverythingInSelfAndDescendants );
 
@@ -120,4 +125,22 @@ public partial class Player : Component, Component.ExecuteInEditor
 			clothing.RenderType = renderMode;
 		}
 	}
+
+	private GameObject GetOrCreateCameraObject()
+	{
+		var component = Scene.GetAllComponents<PlayerCameraOverride>().FirstOrDefault();
+
+		var config = new CloneConfig()
+		{
+			StartEnabled = true,
+			Parent = Boom,
+			Transform = new Transform()
+		};
+
+		if ( component.IsValid() )
+			return component.Prefab.Clone( config );
+
+		return DefaultPlayerCameraPrefab?.Clone( config );
+	}
+
 }

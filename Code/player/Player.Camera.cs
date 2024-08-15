@@ -3,6 +3,42 @@ public partial class Player : Component
 {
 	float Zoom = 100f;
 
+	public bool IsActive { get; private set; }
+
+	public CameraComponent Camera { get; set; }
+	public AudioListener AudioListener { get; set; }
+	public ColorAdjustments ColorAdjustments { get; set; }
+	// public ScreenShaker ScreenShaker { get; set; }
+	public ChromaticAberration ChromaticAberration { get; set; }
+
+	public Pixelate Pixelate { get; set; }
+
+	public void SetActive( bool isActive )
+	{
+		IsActive = isActive;
+
+		if ( PlayerCameraGameObject.IsValid() )
+			PlayerCameraGameObject.Destroy();
+
+		if ( isActive )
+		{
+			PlayerCameraGameObject = GetOrCreateCameraObject();
+
+			ViewModelCamera = PlayerCameraGameObject.Components.GetOrCreate<CameraComponent>();
+			Pixelate = PlayerCameraGameObject.Components.GetOrCreate<Pixelate>();
+			ChromaticAberration = PlayerCameraGameObject.Components.GetOrCreate<ChromaticAberration>();
+			AudioListener = PlayerCameraGameObject.Components.GetOrCreate<AudioListener>();
+			// ScreenShaker = PlayerCameraGameObject.Components.GetOrCreate<ScreenShaker>();
+
+			// Optional
+			ColorAdjustments = PlayerCameraGameObject.Components.Get<ColorAdjustments>();
+		}
+
+		// OnModeChanged();
+		// Boom.Transform.Rotation = Player.EyeAngles.ToRotation();
+	}
+
+
 	protected void UpdateCamera()
 	{
 		if ( ViewModelCamera == null )
