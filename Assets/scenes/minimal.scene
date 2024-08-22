@@ -399,22 +399,6 @@
           ]
         }
       ]
-    },
-    {
-      "__guid": "37107a6d-c7bb-43a1-be7a-5f44263c6095",
-      "Flags": 0,
-      "Name": "weapon_flashlight",
-      "Position": "334.8991,413.6817,-4.693435",
-      "Enabled": true,
-      "__Prefab": "weapons/flashlight/weapon_flashlight.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "3d0e932a-bdb0-44e0-b52f-bf5c902a1ddd",
-      "Flags": 0,
-      "Name": "Object",
-      "Position": "38.91431,-32.23053,52.35631",
-      "Enabled": true
     }
   ],
   "SceneProperties": {

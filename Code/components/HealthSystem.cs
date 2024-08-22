@@ -34,7 +34,7 @@ public sealed class HealthSystem : Component
         Stamina = MaxStamina;
     }
 
-    public void ApplyDamage( DamageInfo damageInfo )
+    public void ApplyDamage( DamageDataInfo damageInfo )
     {
         if ( IsDead ) return;
         if ( Invincible ) return; 
@@ -56,7 +56,7 @@ public sealed class HealthSystem : Component
         Kill( damageInfo );
     }
 
-    public void Kill( DamageInfo damageInfo )
+    public void Kill( DamageDataInfo damageInfo )
     {
         
     }

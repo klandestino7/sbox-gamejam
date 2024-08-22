@@ -3,25 +3,9 @@
     "__guid": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
     "Flags": 0,
     "Name": "player",
-    "Position": "0,0,456007.3",
     "Tags": "player",
     "Enabled": true,
     "Components": [
-      {
-        "__type": "Sandbox.Citizen.CitizenAnimationHelper",
-        "__guid": "e1a54638-d9d4-46c3-aea5-56a853fea635",
-        "BodyWeight": 1,
-        "EyesWeight": 1,
-        "HeadWeight": 1,
-        "Height": 1,
-        "LookAtEnabled": false,
-        "Target": {
-          "_type": "component",
-          "component_id": "9e47f821-cb5a-4abf-a5dc-00a542765474",
-          "go": "b5ef135d-b42a-4599-bc83-8fd4bd38e947",
-          "component_type": "SkinnedModelRenderer"
-        }
-      },
       {
         "__type": "Sandbox.CharacterController",
         "__guid": "7371e180-f443-48f7-ab12-353889a02cb0",
@@ -45,9 +29,9 @@
         },
         "AnimationHelper": {
           "_type": "component",
-          "component_id": "e1a54638-d9d4-46c3-aea5-56a853fea635",
-          "go": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
-          "component_type": "CitizenAnimationHelper"
+          "component_id": "30386173-a504-4719-85c6-ec1b3c460957",
+          "go": "b5ef135d-b42a-4599-bc83-8fd4bd38e947",
+          "component_type": "AnimationHelper"
         },
         "Boom": {
           "_type": "gameobject",
@@ -59,11 +43,11 @@
           "go": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
           "component_type": "CharacterController"
         },
-        "CrouchMoveSpeed": 64,
         "DefaultPlayerCameraPrefab": {
           "_type": "gameobject",
           "prefab": "prefabs/player/cameras/default_player_camera.prefab"
         },
+        "FallDamageScale": 0.2,
         "Head": {
           "_type": "gameobject",
           "go": "9f11064e-fe0f-42a6-ae57-f531e878d17d"
@@ -74,16 +58,24 @@
           "go": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
           "component_type": "HealthSystem"
         },
+        "Height": 64,
+        "MinimumFallSoundVelocity": 300,
+        "MinimumFallVelocity": 500,
+        "NoclipSpeed": 1000,
+        "PlayerBoxCollider": {
+          "_type": "component",
+          "component_id": "0b04b04b-8abb-43ad-9a0f-bec7be273b93",
+          "go": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
+          "component_type": "BoxCollider"
+        },
         "Radius": 50,
-        "RunMoveSpeed": 100,
         "SpotLight": {
           "_type": "component",
           "component_id": "42174e57-2a7d-4d96-9d41-b4068d95ce80",
           "go": "f0b48d83-4191-41df-961f-3bdf8a6af742",
           "component_type": "SpotLight"
         },
-        "SprintMoveSpeed": 320,
-        "WalkMoveSpeed": 100
+        "SprintMovementDampening": 0.35
       },
       {
         "__type": "Gamejam.HealthSystem",
@@ -102,21 +94,34 @@
         }
       },
       {
-        "__type": "Sandbox.CameraComponent",
-        "__guid": "ea4f35a0-80e9-4b5a-bcac-95c066962809",
-        "BackgroundColor": "0.33333,0.46275,0.52157,1",
-        "ClearFlags": "All",
-        "FieldOfView": 78,
-        "IsMainCamera": true,
-        "Orthographic": false,
-        "OrthographicHeight": 1204,
-        "Priority": 1,
-        "RenderExcludeTags": "",
-        "RenderTags": "",
-        "TargetEye": "None",
-        "Viewport": "0,0,1,1",
-        "ZFar": 10000,
-        "ZNear": 10
+        "__type": "Gamejam.CameraController",
+        "__guid": "f5da760a-dedc-4ab9-ab4f-27e2016ae175",
+        "AimFovOffset": -5,
+        "Boom": {
+          "_type": "gameobject",
+          "go": "e0541bb1-3654-4c9a-9ed2-8d46427d3b23"
+        },
+        "DefaultPlayerCameraPrefab": {
+          "_type": "gameobject",
+          "prefab": "prefabs/player/cameras/default_player_camera.prefab"
+        },
+        "Player": {
+          "_type": "component",
+          "component_id": "15795f97-dfa6-44ca-8fdf-f5683a824281",
+          "go": "ae21f418-2d53-4e9d-8a56-43694b7cb2f3",
+          "component_type": "Player"
+        },
+        "RespawnProtectionSaturation": 0.25,
+        "ShouldViewBob": true,
+        "ThirdPersonDistance": 128
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "0b04b04b-8abb-43ad-9a0f-bec7be273b93",
+        "Center": "0,0,37.5",
+        "IsTrigger": false,
+        "Scale": "20,50,90",
+        "Static": false
       }
     ],
     "Children": [
@@ -165,6 +170,17 @@
               "component_type": "SkinnedModelRenderer"
             },
             "RigidbodyFlags": 0
+          },
+          {
+            "__type": "Gamejam.AnimationHelper",
+            "__guid": "30386173-a504-4719-85c6-ec1b3c460957",
+            "Height": 1,
+            "Target": {
+              "_type": "component",
+              "component_id": "9e47f821-cb5a-4abf-a5dc-00a542765474",
+              "go": "b5ef135d-b42a-4599-bc83-8fd4bd38e947",
+              "component_type": "SkinnedModelRenderer"
+            }
           }
         ],
         "Children": [
@@ -2633,105 +2649,6 @@
         ]
       },
       {
-        "__guid": "e3a9ceec-24b6-46ac-8c8f-2eea5d68de75",
-        "Flags": 0,
-        "Name": "Pants",
-        "Position": "-25.081,0,0",
-        "Tags": "clothing",
-        "Components": [
-          {
-            "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "96f72d04-a22c-46f8-9808-72e0fbe3f5f0",
-            "BodyGroups": 18446744073709551615,
-            "BoneMergeTarget": {
-              "_type": "component",
-              "component_id": "9e47f821-cb5a-4abf-a5dc-00a542765474",
-              "go": "b5ef135d-b42a-4599-bc83-8fd4bd38e947",
-              "component_type": "SkinnedModelRenderer"
-            },
-            "CreateBoneObjects": false,
-            "Model": "models/citizen_clothes/trousers/cardboardtrousers/models/cardboard_trousers.vmdl",
-            "RenderType": "ShadowsOnly",
-            "Tint": "1,1,1,1",
-            "UseAnimGraph": true
-          }
-        ]
-      },
-      {
-        "__guid": "09cdb91f-7f36-40cf-bb02-16686bbe960d",
-        "Flags": 0,
-        "Name": "Tshirt",
-        "Position": "1.5,0,0",
-        "Scale": "1.1,1,1",
-        "Tags": "clothing",
-        "Components": [
-          {
-            "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "7924b588-537a-4a79-9c93-4cd1d1eff833",
-            "BodyGroups": 18446744073709551615,
-            "BoneMergeTarget": {
-              "_type": "component",
-              "component_id": "9e47f821-cb5a-4abf-a5dc-00a542765474",
-              "go": "b5ef135d-b42a-4599-bc83-8fd4bd38e947",
-              "component_type": "SkinnedModelRenderer"
-            },
-            "CreateBoneObjects": false,
-            "Model": "models/citizen_clothes/vest/cardboard_chest/models/cardboard_chest.vmdl",
-            "RenderType": "ShadowsOnly",
-            "Tint": "1,1,1,1",
-            "UseAnimGraph": true
-          }
-        ]
-      },
-      {
-        "__guid": "ef0a10b1-4d4c-4b42-87dc-1321d22e289d",
-        "Flags": 0,
-        "Name": "Boots",
-        "Tags": "clothing",
-        "Components": [
-          {
-            "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "b244f4fd-b946-430d-a0af-306e5b4905ed",
-            "BodyGroups": 18446744073709551615,
-            "BoneMergeTarget": {
-              "_type": "component",
-              "component_id": "9e47f821-cb5a-4abf-a5dc-00a542765474",
-              "go": "b5ef135d-b42a-4599-bc83-8fd4bd38e947",
-              "component_type": "SkinnedModelRenderer"
-            },
-            "CreateBoneObjects": false,
-            "Model": "models/citizen_clothes/shoes/slippers/models/slippers.vmdl",
-            "RenderType": "ShadowsOnly",
-            "Tint": "1,1,1,1",
-            "UseAnimGraph": true
-          }
-        ]
-      },
-      {
-        "__guid": "9ef8bbb3-1ba7-40fa-b385-784f336d56a5",
-        "Flags": 0,
-        "Name": "Hair",
-        "Tags": "clothing",
-        "Components": [
-          {
-            "__type": "Sandbox.SkinnedModelRenderer",
-            "__guid": "bee6798f-f02b-4873-a735-ddcbfb44d2a0",
-            "BodyGroups": 18446744073709551615,
-            "BoneMergeTarget": {
-              "_type": "component",
-              "component_id": "9e47f821-cb5a-4abf-a5dc-00a542765474",
-              "go": "b5ef135d-b42a-4599-bc83-8fd4bd38e947",
-              "component_type": "SkinnedModelRenderer"
-            },
-            "CreateBoneObjects": false,
-            "Model": "models/citizen_clothes/hair/hair_fade/models/hair_fade.vmdl",
-            "RenderType": "ShadowsOnly",
-            "Tint": "1,1,1,1",
-            "UseAnimGraph": true
-          }
-        ]
-      },
-      {
         "__guid": "f0b48d83-4191-41df-961f-3bdf8a6af742",
         "Flags": 0,
         "Name": "Spot Light",
@@ -2752,6 +2669,87 @@
             "Shadows": true
           }
         ]
+      },
+      {
+        "__guid": "78caf7e9-adff-43af-9e9d-1aba112d032d",
+        "Flags": 0,
+        "Name": "GameObject",
+        "Enabled": true
+      },
+      {
+        "__guid": "2200e2f3-12db-4f84-8653-5f83c77a6195",
+        "Flags": 0,
+        "Name": "Fallback Globals",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Gamejam.PlayerGlobals",
+            "__guid": "87663f4a-ddef-4969-9282-d3baab69c836",
+            "__enabled": false,
+            "AimSpread": 0,
+            "AimVelocitySpreadScale": 0.5,
+            "AirAcceleration": 16,
+            "AirMaxAcceleration": 80,
+            "AirSpreadScale": 2,
+            "BaseAcceleration": 9,
+            "BaseArmorReduction": 0.775,
+            "BaseHelmetReduction": 0.775,
+            "BaseSpreadAmount": 0.05,
+            "BloodDecalMaterials": [
+              "blood_splatter_08_decal.vmat",
+              "blood_splatter_07_decal.vmat",
+              "blood_splatter_06_decal.vmat",
+              "blood_splatter_05_decal.vmat",
+              "blood_splatter_04_decal.vmat"
+            ],
+            "BunnyHopping": false,
+            "CrouchingAcceleration": 10,
+            "CrouchingFriction": 4,
+            "CrouchingSpeed": 100,
+            "CrouchLerpSpeed": 10,
+            "CrouchSpreadScale": 0.5,
+            "EnableFallDamage": true,
+            "Gravity": "0,0,800",
+            "Hitboxes": [
+              {
+                "Tags": "Head",
+                "DamageScale": 5,
+                "HelmetProtects": true
+              },
+              {
+                "Tags": "Arm, UpperBody",
+                "DamageScale": 1,
+                "ArmorProtects": true
+              },
+              {
+                "Tags": "Stomach",
+                "DamageScale": 1.25
+              },
+              {
+                "Tags": "Leg",
+                "DamageScale": 0.75
+              }
+            ],
+            "JumpPower": 290,
+            "MaxAcceleration": 10,
+            "MaxArmor": 100,
+            "MaxHealth": 100,
+            "RemoveHelmetOnHeadshot": true,
+            "SlowCrouchLerpSpeed": 0.5,
+            "SlowWalkAcceleration": 10,
+            "SlowWalkFriction": 4,
+            "SlowWalkSpeed": 100,
+            "SpreadVelocityLimit": 350,
+            "SprintingAcceleration": 8,
+            "SprintingFriction": 4,
+            "SprintingSpeed": 300,
+            "TakeDamageAccelerationDampenTime": 1,
+            "TakeDamageAccelerationOffset": 0.5,
+            "VelocitySpreadScale": 0.1,
+            "WalkFriction": 7,
+            "WalkSpeed": 260
+          }
+        ]
       }
     ],
     "__variables": []
@@ -2761,6 +2759,11 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
+    "jase.bloodsplatter04",
+    "jase.bloodsplatter05",
+    "jase.bloodsplatter06",
+    "jase.bloodsplatter07",
+    "jase.bloodsplatter08",
     "sboxmp.hazmatsuit"
   ],
   "__version": 1
