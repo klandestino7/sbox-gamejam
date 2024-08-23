@@ -30,6 +30,8 @@ public partial class Player
 
 		OnHostRespawn();
 		OnClientRespawn();
+
+		
 	}
 
 	private void OnHostRespawn()
@@ -116,5 +118,27 @@ public partial class Player
 
 		// Components.Get<HumanOutfitter>( FindMode.EnabledInSelfAndDescendants )?
 		// 	.UpdateFromTeam( Team );
+	}
+
+	public void OnPossess()
+	{
+		CameraController.SetActive( true );
+
+		// // if we're spectating a remote player, use the camera mode preference
+		// // otherwise: first person for now
+		// var spectateSystem = SpectateSystem.Instance;
+		// if ( spectateSystem is not null && (IsProxy || PlayerState.IsBot) )
+		// {
+		// 	CameraController.Mode = spectateSystem.CameraMode;
+		// }
+		// else
+		// {
+			CameraController.Mode = CameraMode.FirstPerson;
+		// }
+	}
+
+	public void OnDePossess()
+	{
+		CameraController.SetActive( false );
 	}
 }

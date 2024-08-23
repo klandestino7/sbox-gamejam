@@ -50,7 +50,6 @@
       "Name": "Camera",
       "Position": "267.324,-33.8226,34.10503",
       "Tags": "maincamera",
-      "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",

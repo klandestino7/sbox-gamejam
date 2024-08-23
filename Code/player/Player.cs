@@ -7,6 +7,11 @@ namespace Gamejam;
 public partial class Player : Component, Component.ExecuteInEditor
 {
 	public  CameraComponent ViewModelCamera;
+
+	/// <summary>
+	/// The current camera controller for this player.
+	/// </summary>
+	[RequireComponent] public CameraController CameraController { get; set; }
 	
 	[Property] public GameObject Head { get; set; }
 	/// <summary>
@@ -27,7 +32,12 @@ public partial class Player : Component, Component.ExecuteInEditor
 	[HostSync] public PlayerState PlayerState { get; private set; }
 	[Property] public SkinnedModelRenderer PlayerBody;
 	[Property] public CharacterController CharacterController { get; set; }
-	[Property] public CitizenAnimationHelper AnimationHelper { get; set; }
+
+	/// <summary>
+	/// A reference to the animation helper (normally on the Body GameObject)
+	/// </summary>
+	[Property] public AnimationHelper AnimationHelper { get; set; }
+
 	[Property] public virtual HealthSystem HealthSystem { get; set; }
 	[Property] public virtual SpotLight SpotLight { get; set; }
 	protected BoxCollider Collider;
@@ -38,6 +48,11 @@ public partial class Player : Component, Component.ExecuteInEditor
 
 	public Inventory Inventory { get; private set; }
 
+
+	/// <summary>
+	/// Is the player holding use?
+	/// </summary>
+	[Sync] public bool IsUsing { get; set; }
 	protected override void OnStart()
 	{
 		// ViewModelCamera = Scene.GetAllComponents<CameraComponent>().Where( x => x.IsMainCamera ).FirstOrDefault();
@@ -54,11 +69,17 @@ public partial class Player : Component, Component.ExecuteInEditor
 	{
 		if ( !IsProxy )
 		{
-			MouseInput();
-			Transform.Rotation = new Angles( 0, EyeAngles.yaw, 0 );
+			// MouseInput();
+			// Transform.Rotation = new Angles( 0, EyeAngles.yaw, 0 );
 		}
 
-		UpdateAnimation();
+		OnUpdateMovement();
+
+		CrouchAmount = CrouchAmount.LerpTo( IsCrouching ? 1 : 0, Time.Delta * CrouchLerpSpeed() );
+		_smoothEyeHeight = _smoothEyeHeight.LerpTo( _eyeHeightOffset * (IsCrouching ? CrouchAmount : 1), Time.Delta * 10f );
+		CharacterController.Height = Height + _smoothEyeHeight;
+
+		// UpdateAnimation();
 	}
 
 	protected override void OnFixedUpdate()
@@ -66,13 +87,73 @@ public partial class Player : Component, Component.ExecuteInEditor
 		if ( IsProxy )
 			return;
 
-		CrouchingInput();
-		MovementInput();
+		// CrouchingInput();
+		// MovementInput();
 		// UpdateAttack();
 
-		UpdateStamina();
-		RestoreStamina();
-		UpdateInteractions();
+		// UpdateStamina();
+		// RestoreStamina();
+		// UpdateInteractions();
+
+		var cc = CharacterController;
+		if ( !cc.IsValid() ) return;
+
+		var wasGrounded = IsGrounded;
+		IsGrounded = cc.IsOnGround;
+
+		if ( IsGrounded != wasGrounded )
+		{
+			GroundedChanged( wasGrounded, IsGrounded );
+		}
+
+		UpdateEyes();
+		// UpdateZones();
+		// UpdateOutline();
+
+		// if ( IsViewer )
+		// {
+		// 	CachedEyeTrace = Scene.Trace.Ray( AimRay, 100000f )
+		// 		.IgnoreGameObjectHierarchy( GameObject )
+		// 		.WithoutTags( "ragdoll", "movement" )
+		// 		.UseHitboxes()
+		// 		.Run();
+		// }
+
+		if ( HealthSystem.IsDead )
+		{
+			return;
+		}
+
+		// if ( Networking.IsHost && PlayerState.IsBot )
+		// {
+		// 	if ( BotFollowHostInput )
+		// 	{
+		// 		BuildWishInput();
+		// 		BuildWishVelocity();
+		// 	}
+
+		// 	// If we're a bot call these so they don't float in the air.
+		// 	ApplyAcceleration();
+		// 	ApplyMovement();
+		// 	return;
+		// }
+
+		if ( !IsLocallyControlled )
+		{
+			return;
+		}
+
+		_previousVelocity = cc.Velocity;
+
+		// UpdatePlayArea();
+		// UpdateUse();
+		BuildWishInput();
+		BuildWishVelocity();
+		BuildInput();
+
+		// UpdateRecoilAndSpread();
+		ApplyAcceleration();
+		ApplyMovement();
 	}
 	protected override void OnPreRender()
 	{
@@ -81,7 +162,7 @@ public partial class Player : Component, Component.ExecuteInEditor
 		if ( IsProxy )
 			return;
 
-		UpdateCamera();
+		// UpdateCamera();
 	}
 
 	public void UpdateStamina() 

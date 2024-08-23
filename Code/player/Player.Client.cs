@@ -85,8 +85,8 @@ partial class Player
 		}
 	}
 
-	public virtual void OnPossess() { }
-	public virtual void OnDePossess() { }
+	// public virtual void OnPossess() { }
+	// public virtual void OnDePossess() { }
 
 	public static Player GetByID( Guid id )
 		=> _internalPlayers.FirstOrDefault( x => x.ConnectionID == id );

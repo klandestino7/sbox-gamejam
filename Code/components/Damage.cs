@@ -1,7 +1,7 @@
 
 
 namespace Gamejam;
-public record DamageInfo(
+public record DamageDataInfo(
     int amount,
     DamageType type,
     int boneIndex,

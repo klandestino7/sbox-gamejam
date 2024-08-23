@@ -158,7 +158,6 @@ public partial class NPC : Component
 		UpdateAnimation();
 	}
 
-
 	public void SearchPlayerTarget()
 	{
 		if ( TargetObject != null )
