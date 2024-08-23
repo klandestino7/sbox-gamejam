@@ -120,7 +120,7 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 
 		OnModeChanged();
 
-		Boom.Transform.Rotation = Player.EyeAngles.ToRotation();
+		Boom.Transform.Rotation = Player.EyeAngles.WithRoll( 0f ).ToRotation();
 	}
 
 	/// <summary>
@@ -145,7 +145,8 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		}
 		else
 		{
-			Boom.Transform.Rotation = Player.EyeAngles.ToRotation();
+
+			Boom.Transform.Rotation = Player.EyeAngles.WithRoll( 0f ).ToRotation();
 		}
 
 		if ( MaxBoomLength > 0 )
