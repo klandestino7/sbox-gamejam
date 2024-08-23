@@ -1,3 +1,5 @@
+@using Sandbox.UI
+
 @namespace Gamejam.UI
 
 @inherits Panel
@@ -16,9 +18,10 @@
 
         <Body>
             <div class="layout row gap-insane">
-                @for ( var slotId = 0; slotId < 3; slotId++ )
+                @for ( var i = 0; i < 3; i++ )
                 {
-                    <div class="@IsActiveSlot(slotId)" onclick=@( () => SelectSlot( @slotId ) ) > 
+                    var slotId = i;
+                    <div class="@IsActiveSlot(slotId)" onclick=@(() => SelectSlot(slotId))  > 
                         <div class="slot"> Empty </div>
                         <div class="name "> Save @(slotId + 1) </div>
                     </div>
@@ -39,7 +42,6 @@
 
     public void SelectSlot( int selectedId )
     {
-        Log.Info($" SelectSlot :: {selectedId}"); // retornando sempre 3
         SelectedSlot = selectedId;
     }
 
