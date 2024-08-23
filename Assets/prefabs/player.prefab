@@ -69,12 +69,6 @@
           "component_type": "BoxCollider"
         },
         "Radius": 50,
-        "SpotLight": {
-          "_type": "component",
-          "component_id": "42174e57-2a7d-4d96-9d41-b4068d95ce80",
-          "go": "f0b48d83-4191-41df-961f-3bdf8a6af742",
-          "component_type": "SpotLight"
-        },
         "SprintMovementDampening": 0.35
       },
       {
@@ -129,7 +123,7 @@
         "__guid": "9f11064e-fe0f-42a6-ae57-f531e878d17d",
         "Flags": 0,
         "Name": "Head",
-        "Position": "0,0,60",
+        "Position": "0,0,70",
         "Enabled": true,
         "Children": [
           {
@@ -2649,43 +2643,20 @@
         ]
       },
       {
-        "__guid": "f0b48d83-4191-41df-961f-3bdf8a6af742",
-        "Flags": 0,
-        "Name": "Spot Light",
-        "Position": "38.25761,-3.721334,43.10408",
-        "Tags": "light_spot,light",
-        "Enabled": true,
-        "Components": [
-          {
-            "__type": "Sandbox.SpotLight",
-            "__guid": "42174e57-2a7d-4d96-9d41-b4068d95ce80",
-            "Attenuation": 0.64,
-            "ConeInner": 27.31,
-            "ConeOuter": 32.69,
-            "FogMode": "Enabled",
-            "FogStrength": 1,
-            "LightColor": "0.91373,0.98039,1,1",
-            "Radius": 500,
-            "Shadows": true
-          }
-        ]
-      },
-      {
         "__guid": "78caf7e9-adff-43af-9e9d-1aba112d032d",
         "Flags": 0,
         "Name": "GameObject",
         "Enabled": true
       },
       {
-        "__guid": "2200e2f3-12db-4f84-8653-5f83c77a6195",
+        "__guid": "bfe5bbe6-25f9-48d8-b68a-34f7fcf1b8d5",
         "Flags": 0,
         "Name": "Fallback Globals",
         "Enabled": true,
         "Components": [
           {
             "__type": "Gamejam.PlayerGlobals",
-            "__guid": "87663f4a-ddef-4969-9282-d3baab69c836",
-            "__enabled": false,
+            "__guid": "9fe1dd89-2f08-4d33-bfa2-f2ba9a4a2d2c",
             "AimSpread": 0,
             "AimVelocitySpreadScale": 0.5,
             "AirAcceleration": 16,

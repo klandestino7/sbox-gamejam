@@ -91,9 +91,9 @@ public partial class Player : Component, Component.ExecuteInEditor
 		// MovementInput();
 		// UpdateAttack();
 
-		// UpdateStamina();
-		// RestoreStamina();
-		// UpdateInteractions();
+		UpdateStamina();
+		RestoreStamina();
+		UpdateInteractions();
 
 		var cc = CharacterController;
 		if ( !cc.IsValid() ) return;
@@ -163,6 +163,8 @@ public partial class Player : Component, Component.ExecuteInEditor
 			return;
 
 		// UpdateCamera();
+
+		SpotLight.Transform.Rotation = CameraController.Camera.Transform.Rotation;
 	}
 
 	public void UpdateStamina() 
