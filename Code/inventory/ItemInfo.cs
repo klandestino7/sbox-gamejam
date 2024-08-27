@@ -9,7 +9,10 @@ public class ItemInfo : Sandbox.GameResource
 	public String Name { get; set; } = "Custom Item";
 
 	[Category( "Prefabs" )]
-	public GameObject? MainPrefab { get; set; }
+	public GameObject? Prefab { get; set; }
+
+	[Category( "World" )]
+	public required Model WorldModel { get; set; }
 
 	protected override void PostLoad()
 	{

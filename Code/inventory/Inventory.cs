@@ -2,25 +2,32 @@ using Sandbox.Diagnostics;
 
 namespace Gamejam;
 
+[Category( "Inventory" )]
 public class Inventory : Component
 {
 	[Property] public required Player Player { get; set; }
+
+	public InventoryContainer Container { get; private set; }
+
+	public List<ItemComponent> Items => this.Container.Items;
 
 	public int NUM_SLOTS = 3;
 	
 	public int Weight { get; private set; }
 
-	private List<ItemComponent?> _items;
-
-	public IReadOnlyList<ItemComponent?> Items => this._items;
-
 	public Inventory()
 	{
 		Log.Info( "Initialized inventory" );
-
-		_items = new List<ItemComponent?>( new ItemComponent[NUM_SLOTS] );
 	}
 
+	protected override void OnAwake()
+	{
+		base.OnAwake();
+
+		this.Container = new InventoryContainer( this );
+	}
+
+	/*
 	private void OnItemAdded( ItemComponent item )
 	{
 		// item.GameObject.SetupNetworking();
@@ -36,69 +43,76 @@ public class Inventory : Component
 		item.GameObject.Parent = null;
 		item.OwnedBy = null;
 	}
+	*/
 
 	public void SwapItem()	
 	{
-
 	}
 
 	public ItemComponent? GetItemAtSlot( int slotId )
 	{
-		return this._items.ElementAtOrDefault( slotId );
+		return this.Container.GetItemAtSlot( slotId );
 	}
 
-	public int GetItemSlotId( ItemComponent? item )
+	public bool TryGetValidSlotId( int slotId, out int validSlotId )
 	{
-#pragma warning disable CS8604 // Possible null reference argument.
-		return this._items.IndexOf( item );
-#pragma warning restore CS8604 // Possible null reference argument.
+		return this.Container.TryGetValidSlotId( slotId, out validSlotId );
 	}
 
-	public int GetFreeSlotId()
+	public bool CanAddItemInfo( ItemInfo itemInfo, int slotId )
 	{
-		return this.GetItemSlotId( null );
+		return this.Container.CanAddItemInfo( itemInfo, slotId );
 	}
 
 	public bool CanAddItem( ItemComponent item, int slotId )
 	{
-		if ( this._items[ slotId ] != null )
-		{
-			return true;
-		}
+		return this.Container.CanAddItem( item, slotId );
+	}
 
-		if ( item?.OwnedBy == this.Player )
+	public bool AddItem( ItemComponent item, int slotId = ItemComponent.INVENTORY_ANY_SLOT_ID )
+	{
+		Log.Warning( $"Inventory::AddItem -> Adding item with key='{ item.Info.Name }' at slot { slotId }" );
+
+		if ( !this.TryGetValidSlotId( slotId, out int validSlotId ) )
 		{
+			Log.Warning( $"Inventory::AddItem -> slot is not valid!" );
+
 			return false;
 		}
 
-		return true;
-	}
-
-	public bool AddItem( ItemComponent item, int slotId )
-	{
-		if ( slotId == 2 )
+		if ( !this.CanAddItem( item, validSlotId ) )
 		{
-			slotId = this.GetFreeSlotId();
+			Log.Warning( $"Inventory::AddItem -> cannot add item!" );
 
-			Assert.AreNotEqual( slotId, -1, "Could not find a valid slotId for SlotId.Any" );
-		}
-
-		Assert.AreNotEqual( slotId, -1, "Invalid slot id!" );
-
-		if ( !this.CanAddItem( item, slotId ) )
-		{
 			return false;
 		}
 
-		this._items[ slotId ] = item;
-
-		Log.Info( $"AddItem :: Name='{ item.GetInfo()?.Name }'" );
-
-		return true;
+		return this.Container.AddItem( item, validSlotId );
 	}
 
-	public bool AddItemByKey( string itemKey )
+	public ItemInfo? GetItemInfoByKey( string itemKey )
 	{
+		return ResourceLibrary.GetAll<ItemInfo>().FirstOrDefault( x => x.ResourceName == itemKey );
+	}
+
+	public bool AddItemWithKey( string itemKey )
+	{
+		var itemInfo = this.GetItemInfoByKey( itemKey );
+
+		if ( itemInfo == null )
+		{
+			Log.Warning( $"couldn't find { itemKey }" );
+
+			return false;
+		}
+
+		Log.Warning( $"Inventory::AddItemWithKey -> Adding item with key='{ itemKey }'" );
+
+		var item = ItemComponent.Create( itemInfo );
+
+		return this.AddItem( item);
+
+		/*
 		var prefab = PrefabLibrary
 			.FindByComponent<ItemComponent>( )
 			.FirstOrDefault( x => x.Name.ToLower() == itemKey.ToLower() )
@@ -147,9 +161,12 @@ public class Inventory : Component
 			weapon.OwnerId = this.Player.Id;
 		}
 
+
 		return true;
+		*/
 	}
 
+	/*
 	public bool RemoveItem( ItemComponent item )
 	{
 		int slotId = this.GetItemSlotId( item );
@@ -165,25 +182,45 @@ public class Inventory : Component
 
 		return true;
 	}
+	*/
 
 	public void HasItemByName()
 	{
 
 	}
 
-	public bool DropItem( ItemComponent item )
+	public bool DropItemAtSlot( int slotId, out Pickup? outPickup )
 	{
-		if ( !this.RemoveItem( item ) )
+		outPickup = null;
+
+		var item = this.Container.GetItemAtSlot( slotId );
+
+		if ( !item.IsValid() )
 		{
+			Log.Warning( $"Inventory::DropItemAtSlot -> Item not found at slot { slotId }" );
+
 			return false;
 		}
 
-		// TODO: Add a viewray property to Player
-		// SceneTrace trace = Scene.Trace.FromTo( this.Player.EyePos. )
+		// TODO: CanDropItem?
+
+		if ( !this.Container.RemoveItemAtSlot( slotId ) )
+		{
+			Log.Warning( $"Inventory::DropItemAtSlot -> Failed to remove item from slot { slotId } " );
+
+			return false;
+		}
+
+		var aimRay = Player.Local.CameraController.AimRay;
+
+		outPickup = Pickup.Create( item.Info, aimRay.Position + aimRay.Forward * 128.0f, item.Amount );
+
+		Log.Warning( $"Inventory::DropItemAtSlot -> Item at slot { slotId } was dropped!" );
 
 		return true;
 	}
 
+	/*
 	public WeaponItem? AddWeapon( WeaponInfo weaponInfo )
 	{
 		if ( !weaponInfo.MainPrefab.IsValid() )
@@ -204,26 +241,23 @@ public class Inventory : Component
 		WeaponItem weapon = gameObject.Components.Get<WeaponItem>( FindMode.EverythingInSelfAndDescendants );
 		weapon.OwnerId = Player.Id;
 
-		this.AddItem( weapon, -2 /* eSlotId.Any */ );
+		this.AddItem( weapon, -2 );
 
 		return weapon;
 	}
+	*/
 
 	[ConCmd( "giveitem" )]
 	public static void OnCommandGiveItem( string itemKey )
 	{
 		Player player = Player.Local;
 
-		Log.Info("giveitem :: ");
-
-		Log.Info($"player :: {player}");
-
-		if ( player == null )
+		if ( !player.IsValid() )
 		{
 			return;
 		}
 
-		player.Inventory.AddItemByKey( itemKey );
+		player.Inventory.AddItemWithKey( itemKey );
 	}
 
 	[ConCmd( "giveweapon" )]
@@ -238,6 +272,12 @@ public class Inventory : Component
 			return;
 		}
 
-		Player.Local.Inventory.AddWeapon( weaponInfo );
+		// Player.Local.Inventory.AddWeapon( weaponInfo );
+	}
+
+	[ConCmd( "dropitem" )]
+	public static void OnDropItemCommand( int slotId )
+	{
+		Player.Local.Inventory.DropItemAtSlot( slotId, out _ );
 	}
 }

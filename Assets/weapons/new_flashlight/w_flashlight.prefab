@@ -1,0 +1,24 @@
+{
+  "RootObject": {
+    "__guid": "8f155461-2371-4d37-ac19-ec06968a2fac",
+    "Flags": 0,
+    "Name": "w_flashlight",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Gamejam.WeaponItem",
+        "__guid": "b0244b72-b6ad-4435-8852-98a71e36b121",
+        "AttachPoint": "RightHand",
+        "HoldType": "Rifle"
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

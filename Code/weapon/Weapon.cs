@@ -11,11 +11,11 @@ public enum eHoldType
 	Rifle,
 }
 
-public class WeaponItem : ItemComponent, IContextActionProvider
+public class WeaponItem : Component
 {
 	public virtual string Title { get; set; } = "Generic Item";
 
-	[Property] public SkinnedModelRenderer? ModelRenderer { get; set; }
+	// [Property] public SkinnedModelRenderer? ModelRenderer { get; set; }
 
 	[Property] protected eAttachPoint AttachPoint { get; set; } = eAttachPoint.RightHand;
 
@@ -32,24 +32,6 @@ public class WeaponItem : ItemComponent, IContextActionProvider
 
 	[Sync] public bool IsDeployed { get; private set; }
 
-	private ViewModel? viewModel { get; set; }
-
-	private ViewModel? ViewModel
-	{
-		get => viewModel;
-		set
-		{
-			viewModel = value;
-
-			if ( viewModel.IsValid() )
-			{
-				viewModel.SetWeapon( this );
-			}
-		}
-	}
-
-	public bool HasViewModel => ViewModel.IsValid();
-
 	public virtual void PrimaryAttack()
 	{
 	}
@@ -61,11 +43,6 @@ public class WeaponItem : ItemComponent, IContextActionProvider
 
 	protected override void OnStart()
 	{
-		Position = Transform.Position;
-		Tags.Add("interaction");
-
-		Log.Info( "Weapon started" );
-
 		if ( !this.IsDeployed )
 		{
 			this.OnDeployed();
@@ -73,53 +50,6 @@ public class WeaponItem : ItemComponent, IContextActionProvider
 		else
 		{
 
-		}
-
-		// OnDeployed();
-		// base.OnStart();
-	}
-
-	public override WeaponInfo? GetInfo()
-	{
-		return (WeaponInfo?) base.GetInfo();
-	}
-
-	protected void ClearViewModel()
-	{
-		if ( ViewModel.IsValid() )
-		{
-			this.ViewModel.GameObject.Destroy();
-
-			this.ViewModel = null;
-		}
-	}
-
-	protected void CreateViewModel()
-	{
-		if ( !this.Owner.IsValid() )
-		{
-			return;
-		}
-
-		this.ClearViewModel();
-		this.UpdateRenderMode();
-
-		var info = this.GetInfo();
-
-		if ( info != null && info.ViewModelPrefab.IsValid() )
-		{
-			Log.Info( "Weapon::CreateViewModel -> View model creating" );
-
-			GameObject viewModelGameObject = info.ViewModelPrefab.Clone( new CloneConfig()
-			{
-				Transform 	 = new(),
-				Parent 		 = this.Owner.ViewModelCamera.GameObject,
-				StartEnabled = true,
-			});
-
-			this.ViewModel = viewModelGameObject.Components.Get<ViewModel>();
-
-			viewModelGameObject.BreakFromPrefab();
 		}
 	}
 
@@ -130,13 +60,6 @@ public class WeaponItem : ItemComponent, IContextActionProvider
 
 	protected virtual void OnDeployed()
 	{
-		if ( this.Owner.IsValid() && Owner.IsPossessed )
-		{
-			Log.Info( "Weapon::OnDeployed is possessed" );
-
-			this.CreateViewModel();
-		}
-
 		this.UpdateRenderMode();
 	}
 }

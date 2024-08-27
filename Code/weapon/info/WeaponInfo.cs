@@ -5,6 +5,6 @@ public class WeaponInfo : ItemInfo
 {
 	// public static new HashSet<WeaponInfo> All => ItemInfo.All;
 
-	[Category( "Prefabs" )]
-	public GameObject? ViewModelPrefab { get; set; }
+	// [Category( "Prefabs" )]
+	// public GameObject? ViewModelPrefab { get; set; }
 }

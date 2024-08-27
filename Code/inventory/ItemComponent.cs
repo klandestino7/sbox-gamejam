@@ -1,84 +1,26 @@
 
 namespace Gamejam;
 
-public class ItemComponent : Component, IContextActionProvider
+public class ItemComponent : IValid
 {
-	public String Name { get; set; } = "Custom Item";
+	public const int INVENTORY_ANY_SLOT_ID = -2;
 
-	[Property] protected ItemInfo? Info { get; set; }
+	public const int INVENTORY_INVALID_SLOT_ID = -1;
 
-	public Player? OwnedBy { get; set; }
+	public const int INVENTORY_MAX_INVALID_SLOT_ID = INVENTORY_INVALID_SLOT_ID;
 
-	public Color GlowColor => Color.Green;
-	public bool AlwaysGlow => true;
-	public float InteractionRange => 100f;
-	public Vector3 Position { get; set; }
+	public required ItemInfo Info;
 
-	private ContextAction? ActionCollect { get; set; }
+	public string Name => Info.Name;
 
-	protected override void OnStart()
+	public int Amount = 1;
+
+	public Inventory? Parent;
+
+	public static ItemComponent Create( ItemInfo info, int amount = 1 )
 	{
-		ActionCollect = new ContextAction( "weapon.get", "Pickup", "ui/actions/pickup.png" );
+		return new ItemComponent { Info = info, Amount = amount };
 	}
 
-	protected override void OnAwake()
-	{
-		base.OnAwake();
-
-		// Prefab = GameObject.PrefabInstanceSource;
-
-		// Prefab.Components<>();
-	}
-	protected override void OnDestroy()
-	{
-		if ( IsProxy || !Sandbox.Game.IsPlaying )
-			return;
-	}
-
-	protected virtual bool CanCollect()
-	{
-		return true;
-	}
-
-	protected virtual void OnCollect()
-	{
-	}
-
-	protected virtual void Collect()
-	{
-		if ( !CanCollect() )
-		{
-			return;
-		}
-
-		OnCollect();
-	}
-
-	public virtual ItemInfo? GetInfo()
-	{
-		return this.Info;
-	}
-
-	IEnumerable<ContextAction> IContextActionProvider.GetSecondaryActions( Player player )
-	{
-		yield break;
-	}
-
-	ContextAction IContextActionProvider.GetPrimaryAction( Player player )
-	{
-		return ActionCollect!;
-	}
-
-	void IContextActionProvider.OnContextAction( Player player, ContextAction action )
-	{
-		if ( action == ActionCollect )
-		{
-			this.Collect();
-		}
-	}
-
-	string IContextActionProvider.GetContextName()
-	{
-		return this.Info.Name!;
-	}
+	public bool IsValid => this.Info != null && ( this.Parent?.IsValid() ?? false );
 }
