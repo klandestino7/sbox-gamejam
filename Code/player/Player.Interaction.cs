@@ -30,6 +30,8 @@ public partial class Player
 	}
 	private void UpdateInteractions()
 	{
+
+
 		var thinTrace = Scene.Trace.Ray( ViewRay, INTERACTION_DISTANCE )
 				.IgnoreGameObject( GameObject )
 				.WithoutTags( "world" )
@@ -40,7 +42,8 @@ public partial class Player
 		// 			.WithoutTags( "world" )
 		// 			.Run();
 
-		TargetedGameObject = thinTrace.GameObject;
+
+			TargetedGameObject = thinTrace.GameObject;
 
 		// var actions = TargetedGameObject as IContextActionProvider;
 		// var actionId = ContextActionId;

@@ -426,7 +426,7 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.v_toolgun"
+    "facepunch.v_toolgun#49561"
   ],
   "__version": 1
 }

@@ -31,7 +31,6 @@ public partial class Player
 		OnHostRespawn();
 		OnClientRespawn();
 
-		
 	}
 
 	private void OnHostRespawn()

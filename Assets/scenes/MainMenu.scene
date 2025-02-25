@@ -199,7 +199,7 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
-    "sboxmp.hazmatsuit"
+    "sboxmp.hazmatsuit#58087"
   ],
   "__version": 1
 }

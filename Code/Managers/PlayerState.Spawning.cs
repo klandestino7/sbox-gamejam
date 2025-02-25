@@ -29,12 +29,12 @@ public partial class PlayerState
 
 	private void Spawn( SpawnPointInfo spawnPoint )
 	{
-		Log.Info(" PlayerState :: Spawn ");
-
 		var gameobject = PlayerPawnPrefab.Clone( spawnPoint.Transform );
 		var pawn = gameobject.Components.Get<Player>();
 
-		pawn.PlayerState = this;
+		if ( pawn.IsValid() ) {
+			pawn.DefinePlayerState(this);
+		}
 
 		// pawn.SetSpawnPoint( spawnPoint );
 
@@ -71,11 +71,11 @@ public partial class PlayerState
 
 	public void OnKill( DamageInfo damageInfo )
 	{
-		LastDamageInfo = damageInfo;
+		LastDamageInfo = damageInfo; 
 	}
 
 	// protected void OnRespawnStateChanged( LifeState oldValue, LifeState newValue )
-	// {
+	// { 
 	// 	TimeSinceRespawnStateChanged = 0f;
 	// }
 

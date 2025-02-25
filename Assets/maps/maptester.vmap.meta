@@ -11,13 +11,15 @@
       "Resources": null,
       "PackageReferences": [],
       "EditorReferences": [
-        "nxtstudio.collapse#local",
+        "facepunch.tree_oak_big_a#38050",
         "facepunch.tree_oak_small_a#33693",
-        "rust.4_grass#25018",
-        "facepunch.tree_oak_big_a#38050"
+        "nxtstudio.collapse#local",
+        "rust.4_grass#25018"
       ],
+      "IsWhitelistDisabled": false,
       "Metadata": {
-        "SingleAssetSource": "maps/maptester.vmap"
+        "SingleAssetSource": "maps/maptester.vmap",
+        "ParentPackage": "nxtstudio.shelterzero"
       }
     }
   }

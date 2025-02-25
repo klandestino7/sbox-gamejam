@@ -70,7 +70,7 @@ public partial class Player : Component, Component.ExecuteInEditor
 		if ( !IsProxy )
 		{
 			// MouseInput();
-			// Transform.Rotation = new Angles( 0, EyeAngles.yaw, 0 );
+			Transform.Rotation = new Angles( 0, EyeAngles.yaw, 0 );
 		}
 
 		OnUpdateMovement();
@@ -93,7 +93,6 @@ public partial class Player : Component, Component.ExecuteInEditor
 
 		UpdateStamina();
 		RestoreStamina();
-		UpdateInteractions();
 
 		var cc = CharacterController;
 		if ( !cc.IsValid() ) return;
@@ -154,6 +153,7 @@ public partial class Player : Component, Component.ExecuteInEditor
 		// UpdateRecoilAndSpread();
 		ApplyAcceleration();
 		ApplyMovement();
+		UpdateInteractions();
 	}
 	protected override void OnPreRender()
 	{
@@ -164,7 +164,8 @@ public partial class Player : Component, Component.ExecuteInEditor
 
 		// UpdateCamera();
 
-		SpotLight.Transform.Rotation = CameraController.Camera.Transform.Rotation;
+		if (SpotLight != null )
+			SpotLight.Transform.Rotation = CameraController.Camera.Transform.Rotation;
 	}
 
 	public void UpdateStamina() 
@@ -172,6 +173,10 @@ public partial class Player : Component, Component.ExecuteInEditor
 		if ( Input.Down( "run" ) && !WishVelocity.IsNearlyZero() ) {
 			HealthSystem.DrainStamina( 0.1f ); 
 		}
+	}
+
+	public void DefinePlayerState( PlayerState newPs ) {
+		PlayerState = newPs;
 	}
 
 	private void RestoreStamina()

@@ -101,6 +101,8 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 	{
 		IsActive = isActive;
 
+		Log.Info( $" SetActive  :: {isActive}");
+
 		if ( PlayerCameraGameObject.IsValid() )
 			PlayerCameraGameObject.Destroy();
 
@@ -132,9 +134,11 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		if ( !Camera.IsValid() )
 			return;
 
+
 		// All transform effects are additive to camera local position, so we need to reset it before anything is applied
 		Camera.Transform.LocalPosition = Vector3.Zero;
 		Camera.Transform.LocalRotation = Rotation.Identity;
+
 
 		if ( Mode == CameraMode.ThirdPerson ) // && !Player.IsLocallyControlled 
 		{
@@ -145,7 +149,6 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		}
 		else
 		{
-
 			Boom.Transform.Rotation = Player.EyeAngles.WithRoll( 0f ).ToRotation();
 		}
 
@@ -158,6 +161,7 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 
 			Camera.Transform.LocalPosition = Vector3.Backward * (tr.Hit ? tr.Distance - 5.0f : MaxBoomLength);
 		}
+		
 
 		if ( ShouldViewBob )
 		{
@@ -287,7 +291,6 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 
 	void OnModeChanged()
 	{
-		Log.Info(" OnModeChanged  :: ");
 		SetBoomLength( Mode == CameraMode.FirstPerson ? 0.0f : ThirdPersonDistance );
 
 		// var firstPersonPOV = Mode == CameraMode.FirstPerson && IsActive;

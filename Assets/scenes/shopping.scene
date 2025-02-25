@@ -329,9 +329,9 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.shipping_container_closed_dev",
-    "facepunch.shipping_container_open_dev",
-    "fpopium.scissorlift"
+    "facepunch.shipping_container_closed_dev#58564",
+    "facepunch.shipping_container_open_dev#58563",
+    "fpopium.scissorlift#54925"
   ],
   "__version": 1
 }

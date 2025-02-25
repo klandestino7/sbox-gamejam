@@ -44,7 +44,7 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "fish.flashlight"
+    "fish.flashlight#57918"
   ],
   "__version": 1
 }
