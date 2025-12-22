@@ -29,17 +29,17 @@
 
     public void UpdatePosition()
     {
-        var position = Info.Origin.ToScreen();
-        if ( position.z < 0f ) return;
-
-        position.x *= Screen.Size.x;
-        position.x -= Container.Box.Rect.Width * 0.5f;
-
-        position.y *= Screen.Size.y;
-        position.y -= Container.Box.Rect.Height * 0.5f;
-
-        Container.Style.Left = Length.Pixels( position.x * ScaleFromScreen );
-        Container.Style.Top = Length.Pixels( position.y * ScaleFromScreen );
+        // var position =  ToScreen( Info.Origin );
+        // if ( position.z < 0f ) return;
+// 
+        // position.x *= Screen.Size.x;
+        // position.x -= Container.Box.Rect.Width * 0.5f;
+// 
+        // position.y *= Screen.Size.y;
+        // position.y -= Container.Box.Rect.Height * 0.5f;
+// 
+        // Container.Style.Left = Length.Pixels( position.x * ScaleFromScreen );
+        // Container.Style.Top = Length.Pixels( position.y * ScaleFromScreen );
     }
 
     public override void Tick()

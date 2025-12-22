@@ -1,8 +1,11 @@
 @using Sandbox.Menu
 @using Sandbox.UI;
+@using Sandbox.UI.Navigation;
+
+@inherits NavigationHost
+
 @namespace Gamejam.UI
 
-@inherits Sandbox.UI.NavHostPanel
 
 <root style="pointer-events: all">
     <div class="background" />
@@ -12,8 +15,11 @@
 
 @code
 {
+	public static MainMenuRoot Instance { get; set; }
+    
 	public MainMenuRoot()
     {
+		Instance = this;
         DefaultUrl = "/";
 	    AddDestination( "/", typeof( LandingPage ) );
 	    AddDestination( "/new", typeof( HostGamePage ) );
