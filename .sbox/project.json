@@ -1,97 +1,152 @@
 {
   "scene.lastopened": {
-    "Value": "[\u0022scenes/mainmenu.scene\u0022,\u0022prefabs/player.prefab\u0022,\u0022prefabs/playerstate.prefab\u0022,\u0022scenes/minimal.scene\u0022]",
-    "Timeout": 1743090933,
-    "DeleteAt": 0
+    "Value": "[\u0022scenes/mainmenu.scene\u0022,\u0022prefabs/player.prefab\u0022,\u0022prefabs/playerstate.prefab\u0022,\u0022scenes/minimal.scene\u0022,\u0022scenes/hideout.scene\u0022,\u0022scenes/shopping.scene\u0022]",
+    "Timeout": 1759531950,
+    "DeleteAt": 1766502144
   },
   "scenes/mainmenu.scene.Viewport0": {
-    "Value": "{\u0022CameraPosition\u0022:\u0022-363.7397,-665.7552,161.4518\u0022,\u0022CameraRotation\u0022:\u00220.07699987,0.04943314,-0.8379801,0.5379748\u0022,\u0022CameraOrthoHeight\u0022:1000}",
-    "Timeout": 1743091196,
+    "Value": "{\u0022CameraPosition\u0022:\u0022-824.9979,-1144.559,-516.9746\u0022,\u0022CameraRotation\u0022:\u00220.4230966,0.09147745,-0.8810962,0.1905013\u0022,\u0022CameraOrthoHeight\u0022:1000}",
+    "Timeout": 1769013621,
     "DeleteAt": 0
   },
   ".Viewport0": {
-    "Value": "{\u0022CameraPosition\u0022:\u0022-110.4305,-107.8525,129.6888\u0022,\u0022CameraRotation\u0022:\u0022-0.08551846,0.2655615,0.2943559,0.9140669\u0022,\u0022CameraOrthoHeight\u0022:1000}",
-    "Timeout": 1743091051,
+    "Value": "{\u0022CameraPosition\u0022:\u0022-397.1048,-334.3224,107.8045\u0022,\u0022CameraRotation\u0022:\u0022-0.009361952,0.05944468,0.1552907,0.9860342\u0022,\u0022CameraOrthoHeight\u0022:1000}",
+    "Timeout": 1769015152,
     "DeleteAt": 0
   },
   "scenes/hideout.scene.Viewport0": {
-    "Value": "{\u0022CameraPosition\u0022:\u0022-363.7397,-665.7552,161.4518\u0022,\u0022CameraRotation\u0022:\u00220.07699987,0.04943314,-0.8379801,0.5379748\u0022,\u0022CameraOrthoHeight\u0022:1000}",
-    "Timeout": 1743091149,
+    "Value": "{\u0022CameraPosition\u0022:\u0022-631.7328,380.012,342.6107\u0022,\u0022CameraRotation\u0022:\u00220.03320794,0.1298079,-0.2456072,0.9600647\u0022,\u0022CameraOrthoHeight\u0022:1000}",
+    "Timeout": 1769013621,
     "DeleteAt": 0
   },
   "gizmo.settings": {
     "Value": "{\u0022EditMode\u0022:\u0022position\u0022,\u0022Selection\u0022:true,\u0022ViewMode\u0022:\u00223d\u0022,\u0022GizmosEnabled\u0022:true,\u0022GizmoScale\u0022:1,\u0022GridSpacing\u0022:32,\u0022SnapToGrid\u0022:false,\u0022SnapToAngles\u0022:true,\u0022AngleSpacing\u0022:15,\u0022GlobalSpace\u0022:false,\u0022DebugActionGraphs\u0022:false}",
-    "Timeout": 1743091196,
+    "Timeout": 1769015153,
     "DeleteAt": 0
-  },
-  "AssetBrowser.History.AssetsBrowser.ViewMode": {
-    "Value": "2",
-    "Timeout": 1731007442,
-    "DeleteAt": 1740582707
-  },
-  "AssetBrowser.History.AssetsBrowser.ShowJunkFiles": {
-    "Value": "false",
-    "Timeout": 1731007442,
-    "DeleteAt": 1740582707
-  },
-  "AssetBrowser.History.AssetsBrowser.ShowRecursiveFiles": {
-    "Value": "false",
-    "Timeout": 1731007442,
-    "DeleteAt": 1740582707
   },
   "Window.SboxSceneEditor.Dock": {
-    "Value": "{\u0022floatingWindows\u0022:[],\u0022mainWrapper\u0022:{\u0022geometry\u0022:\u0022AdnQywADAAAAAAAAAAAAAAAAB1IAAAN2AAAAAAAAAAAAAAdSAAADdgAAAAAAAAAAB4AAAAAAAAAAAAAAB1IAAAN2\u0022,\u0022splitter\u0022:{\u0022items\u0022:[{\u0022currentIndex\u0022:0,\u0022objects\u0022:[{\u0022data\u0022:null,\u0022managedType\u0022:\u0022SceneTreeWidget\u0022,\u0022name\u0022:\u0022Hierarchy\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022PanelInspectorWidget\u0022,\u0022name\u0022:\u0022UI Panels\u0022}],\u0022type\u0022:\u0022area\u0022},{\u0022items\u0022:[{\u0022items\u0022:[{\u0022currentIndex\u0022:4,\u0022objects\u0022:[{\u0022data\u0022:null,\u0022managedType\u0022:\u0022\u0022,\u0022name\u0022:\u0022GameFrame\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022SceneDock\u0022,\u0022name\u0022:\u0022SceneDock:scenes/mainmenu.scene\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022SceneDock\u0022,\u0022name\u0022:\u0022SceneDock:prefabs/player.prefab\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022SceneDock\u0022,\u0022name\u0022:\u0022SceneDock:prefabs/playerstate.prefab\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022SceneDock\u0022,\u0022name\u0022:\u0022SceneDock:scenes/minimal.scene\u0022}],\u0022type\u0022:\u0022area\u0022},{\u0022currentIndex\u0022:1,\u0022objects\u0022:[{\u0022data\u0022:null,\u0022managedType\u0022:\u0022MainAssetBrowser\u0022,\u0022name\u0022:\u0022Asset Browser\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022ConsoleWidget\u0022,\u0022name\u0022:\u0022Console\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022MainCloudBrowser\u0022,\u0022name\u0022:\u0022Cloud Browser\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022MixerDock\u0022,\u0022name\u0022:\u0022Mixer\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022LibraryManagerDock\u0022,\u0022name\u0022:\u0022Library Manager\u0022}],\u0022type\u0022:\u0022area\u0022}],\u0022state\u0022:\u0022AAAA/wAAAAEAAAACAAACaQAAAQoA/////wEAAAACAA==\u0022,\u0022type\u0022:\u0022splitter\u0022},{\u0022currentIndex\u0022:0,\u0022objects\u0022:[{\u0022data\u0022:null,\u0022managedType\u0022:\u0022Inspector\u0022,\u0022name\u0022:\u0022Inspector\u0022}],\u0022type\u0022:\u0022area\u0022}],\u0022state\u0022:\u0022AAAA/wAAAAEAAAACAAAElQAAAbgA/////wEAAAABAA==\u0022,\u0022type\u0022:\u0022splitter\u0022}],\u0022state\u0022:\u0022AAAA/wAAAAEAAAACAAABmwAACjQA/////wEAAAABAA==\u0022,\u0022type\u0022:\u0022splitter\u0022}},\u0022toolWindowManagerStateFormat\u0022:1}",
-    "Timeout": 1743091196,
-    "DeleteAt": 0
-  },
-  "AssetBrowser.HistoryIdx": {
-    "Value": "19",
-    "Timeout": 1743090943,
-    "DeleteAt": 0
-  },
-  "AssetBrowser.History": {
-    "Value": "[\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\prefabs\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\prefabs\\\\player\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\prefabs\\\\player\\\\cameras\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\prefabs\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\prefabs\\\\items\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\prefabs\\\\player\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\prefabs\\\\npcs\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\prefabs\\\\items\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\weapons\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\weapons\\\\flashlight\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\weapons\\\\new_flashlight\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\weapons\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\textures\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\sounds\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\shaders\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\scenes\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\scenes\u0022]",
-    "Timeout": 1743090943,
+    "Value": "{\u0022floatingWindows\u0022:[],\u0022mainWrapper\u0022:{\u0022geometry\u0022:\u0022AdnQywADAAAAAAAAAAAAAAAAB3cAAAPDAAAAAAAAAAAAAAd3AAADwwAAAAAAAAAAB4AAAAAAAAAAAAAAB3cAAAPD\u0022,\u0022splitter\u0022:{\u0022items\u0022:[{\u0022currentIndex\u0022:0,\u0022objects\u0022:[{\u0022data\u0022:null,\u0022managedType\u0022:\u0022SceneTreeWidget\u0022,\u0022name\u0022:\u0022Hierarchy\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022PanelInspectorWidget\u0022,\u0022name\u0022:\u0022UI Panels\u0022}],\u0022type\u0022:\u0022area\u0022},{\u0022items\u0022:[{\u0022items\u0022:[{\u0022currentIndex\u0022:0,\u0022objects\u0022:[{\u0022data\u0022:null,\u0022managedType\u0022:\u0022SceneDock\u0022,\u0022name\u0022:\u0022SceneDock:scenes/minimal.scene\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022SceneDock\u0022,\u0022name\u0022:\u0022SceneDock:prefabs/player.prefab\u0022}],\u0022type\u0022:\u0022area\u0022},{\u0022currentIndex\u0022:1,\u0022objects\u0022:[{\u0022data\u0022:null,\u0022managedType\u0022:\u0022MainAssetBrowser\u0022,\u0022name\u0022:\u0022Asset Browser\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022ConsoleWidget\u0022,\u0022name\u0022:\u0022Console\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022MixerDock\u0022,\u0022name\u0022:\u0022Mixer\u0022},{\u0022data\u0022:null,\u0022managedType\u0022:\u0022LibraryManagerDock\u0022,\u0022name\u0022:\u0022Library Manager\u0022}],\u0022type\u0022:\u0022area\u0022}],\u0022state\u0022:\u0022AAAA/wAAAAEAAAACAAAC2gAAAh0A/////wEAAAACAA==\u0022,\u0022type\u0022:\u0022splitter\u0022},{\u0022currentIndex\u0022:0,\u0022objects\u0022:[{\u0022data\u0022:null,\u0022managedType\u0022:\u0022Inspector\u0022,\u0022name\u0022:\u0022Inspector\u0022}],\u0022type\u0022:\u0022area\u0022}],\u0022state\u0022:\u0022AAAA/wAAAAEAAAACAAAElQAAAbgA/////wEAAAABAA==\u0022,\u0022type\u0022:\u0022splitter\u0022}],\u0022state\u0022:\u0022AAAA/wAAAAEAAAACAAABmwAACjQA/////wEAAAABAA==\u0022,\u0022type\u0022:\u0022splitter\u0022}},\u0022toolWindowManagerStateFormat\u0022:1}",
+    "Timeout": 1769015153,
     "DeleteAt": 0
   },
   "SceneView.Viewport0.Settings": {
-    "Value": "{\u0022CameraPosition\u0022:\u0022-56.19302,-129.7545,62.50369\u0022,\u0022CameraRotation\u0022:\u0022-0.0004657866,0.05930454,0.007840079,0.9982091\u0022,\u0022View\u0022:0,\u0022RenderMode\u0022:0,\u0022WireframeMode\u0022:false,\u0022EnablePostProcessing\u0022:true,\u0022EnablePrefabLighting\u0022:true,\u0022ShowGrid\u0022:true,\u0022GridOpacity\u0022:0.2,\u0022GridAxis\u0022:0,\u0022CameraOrthoHeight\u0022:1000}",
-    "Timeout": 1743091196,
+    "Value": "{\u0022CameraPosition\u0022:\u0022-397.1048,-334.3224,107.8045\u0022,\u0022CameraRotation\u0022:\u0022-0.009361952,0.05944468,0.1552907,0.9860342\u0022,\u0022View\u0022:0,\u0022RenderMode\u0022:0,\u0022WireframeMode\u0022:false,\u0022EnablePostProcessing\u0022:true,\u0022EnablePrefabLighting\u0022:true,\u0022ShowSkyIn2D\u0022:true,\u0022ShowGrid\u0022:true,\u0022GridOpacity\u0022:0.2,\u0022GridAxis\u0022:0,\u0022CameraOrthoHeight\u0022:1000}",
+    "Timeout": 1769015153,
     "DeleteAt": 0
   },
   "SceneView.Layout": {
     "Value": "{\u0022Layout\u0022:0,\u0022SplitterState\u0022:[]}",
-    "Timeout": 1743091196,
+    "Timeout": 1769015153,
     "DeleteAt": 0
   },
   "prefabs/player.prefab.Viewport0": {
-    "Value": "{\u0022CameraPosition\u0022:\u0022175.6643,-153.3772,105.7096\u0022,\u0022CameraRotation\u0022:\u0022-0.1662935,0.05291123,0.9383044,0.2985495\u0022,\u0022CameraOrthoHeight\u0022:1000}",
-    "Timeout": 1743091196,
+    "Value": "{\u0022CameraPosition\u0022:\u0022127.3556,-126.1894,-28143.21\u0022,\u0022CameraRotation\u0022:\u0022-0.2305625,0.09763073,0.8915138,0.3775079\u0022,\u0022CameraOrthoHeight\u0022:1000}",
+    "Timeout": 1769015153,
     "DeleteAt": 0
   },
   "prefabs/playerstate.prefab.Viewport0": {
     "Value": "{\u0022CameraPosition\u0022:\u0022-81.95623,-171.8914,101.5922\u0022,\u0022CameraRotation\u0022:\u0022-0.1292719,0.2044876,0.5184803,0.8201535\u0022,\u0022CameraOrthoHeight\u0022:1000}",
-    "Timeout": 1743091196,
+    "Timeout": 1769010633,
     "DeleteAt": 0
   },
-  "AssetBrowser.Prefab.History": {
-    "Value": "[\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\u0022,\u0022f:\\\\jogos\\\\sbox\\\\sbox-gamejam\\\\assets\\\\prefabs\\\\player\\\\cameras\u0022,\u0022f:\\\\jogos\\\\sbox\\\\sbox-gamejam\\\\assets\\\\prefabs\\\\player\\\\cameras\u0022]",
-    "Timeout": 1743088939,
+  "LocalAssetBrowser.HistoryIdx": {
+    "Value": "16",
+    "Timeout": 1769013705,
     "DeleteAt": 0
   },
-  "AssetBrowser.Prefab.HistoryIdx": {
-    "Value": "2",
-    "Timeout": 1743088939,
-    "DeleteAt": 0
-  },
-  "scenes/shopping.scene.Viewport0": {
-    "Value": "{\u0022CameraPosition\u0022:\u0022-363.7397,-665.7552,161.4518\u0022,\u0022CameraRotation\u0022:\u00220.07699987,0.04943314,-0.8379801,0.5379748\u0022,\u0022CameraOrthoHeight\u0022:1000}",
-    "Timeout": 1743091196,
+  "LocalAssetBrowser.History": {
+    "Value": "[\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Code\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\prefabs\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\ui\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\textures\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\sounds\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\ui\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\weapons\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Code\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\prefabs\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\prefabs\\\\player\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\prefabs\u0022,\u0022f:\\\\jogos\\\\sbox\\\\sbox-gamejam\\\\.sbox\\\\cloud\\\\models\\\\player\\\\hazmatsuit\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\u0022,\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\\\\prefabs\u0022]",
+    "Timeout": 1769013705,
     "DeleteAt": 0
   },
   "scenes/minimal.scene.Viewport0": {
-    "Value": "{\u0022CameraPosition\u0022:\u0022-56.19302,-129.7545,62.50369\u0022,\u0022CameraRotation\u0022:\u0022-0.0004657866,0.05930454,0.007840079,0.9982091\u0022,\u0022CameraOrthoHeight\u0022:1000}",
-    "Timeout": 1743091196,
+    "Value": "{\u0022CameraPosition\u0022:\u0022-397.1048,-334.3224,107.8045\u0022,\u0022CameraRotation\u0022:\u0022-0.009361952,0.05944468,0.1552907,0.9860342\u0022,\u0022CameraOrthoHeight\u0022:1000}",
+    "Timeout": 1769015153,
+    "DeleteAt": 0
+  },
+  "scenes/shopping.scene.Viewport0": {
+    "Value": "{\u0022CameraPosition\u0022:\u002236.2835,-204.5044,77.38584\u0022,\u0022CameraRotation\u0022:\u0022-0.05583575,0.04034435,0.8086261,0.5842761\u0022,\u0022CameraOrthoHeight\u0022:1000}",
+    "Timeout": 1769010278,
+    "DeleteAt": 0
+  },
+  "expand.a6a987eb-f07d-46b8-b687-27084adb1ee9.ScreenPanel": {
+    "Value": "false",
+    "Timeout": 1769010648,
+    "DeleteAt": 0
+  },
+  "LocalAssetBrowser.Model.History": {
+    "Value": "[\u0022F:\\\\Jogos\\\\sbox\\\\sbox-gamejam\\\\Assets\u0022]",
+    "Timeout": 1769014505,
+    "DeleteAt": 0
+  },
+  "expand.b5ef135d-b42a-4599-bc83-8fd4bd38e947.ModelPhysics": {
+    "Value": "false",
+    "Timeout": 1769014829,
+    "DeleteAt": 0
+  },
+  "expand.b5ef135d-b42a-4599-bc83-8fd4bd38e947.AnimationHelper": {
+    "Value": "false",
+    "Timeout": 1769014829,
+    "DeleteAt": 0
+  },
+  "expand.ae21f418-2d53-4e9d-8a56-43694b7cb2f3.Player": {
+    "Value": "false",
+    "Timeout": 1769014891,
+    "DeleteAt": 0
+  },
+  "expand.ae21f418-2d53-4e9d-8a56-43694b7cb2f3.HealthSystem": {
+    "Value": "false",
+    "Timeout": 1769014891,
+    "DeleteAt": 0
+  },
+  "expand.ae21f418-2d53-4e9d-8a56-43694b7cb2f3.Inventory": {
+    "Value": "false",
+    "Timeout": 1769014891,
+    "DeleteAt": 0
+  },
+  "LocalAssetBrowser.Model.HistoryIdx": {
+    "Value": "0",
+    "Timeout": 1769014505,
+    "DeleteAt": 0
+  },
+  "expand.ae21f418-2d53-4e9d-8a56-43694b7cb2f3.BoxCollider": {
+    "Value": "false",
+    "Timeout": 1769014891,
+    "DeleteAt": 0
+  },
+  "CloudBrowser.Model..ViewMode": {
+    "Value": "3",
+    "Timeout": 1769014505,
+    "DeleteAt": 0
+  },
+  "CloudBrowser.Model..ShowJunkFiles": {
+    "Value": "false",
+    "Timeout": 1769014505,
+    "DeleteAt": 0
+  },
+  "CloudBrowser.Model..HideNonAssets": {
+    "Value": "false",
+    "Timeout": 1769014505,
+    "DeleteAt": 0
+  },
+  "CloudBrowser.Model..ShowRecursiveFiles": {
+    "Value": "false",
+    "Timeout": 1769014505,
+    "DeleteAt": 0
+  },
+  "expand.ae21f418-2d53-4e9d-8a56-43694b7cb2f3.CharacterController": {
+    "Value": "false",
+    "Timeout": 1769014891,
+    "DeleteAt": 0
+  },
+  "expand.ae21f418-2d53-4e9d-8a56-43694b7cb2f3.CameraController": {
+    "Value": "false",
+    "Timeout": 1769014891,
+    "DeleteAt": 0
+  },
+  "expand.b5ef135d-b42a-4599-bc83-8fd4bd38e947.SkinnedModelRenderer": {
+    "Value": "false",
+    "Timeout": 1769014831,
     "DeleteAt": 0
   }
 }
