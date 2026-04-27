@@ -117,6 +117,7 @@ public struct InventoryContainer
 	{
 		this.AssetIsSlotValid( slotId );
 
+		item.Parent = this.Inventory;
 		this.Items[ slotId ] = item;
 
 		Log.Info( $"InventoryContainer::AddItem -> Item added with key='{ item.Name }' at slotId { slotId }" );
@@ -133,6 +134,7 @@ public struct InventoryContainer
 			return false;
 		}
 
+		this.Items[ slotId ].Parent = null;
 		this.Items[ slotId ] = null;
 
 		return true;

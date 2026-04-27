@@ -1,78 +1,77 @@
 namespace Gamejam;
 
-public class Pickup : Component, Component.ITriggerListener
+public class Pickup : Component, IContextActionProvider
 {
 	[Property] public ItemInfo ItemInfo { get; set; }
 
 	[Sync] public int Amount { get; set; } = 1;
 
-	[Property] SphereCollider SphereCollider { get; set; }
+	public Color GlowColor => Color.Yellow;
+	public bool AlwaysGlow => false;
+	public float InteractionRange => 100f;
+	public Vector3 Position => Transform.Position;
 
-	[Property] SkinnedModelRenderer ModelRenderer { get; set; }
+	private ContextAction PickupAction { get; set; }
 
 	public static Pickup Create( ItemInfo itemInfo, Vector3 position, int quantity = 1 )
 	{
 		GameObject obj = new GameObject();
 		obj.Name = "Pickup";
 		obj.Transform.Position = position;
-
-		SphereCollider sphereCollider = obj.Components.Create<SphereCollider>();
-		sphereCollider.Radius = 16;
+		obj.Tags.Add( "interaction" );
 
 		Pickup pickup = obj.Components.Create<Pickup>();
 		pickup.ItemInfo = itemInfo;
 		pickup.Amount = quantity;
 
-		var modelRenderer = obj.Components.Create<SkinnedModelRenderer>();
+		var modelRenderer = obj.Components.Create<ModelRenderer>();
 		modelRenderer.Model = itemInfo.WorldModel;
-		// mdl.Transform.Local = itemInfo.WorldModelOffset;
 
 		obj.NetworkSpawn();
 
 		return pickup;
 	}
 
-	void ITriggerListener.OnTriggerEnter( Sandbox.Collider other )
+	protected override void OnStart()
 	{
-		if ( this.Amount <= 0 )
-		{
-			return;
-		}
+		PickupAction = new ContextAction( "pickup", $"Pick Up", "ui/actions/open_door.png" );
+		Tags.Add( "interaction" );
+	}
 
-		if ( !Sandbox.Networking.IsHost )
-		{
-			return;
-		}
+	public string GetContextName() => ItemInfo?.Name ?? "Item";
 
-		if ( other.GameObject.Root.Components.Get<Player>() is not { IsValid: true } player )
-		{
-			return;
-		}
+	public ContextAction GetPrimaryAction( Player player ) => PickupAction;
 
-		// TODO: Don't allow collecting pickup too fast
+	public IEnumerable<ContextAction> GetSecondaryActions( Player player )
+	{
+		yield break;
+	}
+
+	public void OnContextAction( Player player, ContextAction action )
+	{
+		if ( action != PickupAction || Amount <= 0 )
+			return;
 
 		using ( Rpc.FilterInclude( player.Network.OwnerConnection ) )
 		{
-			this.OnCollect( player );
+			OnCollect( player );
 		}
 	}
 
-	[ Broadcast( NetPermission.HostOnly ) ]
+	[Broadcast( NetPermission.HostOnly )]
 	public void OnCollect( Player player )
 	{
-		var item = ItemComponent.Create( this.ItemInfo, this.Amount );
+		var item = ItemComponent.Create( ItemInfo, Amount );
 
 		if ( !player.Inventory.AddItem( item ) )
-		{
 			return;
-		}
 
-		this.DestroyOnAuthority();
+		DestroyOnAuthority();
 	}
 
-	[ Authority ]
+	[Authority]
 	public void DestroyOnAuthority()
 	{
-		this.GameObject.Destroy();
+		GameObject.Destroy();
 	}
 }

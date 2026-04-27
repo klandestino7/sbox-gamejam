@@ -8,6 +8,10 @@ InventorySlot
     border-radius: 5px;
     border: 1px solid rgba(white, 0.0);
 
+    .item-name {
+        font-size: 10px;
+    }
+
     .slotId {
         position: absolute;
         margin: 0.5em;

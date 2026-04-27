@@ -5,10 +5,53 @@
 @inherits Panel
 
 <root>
-	<div class="title"></div>
+	@if ( Action != null )
+	{
+		<div class="interact-prompt">
+			<span class="key">E</span>
+			<span class="action-name">@Action.Name</span>
+			@if ( TargetName != null )
+			{
+				<span class="target-name">@TargetName</span>
+			}
+		</div>
+	}
 </root>
 
 @code
 {
-	protected override int BuildHash() => System.HashCode.Combine( "" );
+	private ContextAction Action { get; set; }
+	private string TargetName { get; set; }
+
+	public override void Tick()
+	{
+		var player = Player.Local;
+		if ( player == null )
+		{
+			Action = null;
+			TargetName = null;
+			return;
+		}
+
+		var target = player.TargetedGameObject;
+		if ( !target.IsValid() )
+		{
+			Action = null;
+			TargetName = null;
+			return;
+		}
+
+		var provider = target.Components.Get<IContextActionProvider>( FindMode.EverythingInSelfAndAncestors );
+		if ( provider == null || player.Transform.Position.Distance( provider.Position ) > provider.InteractionRange )
+		{
+			Action = null;
+			TargetName = null;
+			return;
+		}
+
+		Action = provider.GetPrimaryAction( player );
+		TargetName = provider.GetContextName();
+	}
+
+	protected override int BuildHash() => System.HashCode.Combine( Action?.Id, TargetName );
 }
