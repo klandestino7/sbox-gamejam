@@ -1,6 +1,10 @@
 {
   "Name": "Custom Item",
-  "MainPrefab": null,
+  "Prefab": {
+    "_type": "gameobject",
+    "prefab": "prefabs/items/item_hotdog.prefab"
+  },
+  "WorldModel": "models/citizen_props/hotdog01.vmdl",
   "__references": [],
   "__version": 0
 }
