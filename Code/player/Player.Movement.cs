@@ -140,12 +140,8 @@ public partial class Player
 			_eyeHeightOffset = eyeHeightOffset;
 		}
 
-		if ( PlayerBoxCollider.IsValid() )
-		{
-			// Bit shit, but it works
-			PlayerBoxCollider.Center = new( 0, 0, 32 + _smoothEyeHeight );
-			PlayerBoxCollider.Scale = new( 32, 32, 64 + _smoothEyeHeight );
-		}
+		// PlayerBoxCollider is disabled (physics body conflict with CharacterController).
+		// Resize logic left here for when it's moved to a proper child Rigidbody.
 	}
 
 	TimeUntil TimeUntilAccelerationRecovered = 0;
@@ -174,7 +170,7 @@ public partial class Player
 		// Eye input
 		if (  cc.IsValid() ) // IsPossessed &&
 		{
-			if ( IsLocallyControlled && !HealthSystem.IsDead )
+			if ( IsLocallyControlled && (!HealthSystem.IsValid() || !HealthSystem.IsDead) )
 			{
 				EyeAngles += Input.AnalogLook * AimDampening;
 				EyeAngles = EyeAngles.WithPitch( EyeAngles.pitch.Clamp( -90, 90 ) );
@@ -537,7 +533,7 @@ public partial class Player
 	float GetEyeHeightOffset()
 	{
 		if ( IsCrouching ) return -16f;
-		if ( HealthSystem.IsDead ) return -48f;
+		if ( HealthSystem.IsValid() && HealthSystem.IsDead ) return -48f;
 		return 0f;
 	}
 

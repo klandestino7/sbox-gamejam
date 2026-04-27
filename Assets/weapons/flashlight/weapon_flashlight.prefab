@@ -27,11 +27,6 @@
           "go": "1150335e-80c1-45f0-862a-26618bb9332f",
           "component_type": "SkinnedModelRenderer"
         }
-      },
-      {
-        "__type": "Gamejam.ItemComponent",
-        "__guid": "ea1e007a-39b8-4696-adfe-bf54f93d0231",
-        "Info": "weapons/flashlight/flashlight.weapon"
       }
     ],
     "Children": [

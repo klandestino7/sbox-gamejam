@@ -56,7 +56,7 @@ public class Game : SingletonComponent<Game>
 	{
 		Log.Info( "Game started" );
 
-		switch (Sandbox.Game.ActiveScene.Title)
+		switch (Sandbox.Game.ActiveScene.Title ?? string.Empty)
 		{
 			case "mainmenu":
 				this.Level = eGameLevel.Menu;
@@ -71,7 +71,9 @@ public class Game : SingletonComponent<Game>
 				this.Level = eGameLevel.Dev;
 				break;
 			default:
-				throw new Exception( $"Invalid level SceneFile Title \"{ Sandbox.Game.ActiveScene.Title }\"" );
+				Log.Warning( $"Game.OnStart: unrecognized scene title \"{Sandbox.Game.ActiveScene.Title}\", defaulting to Dev" );
+				this.Level = eGameLevel.Dev;
+				break;
 		}
 
 		Log.Info( $"Game started with level { this.Level }" );

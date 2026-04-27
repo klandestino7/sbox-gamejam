@@ -92,7 +92,12 @@ public class Inventory : Component
 
 	public ItemInfo? GetItemInfoByKey( string itemKey )
 	{
-		return ResourceLibrary.GetAll<ItemInfo>().FirstOrDefault( x => x.ResourceName == itemKey );
+		var all = ResourceLibrary.GetAll<ItemInfo>();
+		var key = itemKey.ToLower();
+
+		return all.FirstOrDefault( x => x.ResourceName.ToLower() == key )
+			?? all.FirstOrDefault( x => x.Name.ToLower() == key )
+			?? all.FirstOrDefault( x => x.ResourceName.ToLower().Contains( key ) );
 	}
 
 	public bool AddItemWithKey( string itemKey )
@@ -220,7 +225,6 @@ public class Inventory : Component
 		return true;
 	}
 
-	/*
 	public WeaponItem? AddWeapon( WeaponInfo weaponInfo )
 	{
 		if ( !weaponInfo.MainPrefab.IsValid() )
@@ -233,19 +237,27 @@ public class Inventory : Component
 		var gameObject = weaponInfo.MainPrefab.Clone( new CloneConfig()
 		{
 			Transform = new(),
-			Parent 	  = this.Player.GameObject,
+			Parent    = Player.GameObject,
 		});
 
-		gameObject.NetworkSpawn( Player.Network.OwnerConnection );
+		gameObject.NetworkSpawn();
 
-		WeaponItem weapon = gameObject.Components.Get<WeaponItem>( FindMode.EverythingInSelfAndDescendants );
-		weapon.OwnerId = Player.Id;
+		var weapon = gameObject.Components.Get<WeaponItem>( FindMode.EverythingInSelfAndDescendants );
 
-		this.AddItem( weapon, -2 );
+		if ( weapon == null )
+		{
+			Log.Error( "WeaponItem component not found in prefab" );
+			gameObject.Destroy();
+			return null;
+		}
+
+		weapon.OwnerId = Player.ConnectionID;
+
+		var item = ItemComponent.Create( weaponInfo );
+		this.AddItem( item );
 
 		return weapon;
 	}
-	*/
 
 	[ConCmd( "giveitem" )]
 	public static void OnCommandGiveItem( string itemKey )
@@ -272,7 +284,7 @@ public class Inventory : Component
 			return;
 		}
 
-		// Player.Local.Inventory.AddWeapon( weaponInfo );
+		Player.Local.Inventory.AddWeapon( weaponInfo );
 	}
 
 	[ConCmd( "dropitem" )]

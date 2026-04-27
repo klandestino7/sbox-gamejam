@@ -4,29 +4,36 @@
 @attribute [StyleSheet]
 
 <root>
-	@for ( var slotId = 0; slotId < Player.Local.Inventory.NUM_SLOTS; slotId++ )
+	@if ( Player.Local?.Inventory != null )
 	{
-		var item = Player.Local.Inventory.GetItemAtSlot( slotId );
-		
-		<InventorySlot SlotId=@slotId Item=@item Selected=@(SelectedSlotId == slotId) />
+		@for ( var slotId = 0; slotId < Player.Local.Inventory.NUM_SLOTS; slotId++ )
+		{
+			var item = Player.Local.Inventory.GetItemAtSlot( slotId );
+			<InventorySlot SlotId=@slotId Item=@item Selected=@(SelectedSlotId == slotId) />
+		}
 	}
 </root>
 
 @code
 {
 	private int SelectedSlotId { get; set; } = -1;
-	// public static Inventory CurrentInventory { get; private set; }
 
 	public override void Tick()
 	{
-		for ( var slotId = 0; slotId < Player.Local.Inventory.NUM_SLOTS; slotId++ ) 
+		if ( Player.Local?.Inventory == null ) return;
+
+		for ( var slotId = 0; slotId < Player.Local.Inventory.NUM_SLOTS; slotId++ )
 		{
-			if (  Input.Pressed( $"Slot{slotId+1}" ) ) 
+			if ( Input.Pressed( $"Slot{slotId+1}" ) )
 			{
 				SelectedSlotId = SelectedSlotId == slotId ? -1 : slotId;
 			}
 		}
 	}
 
-	protected override int BuildHash() => HashCode.Combine( SelectedSlotId, Player.Local.Inventory.Items.HashCombine( i => i?.GetHashCode() ?? -1 ) );
+	protected override int BuildHash()
+	{
+		if ( Player.Local?.Inventory == null ) return HashCode.Combine( SelectedSlotId );
+		return HashCode.Combine( SelectedSlotId, Player.Local.Inventory.Items.HashCombine( i => i?.GetHashCode() ?? -1 ) );
+	}
 }

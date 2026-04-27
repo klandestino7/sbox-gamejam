@@ -6,11 +6,6 @@
     "Enabled": true,
     "Components": [
       {
-        "__type": "Gamejam.ItemComponent",
-        "__guid": "5307f7c3-46ae-4e32-9665-389d5ffa877f",
-        "Info": "weapons/flashlight/flashlight.weapon"
-      },
-      {
         "__type": "Sandbox.ModelRenderer",
         "__guid": "98600cec-6ce7-43dd-b312-596108fcb728",
         "BodyGroups": 18446744073709551615,

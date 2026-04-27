@@ -1,9 +1,9 @@
 {
-  "MasterVolume": "1.00,1.00,0",
+  "MasterVolume": "1",
   "LoopedSounds": [
     {
       "SoundFile": "sounds/ambient2.vsnd",
-      "Volume": "1.00,1.00,0"
+      "Volume": "1"
     }
   ],
   "StingSounds": [],

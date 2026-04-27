@@ -34,8 +34,6 @@
 	{
 		base.OnAfterTreeRender( firstTime );
 
-		Log.Info($" Item :: {Item}");
-
 		if ( !Item.IsValid() )
 		{
 			return;
@@ -65,7 +63,6 @@
 		scenePanel.Style.Height = Length.Percent( 100 );
 
 		AddChild( scenePanel );
-		Log.Info(" InventorySlot ");
 	}
 
 	public void FlushScene()

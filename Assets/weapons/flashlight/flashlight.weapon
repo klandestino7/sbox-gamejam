@@ -1,13 +1,16 @@
 {
-  "Name": "Flashlight",
-  "Description": "The flashlight.",
   "MainPrefab": {
     "_type": "gameobject",
-    "prefab": "weapons/flashlight/w_flashlight.prefab"
+    "prefab": "weapons/flashlight/weapon_flashlight.prefab"
   },
   "ViewModelPrefab": {
     "_type": "gameobject",
-    "prefab": "weapons/flashlight/vm_flashlight.prefab"
+    "prefab": "weapons/flashlight/vw_weapon_flashlight.prefab"
+  },
+  "Name": "Flashlight",
+  "Prefab": {
+    "_type": "gameobject",
+    "prefab": "weapons/flashlight/vw_weapon_flashlight.prefab"
   },
   "WorldModel": "models/flashlight/flashlight.vmdl",
   "__references": [],

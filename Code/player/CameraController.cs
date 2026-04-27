@@ -190,6 +190,9 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		if ( Mode != CameraMode.FirstPerson )
 			return;
 
+		if ( !Player.CharacterController.IsValid() )
+			return;
+
 		var bobSpeed = Player.CharacterController.Velocity.Length.LerpInverse( 0, 300 );
 		if ( !Player.IsGrounded ) bobSpeed *= 0.1f;
 		if ( !Player.IsSprinting ) bobSpeed *= 0.3f;
@@ -236,9 +239,9 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 		// }
 
 		// deathcam, "zoom" at target.
-		if ( Player.HealthSystem.IsDead )
+		if ( Player.HealthSystem.IsValid() && Player.HealthSystem.IsDead )
 		{
-			FieldOfViewOffset += AimFovOffset; 
+			FieldOfViewOffset += AimFovOffset;
 		}
 
 		if ( ColorAdjustments.IsValid() )
@@ -249,7 +252,7 @@ public sealed class CameraController : Component, IGameEventHandler<DamageTakenE
 				fetchedInitial = true;
 			}
 
-			ColorAdjustments.Saturation = Player.HealthSystem.Invincible
+			ColorAdjustments.Saturation = (Player.HealthSystem.IsValid() && Player.HealthSystem.Invincible)
 				? RespawnProtectionSaturation
 				: ColorAdjustments.Saturation.MoveToLinear( defaultSaturation, 1f );
 		}

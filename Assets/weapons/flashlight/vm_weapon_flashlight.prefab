@@ -1,50 +1,138 @@
 {
   "RootObject": {
     "__guid": "f7bbbc6e-41e3-4b2b-9895-c8ef3ad9ecab",
+    "__version": 2,
     "Flags": 0,
     "Name": "vm_weapon_flashlight",
-    "Rotation": "0,0,-0.7071067,0.7071068",
+    "Position": "0,0,0",
+    "Rotation": "0,0,-0.707106709,0.707106829",
+    "Scale": "1,1,1",
+    "Tags": "",
     "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkFlags": 0,
+    "NetworkOrphaned": 0,
+    "NetworkTransmit": true,
+    "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "Sandbox.SkinnedModelRenderer",
         "__guid": "d977edb1-34ee-4d9a-92f5-bd04404ccded",
+        "__enabled": true,
+        "Flags": 0,
+        "AnimationGraph": null,
         "BodyGroups": 18446744073709551615,
+        "BoneMergeTarget": null,
+        "CreateAttachments": false,
         "CreateBoneObjects": false,
+        "LodOverride": null,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Materials": null,
         "Model": "models/flashlight/flashlight.vmdl",
+        "Morphs": {},
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "Parameters": {
+          "bools": {},
+          "ints": {},
+          "floats": {},
+          "vectors": {},
+          "rotations": {}
+        },
+        "PlaybackRate": 1,
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
         "RenderType": "On",
+        "Sequence": {
+          "Name": null,
+          "Looping": true,
+          "Blending": false
+        },
         "Tint": "1,1,1,1",
         "UseAnimGraph": true
       },
       {
         "__type": "Gamejam.ViewModel",
         "__guid": "2c01f5c8-4abe-41c8-b37a-7f50014225a9",
+        "__enabled": true,
+        "Flags": 0,
+        "ArmsModelRenderer": null,
         "ModelRenderer": {
           "_type": "component",
-          "component_id": "ca9c0593-4d5e-4f70-a80a-dcf9ee80a01e",
+          "component_id": "74a8464d-473f-4315-a12d-a0c75c228e88",
           "go": "3bab4998-b810-4c65-a3a7-b3477d611e99",
           "component_type": "SkinnedModelRenderer"
-        }
+        },
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null
       }
     ],
     "Children": [
       {
         "__guid": "3bab4998-b810-4c65-a3a7-b3477d611e99",
-        "Flags": 0,
-        "Name": "arms (1)",
-        "Enabled": true,
+        "__version": 2,
         "__Prefab": "weapons/flashlight/arms.prefab",
-        "__PrefabVariables": {}
+        "__PrefabInstancePatch": {
+          "AddedObjects": [],
+          "RemovedObjects": [],
+          "PropertyOverrides": [
+            {
+              "Target": {
+                "Type": "GameObject",
+                "IdValue": "b07f10df-40b4-45ab-9f2c-c5e9a87b73a5"
+              },
+              "Property": "Name",
+              "Value": "arms (1)"
+            }
+          ],
+          "MovedObjects": []
+        },
+        "__PrefabIdToInstanceId": {
+          "b07f10df-40b4-45ab-9f2c-c5e9a87b73a5": "3bab4998-b810-4c65-a3a7-b3477d611e99",
+          "1458d091-2d24-448b-97cd-f5a3dfdced95": "74a8464d-473f-4315-a12d-a0c75c228e88"
+        }
       }
     ],
+    "__properties": {
+      "NetworkInterpolation": true,
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": false,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": "",
+        "DeferGeneration": false,
+        "CustomBounds": false
+      }
+    },
     "__variables": []
   },
+  "ResourceVersion": 2,
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
-  "ResourceVersion": 1,
-  "__references": [
-    "fish.flashlight#57918"
-  ],
-  "__version": 1
+  "DontBreakAsTemplate": false,
+  "__references": [],
+  "__version": 2
 }

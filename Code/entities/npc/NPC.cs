@@ -73,7 +73,6 @@ public partial class NPC : Component
 	/// </summary>
 	[Property]
 	[Category( "Triggers" )]
-	[ShowIf( "Idle", true )]
 	public Action OnIdle { get; set; }
     
 	[Property] public GameObject TargetObject { get; private set; } = null;
@@ -315,7 +314,8 @@ public partial class NPC : Component
 			var obj = SceneUtility.GetPrefabScene( foundNpc.Prefab ).Clone();
 			obj.NetworkMode = NetworkMode.Object;
 			obj.NetworkSpawn();
-			var trace = Sandbox.Game.ActiveScene.Trace.Ray( Player.Local.ViewModelCamera.Transform.Position, Player.Local.ViewModelCamera.Transform.Position + Player.Local.ViewModelCamera.Transform.Rotation.Forward * 1000f )
+			var aimRay = Player.Local.CameraController.AimRay;
+			var trace = Sandbox.Game.ActiveScene.Trace.Ray( aimRay.Position, aimRay.Position + aimRay.Forward * 1000f )
 				.WithoutTags( "player", "npc", "trigger" )
 				.IgnoreGameObjectHierarchy( Player.Local.GameObject )
 				.Run();

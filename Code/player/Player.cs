@@ -59,10 +59,14 @@ public partial class Player : Component, Component.ExecuteInEditor
 		// ViewModelCamera = Components.GetOrCreate<CameraComponent>( FindMode.InChildren );
 
 		PlayerBody = Components.Get<SkinnedModelRenderer>( FindMode.EverythingInSelfAndDescendants );
-		// Collider = Components.Get<BoxCollider>( FindMode.EverythingInSelfAndDescendants );
 
 		Inventory = Components.Get<Inventory>( FindMode.EverythingInSelfAndDescendants );;
 		SpotLight = GameObject.Components.Get<SpotLight>( FindMode.InChildren );
+
+		// PlayerBoxCollider conflicts with CharacterController's physics body (not a hull shape).
+		// Needs to be on a child with its own Rigidbody. Disable for now to stop the exception.
+		if ( PlayerBoxCollider.IsValid() )
+			PlayerBoxCollider.Enabled = false;
 	}
 
 	protected override void OnUpdate()
@@ -77,7 +81,9 @@ public partial class Player : Component, Component.ExecuteInEditor
 
 		CrouchAmount = CrouchAmount.LerpTo( IsCrouching ? 1 : 0, Time.Delta * CrouchLerpSpeed() );
 		_smoothEyeHeight = _smoothEyeHeight.LerpTo( _eyeHeightOffset * (IsCrouching ? CrouchAmount : 1), Time.Delta * 10f );
-		CharacterController.Height = Height + _smoothEyeHeight;
+
+		if ( CharacterController.IsValid() )
+			CharacterController.Height = Height + _smoothEyeHeight;
 
 		// UpdateAnimation();
 	}
@@ -91,8 +97,11 @@ public partial class Player : Component, Component.ExecuteInEditor
 		// MovementInput();
 		// UpdateAttack();
 
-		UpdateStamina();
-		RestoreStamina();
+		if ( HealthSystem.IsValid() )
+		{
+			UpdateStamina();
+			RestoreStamina();
+		}
 
 		var cc = CharacterController;
 		if ( !cc.IsValid() ) return;
@@ -118,7 +127,7 @@ public partial class Player : Component, Component.ExecuteInEditor
 		// 		.Run();
 		// }
 
-		if ( HealthSystem.IsDead )
+		if ( HealthSystem.IsValid() && HealthSystem.IsDead )
 		{
 			return;
 		}
