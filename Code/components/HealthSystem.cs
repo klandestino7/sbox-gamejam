@@ -46,9 +46,9 @@ public sealed class HealthSystem : Component
         lastDamage = Time.Delta;
 
         var playerBody = GameObject.Components.Get<Rigidbody>( FindMode.EverythingInSelf );
-        playerBody.ApplyForce( forceDir );
+        playerBody?.ApplyForce( forceDir );
 
-        if ( Health >= 0 ) return;
+        if ( Health > 0 ) return;
         
         Health = 0;
         IsDead = true;
