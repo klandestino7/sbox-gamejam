@@ -161,7 +161,7 @@ public partial class NPC : Component
 	{
 		if ( TargetObject != null )
 		{
-			if ( IsWithinRange( TargetObject ) ) // Is the target within reach
+			if ( IsWithinRange( TargetObject ) )
 			{
 				if ( NextAttack )
 				{
@@ -171,25 +171,28 @@ public partial class NPC : Component
 			}
 		}
 
-		var playersClosest = Scene.FindInPhysics( new Sphere( Transform.Position, MaxDetectDistance * ObjectScale ) ) // Find gameobjects nearby
-			.Where( x => x.Enabled )
-			.Where( x => x.Tags.HasAny( "player" ) ) // Do they have any of our enemy tags
-			.Where( x => !x.Components.Get<HealthSystem>()?.IsDead ?? true ); // Are they dead or undead]
+		var playersClosest = Scene.GetAllComponents<Player>()
+			.Where( x => x.IsValid() && x.GameObject.Enabled )
+			.Where( x => !x.HealthSystem.IsValid() || !x.HealthSystem.IsDead )
+			.Where( x => x.Transform.Position.Distance( Transform.Position ) <= MaxDetectDistance * ObjectScale )
+			.Select( x => x.GameObject );
 
 		if ( TargetObject == null )
 		{
-			if ( playersClosest.Any() ) {
-				LockTarget( playersClosest.First(), true ); // If we don't have any target yet, pick the first one around us
+			var nearest = playersClosest.FirstOrDefault();
+			if ( nearest != null )
+			{
+				LockTarget( nearest, true );
 				return;
 			}
 		}
 
 		if ( TargetObject != null && TargetObject.IsValid() )
 		{
-			var targetDead = TargetObject.Components.Get<HealthSystem>()?.IsDead ?? false; // Is our target dead or undead
-			var targetEscaped = TargetObject.Transform.Position.Distance( Transform.Position ) > MaxDistanceToLostTarget * ObjectScale; // Did our target get out of vision range
+			var targetDead = TargetObject.Components.Get<HealthSystem>()?.IsDead ?? false;
+			var targetEscaped = TargetObject.Transform.Position.Distance( Transform.Position ) > MaxDistanceToLostTarget * ObjectScale;
 
-			if ( targetEscaped || targetDead ) // Did our target die or escape
+			if ( targetEscaped || targetDead )
 				UnlockTarget();
 		}
 	}
@@ -268,11 +271,28 @@ public partial class NPC : Component
 		OnIdle?.Invoke();
 	}
 
+	[Property, Category( "Stats" )]
+	[Range( 1f, 100f, 1f )]
+	public float AttackDamage { get; set; } = 10f;
+
 	[Broadcast]
 	private void BroadcastOnAttack()
 	{
-		if ( TargetObject is not null )
-			OnAttack?.Invoke( TargetObject );
+		if ( TargetObject is null ) return;
+
+		OnAttack?.Invoke( TargetObject );
+
+		var targetHealth = TargetObject.Components.Get<HealthSystem>( FindMode.EverythingInSelfAndDescendants );
+		if ( targetHealth.IsValid() )
+		{
+			targetHealth.ApplyDamage( new DamageDataInfo(
+				amount: (int)AttackDamage,
+				type: DamageType.Punch,
+				boneIndex: 0,
+				attacker: GameObject,
+				forceDirection: Transform.Position
+			) );
+		}
 	}
 
 	[Broadcast]

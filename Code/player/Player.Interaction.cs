@@ -37,13 +37,24 @@ public partial class Player
 				.WithoutTags( "world" )
 				.Run();
 
-		// var	trace = Scene.Trace.Ray( Transform.Position, Camera.Transform.Position * Vector3.Forward )
-		// 			.Size( 4f )
-		// 			.WithoutTags( "world" )
-		// 			.Run();
+		TargetedGameObject = thinTrace.Hit ? thinTrace.GameObject : null;
 
+		if ( !TargetedGameObject.IsValid() )
+			return;
 
-			TargetedGameObject = thinTrace.GameObject;
+		var provider = TargetedGameObject.Components.Get<IContextActionProvider>( FindMode.EverythingInSelfAndAncestors );
+		if ( provider == null )
+			return;
+
+		if ( Transform.Position.Distance( provider.Position ) > provider.InteractionRange )
+			return;
+
+		if ( Input.Pressed( "Use" ) )
+		{
+			var action = provider.GetPrimaryAction( this );
+			if ( action.IsValid() )
+				provider.OnContextAction( this, action );
+		}
 
 		// var actions = TargetedGameObject as IContextActionProvider;
 		// var actionId = ContextActionId;

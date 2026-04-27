@@ -58,6 +58,8 @@ public partial class Player : Component, Component.ExecuteInEditor
 		// ViewModelCamera = Scene.GetAllComponents<CameraComponent>().Where( x => x.IsMainCamera ).FirstOrDefault();
 		// ViewModelCamera = Components.GetOrCreate<CameraComponent>( FindMode.InChildren );
 
+		Tags.Add( "player" );
+
 		PlayerBody = Components.Get<SkinnedModelRenderer>( FindMode.EverythingInSelfAndDescendants );
 
 		Inventory = Components.Get<Inventory>( FindMode.EverythingInSelfAndDescendants );;
